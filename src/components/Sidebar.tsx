@@ -7,6 +7,7 @@ import {
   Scale,
   BookMarked,
   Star,
+  Newspaper,
   Settings,
 } from "lucide-react";
 import clsx from "clsx";
@@ -18,6 +19,7 @@ const nav = [
   { href: "/legislacao",       icon: Scale,           label: "Legislação" },
   { href: "/indice",           icon: BookMarked,      label: "Índice" },
   { href: "/recomendacoes",    icon: Star,            label: "Ginga Recomenda" },
+  { href: "/noticias",         icon: Newspaper,       label: "Notícias" },
   { href: "/settings",         icon: Settings,        label: "Ajustes", bottom: true },
 ];
 
