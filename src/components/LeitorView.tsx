@@ -125,6 +125,13 @@ export default function LeitorView({ citacoes, temas }: { citacoes: Citacao[]; t
               <footer className="mt-4 text-xs text-slate-500 font-medium">{selected.autores}</footer>
             </div>
 
+            {selected.secaoSubsecao && (
+              <div className="flex items-start gap-2">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mt-0.5 shrink-0">Seção</span>
+                <span className="text-xs text-slate-600 font-medium">{selected.secaoSubsecao}</span>
+              </div>
+            )}
+
             <div className="card p-4">
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Referência</p>
               <p className="text-xs text-slate-700 leading-relaxed">{selected.fonte}</p>

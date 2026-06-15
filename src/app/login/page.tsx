@@ -8,6 +8,10 @@ import GingaSymbol from "@/components/GingaSymbol";
 const ALLOWED_EMAILS = [
   "luana.s.faria@gestao.gov.br",
   "claudia.wehbe@gestao.gov.br",
+  "marilia.resende@gestao.gov.br",
+  "eva.patricia@gestao.gov.br",
+  "rafael.rezende@gestao.gov.br",
+  "isabela.blumm@gestao.gov.br",
 ];
 
 export default function LoginPage() {

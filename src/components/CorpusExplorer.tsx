@@ -50,9 +50,11 @@ export default function CorpusExplorer({ citacoes, temas, subtemas }: Props) {
       res = res.filter(
         (c) =>
           (c.citacaoDireta || "").toLowerCase().includes(q) ||
+          (c.citacaoExtensa || "").toLowerCase().includes(q) ||
           (c.subtema || "").toLowerCase().includes(q) ||
           (c.autores || "").toLowerCase().includes(q) ||
-          (c.notaRapida || "").toLowerCase().includes(q)
+          (c.notaRapida || "").toLowerCase().includes(q) ||
+          (c.secaoSubsecao || "").toLowerCase().includes(q)
       );
     }
     if (temaFilter) res = res.filter((c) => c.tema === temaFilter);

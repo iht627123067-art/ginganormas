@@ -5,6 +5,7 @@ export interface Citacao {
   subtema: string;
   citacaoDireta: string;
   citacaoExtensa: string;
+  secaoSubsecao: string | null;
   autores: string;
   fonte: string;
   notaRapida: string;

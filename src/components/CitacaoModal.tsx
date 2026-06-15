@@ -50,6 +50,13 @@ export default function CitacaoModal({ citacao: c, onClose }: { citacao: Citacao
             <p className="text-xs text-slate-500 mt-2 font-medium">{c.autores}</p>
           </div>
 
+          {c.secaoSubsecao && (
+            <div>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Seção / Subseção</p>
+              <p className="text-xs text-slate-700 font-medium">{c.secaoSubsecao}</p>
+            </div>
+          )}
+
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Fonte</p>
             <p className="text-xs text-slate-700">{c.fonte}</p>
