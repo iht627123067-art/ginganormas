@@ -1,0 +1,4 @@
+considerando que eu sou pesquisado e quero gerar um site com o objetivo de analisar dados textuais. Os dados textuais sao compostos de conceitos retirados de livros, legislacoes, artigos cientificos. Dentro do site deverá ter a funcionalidade de leitura dos dados com layot moderno [pensar em modernos graficos para mostrar os textos e resultados]; possibilitar que o usuario escolha os temas que fazem mais sentido dentro dos termos e conceitos oferecidos [um mesmo termo pode ter vários conceitos]; depois de organizado usar uma IA [agentes de ia: revisar o texto, corrigir erros de portugues, traduzir, criar notas de rodape]; o resultado gerado será um arquivo html para revisao e possível retorno para edicao que poderá ser impresso em pdf.
+
+
+Criar metricas para avaliar se o sistema está "funcional"

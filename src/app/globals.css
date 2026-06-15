@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F8F8F5] text-slate-900 antialiased font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::-webkit-scrollbar        { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { @apply bg-slate-300 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
+
+  ::selection { @apply bg-brand-100 text-brand-900; }
+}
+
+@layer components {
+  /* Cartão padrão — editorial, sem blur */
+  .card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-ginga;
+  }
+
+  /* Cartão de destaque — borda lateral azul */
+  .card-accent {
+    @apply bg-white rounded-xl border border-slate-200 shadow-ginga border-l-[3px] border-l-brand-500;
+  }
+
+  /* Cartão dourado — destaque ouro */
+  .card-gold {
+    @apply bg-white rounded-xl border border-gold-200 shadow-gold border-l-[3px] border-l-gold-500;
+  }
+
+  /* Superfície de vidro — apenas para contêineres de seção */
+  .card-glass {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-ginga;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card-glass:hover {
+    @apply shadow-card-hover -translate-y-[1px];
+  }
+
+  /* Barras de score */
+  .score-bar       { @apply h-1.5 rounded-full bg-slate-100 overflow-hidden; }
+  .score-bar-fill  { @apply h-full rounded-full transition-all duration-700 ease-out; }
+
+  /* Badges */
+  .badge-premium          { @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide border; }
+  .badge-premium-positive { @apply bg-forest-50 text-forest-700 border-forest-100; }
+  .badge-premium-negative { @apply bg-red-50 text-red-700 border-red-100; }
+
+  /* Chips de filtro */
+  .filter-chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+           bg-white border border-slate-200 text-slate-600
+           hover:border-brand-300 hover:text-brand-600
+           transition-colors cursor-pointer select-none;
+  }
+  .filter-chip-active {
+    @apply bg-brand-50 border-brand-200 text-brand-700;
+  }
+
+  /* Contêiner de gráfico */
+  .chart-container {
+    @apply bg-slate-50 rounded-xl p-4 border border-slate-100;
+  }
+
+  /* Heading de seção com underline dourado */
+  .section-heading {
+    @apply font-display font-bold text-brand-900 tracking-tight;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-heading::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 3px;
+    background: #F1C232;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+
+  /* Rótulo estilo GINGA (caps + tracking, cor ouro) */
+  .label-ginga {
+    @apply text-[10px] font-display font-bold tracking-[0.15em] uppercase text-gold-600;
+  }
+}
