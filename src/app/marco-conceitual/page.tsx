@@ -64,7 +64,7 @@ export default function Dashboard() {
   }));
 
   const barData: BarEntry[] = temaStats.map((ts) => {
-    const hrow = heatmapData.find((h) => h.tema === ts.tema)!;
+    const hrow = heatmapData.find((h) => h.tema === ts.tema);
     return {
       name: ts.tema.length > 24 ? ts.tema.slice(0, 24) + "…" : ts.tema,
       fullName: ts.tema,
@@ -72,10 +72,10 @@ export default function Dashboard() {
       avgScore: ts.avgScore,
       color: TEMA_COLORS[ts.tema] ?? "#30578F",
       subtemaCount: ts.subtemas.length,
-      coerencia:    hrow.coerencia,
-      raio:         hrow.raio,
-      ancoragem:    hrow.ancoragem,
-      consistencia: hrow.consistencia,
+      coerencia:    hrow?.coerencia    ?? 0,
+      raio:         hrow?.raio         ?? 0,
+      ancoragem:    hrow?.ancoragem    ?? 0,
+      consistencia: hrow?.consistencia ?? 0,
     };
   });
 
@@ -97,7 +97,7 @@ export default function Dashboard() {
               Análise do Corpus
             </h1>
             <p className="text-sm text-slate-500 mt-0.5">
-              Inovação Pública no Brasil · 131 citações · 21 temas
+              Inovação Pública no Brasil · {citacoes.length} citações · {temas.length} temas
             </p>
           </div>
         </div>

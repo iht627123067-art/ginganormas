@@ -32,7 +32,7 @@ export default function ScoreHistogram({ data, selectedTema, citacoes }: Props) 
 
   const filtered = selectedTema ? citacoes.filter((c) => c.tema === selectedTema) : citacoes;
   const enriched = data.map((bin, i) => {
-    const [lo, hi] = BINS[i];
+    const [lo, hi] = BINS[i] ?? [bin.low, bin.low + 0.1] as [number, number];
     return {
       ...bin,
       filteredCount: filtered.filter((c) => {

@@ -23,7 +23,7 @@ const DIMS = [
 ];
 
 export default function LeitorView({ citacoes, temas }: { citacoes: Citacao[]; temas: string[] }) {
-  const [selected, setSelected] = useState<Citacao>(citacoes[0]);
+  const [selected, setSelected] = useState<Citacao | null>(citacoes[0] ?? null);
   const [search, setSearch] = useState("");
   const [temaFilter, setTemaFilter] = useState("");
 

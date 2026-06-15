@@ -8,7 +8,7 @@ export interface Citacao {
   secaoSubsecao: string | null;
   autores: string;
   fonte: string;
-  notaRapida: string;
+  notaRapida: string | null;
   scoreAlinhamento: number | null;
   scoreCoerencia: number | null;
   scoreRaio: number | null;

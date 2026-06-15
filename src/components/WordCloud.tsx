@@ -10,42 +10,50 @@ interface Props {
 }
 
 const STOP_WORDS = new Set([
-  "que", "para", "como", "mais", "este", "esta", "todos", "também", "pode", 
-  "sobre", "entre", "outros", "ainda", "mesmo", "sempre", "pelo", "pela", 
-  "depois", "antes", "foi", "são", "tem", "seu", "sua", "ser", "ter", 
-  "muito", "pouco", "cada", "todo", "toda"
+  "que", "para", "como", "mais", "este", "esta", "todos", "também", "pode",
+  "sobre", "entre", "outros", "ainda", "mesmo", "sempre", "pelo", "pela",
+  "depois", "antes", "foi", "são", "tem", "seu", "sua", "ser", "ter",
+  "muito", "pouco", "cada", "todo", "toda",
+  "isso", "deve", "seja", "seus", "suas", "pelos", "pelas", "esse", "essa",
+  "esses", "essas", "quando", "qual", "quais", "sendo", "tendo", "fazer",
+  "feito", "feita", "forma", "deste", "desta", "neste", "nesta", "desses",
+  "dessas", "mediante", "conforme", "inclusive", "assim", "caso", "apenas",
+  "tanto", "novo", "nova", "novos", "novas", "numa", "num",
+  "that", "with", "from", "this", "they", "have", "been", "which", "their",
+  "will", "would", "could", "should", "than", "more", "also", "into",
 ]);
 
 export default function WordCloud({ citacoes, onTermClick, selectedTema }: Props) {
   const termFrequency = useMemo(() => {
-    const freq: Record<string, { count: number; tema: string }> = {};
-    
+    const freq: Record<string, { count: number; temaCounts: Record<string, number> }> = {};
+
     citacoes.forEach((c) => {
       if (selectedTema && c.tema !== selectedTema) return;
-      
       if (!c.citacaoDireta) return;
-      
-      // Extract terms from citacaoDireta (simplified - in real app would use NLP)
+
       const terms = c.citacaoDireta
         .toLowerCase()
-        .replace(/[.,;:?!()[\]{}"']/g, " ")
+        .replace(/[.,;:?!()[\]{}"'\-–—]/g, " ")
         .split(/\s+/)
-        .filter(t => t.length > 3 && !STOP_WORDS.has(t));
-      
+        .filter((t) => t.length > 3 && !STOP_WORDS.has(t));
+
       terms.forEach((term) => {
-        if (!freq[term]) {
-          freq[term] = { count: 0, tema: c.tema };
-        }
+        if (!freq[term]) freq[term] = { count: 0, temaCounts: {} };
         freq[term].count += 1;
+        freq[term].temaCounts[c.tema] = (freq[term].temaCounts[c.tema] ?? 0) + 1;
       });
     });
 
     return Object.entries(freq)
-      .map(([term, data]) => ({
-        term,
-        count: data.count,
-        color: TEMA_COLORS[data.tema] ?? "#14b8a6",
-      }))
+      .map(([term, data]) => {
+        const dominantTema = Object.entries(data.temaCounts)
+          .sort((a, b) => b[1] - a[1])[0][0];
+        return {
+          term,
+          count: data.count,
+          color: TEMA_COLORS[dominantTema] ?? "#14b8a6",
+        };
+      })
       .sort((a, b) => b.count - a.count)
       .slice(0, 100);
   }, [citacoes, selectedTema]);

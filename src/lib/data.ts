@@ -25,6 +25,7 @@ export const TEMA_COLORS: Record<string, string> = {
   "Confiança Pública": "#d97706",
   "Segurança Jurídica": "#059669",
   "Gestão de Riscos": "#dc2626",
+  "Ambiência para Inovação": "#65a30d",
 };
 
 export function getTemaStats(): TemaStats[] {
