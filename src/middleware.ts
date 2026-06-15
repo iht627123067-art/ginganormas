@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const ALLOWED_EMAIL = "luana.s.faria@gestao.gov.br";
+const ALLOWED_EMAILS = [
+  "luana.s.faria@gestao.gov.br",
+  "claudia.wehbe@gestao.gov.br",
+];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -10,7 +13,7 @@ export function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get("ginga_session");
   const email = sessionCookie?.value;
 
-  const isLoggedIn = email === ALLOWED_EMAIL;
+  const isLoggedIn = email && ALLOWED_EMAILS.includes(email);
 
   // 2. Redirecionar usuários não autenticados para a página de login
   if (!isLoggedIn && pathname !== "/login") {

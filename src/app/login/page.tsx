@@ -5,7 +5,10 @@ import { Mail, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import GingaSymbol from "@/components/GingaSymbol";
 
-const ALLOWED_EMAIL = "luana.s.faria@gestao.gov.br";
+const ALLOWED_EMAILS = [
+  "luana.s.faria@gestao.gov.br",
+  "claudia.wehbe@gestao.gov.br",
+];
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -30,7 +33,7 @@ export default function LoginPage() {
 
     // Pequena simulação de delay para uma experiência UX mais fluida
     setTimeout(() => {
-      if (trimmedEmail === ALLOWED_EMAIL) {
+      if (ALLOWED_EMAILS.includes(trimmedEmail)) {
         // Define o cookie de sessão para 30 dias
         document.cookie = `ginga_session=${trimmedEmail}; path=/; max-age=2592000; SameSite=Lax`;
         
