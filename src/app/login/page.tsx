@@ -70,9 +70,6 @@ export default function LoginPage() {
           <h1 className="text-3xl font-display font-black text-white tracking-tight leading-none">
             Ginga<span className="text-white/80 font-normal">Normas</span>
           </h1>
-          <span className="block text-xs font-display font-bold tracking-[0.25em] uppercase text-gold-500 mt-2">
-            Legal Intelligence
-          </span>
         </div>
 
         {/* Card do Formulário (Glassmorphism) */}

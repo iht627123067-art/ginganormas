@@ -40,12 +40,6 @@ export default function Sidebar() {
             <span className="block text-[15px] font-display font-bold text-white tracking-tight">
               GingaNormas
             </span>
-            <span
-              className="block text-[9px] font-display font-bold tracking-[0.18em] uppercase mt-[3px]"
-              style={{ color: "#F1C232" }}
-            >
-              Legal Intelligence
-            </span>
           </div>
         </div>
       </div>
