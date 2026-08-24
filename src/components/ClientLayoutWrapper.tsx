@@ -11,8 +11,9 @@ interface ClientLayoutWrapperProps {
 export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
   const pathname = usePathname();
 
-  // Se for a página de login, renderiza apenas o conteúdo em tela cheia sem a Sidebar
-  if (pathname === "/login") {
+  // Rotas públicas do jogo (/jogo/**) renderizam em tela cheia, sem Sidebar:
+  // jogadores entram pelo código da mesa, sem login na plataforma
+  if (pathname === "/login" || pathname.startsWith("/jogo")) {
     return (
       <div className="w-screen h-screen overflow-y-auto bg-navy-gradient">
         {children}
