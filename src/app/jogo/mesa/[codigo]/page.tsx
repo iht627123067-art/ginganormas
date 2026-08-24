@@ -5,18 +5,24 @@ import { useParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
 import {
+  Ear,
   Loader2,
   Play,
   RotateCcw,
+  ThumbsDown,
+  ThumbsUp,
   Trophy,
   Users,
   Layers,
   Hand,
+  Vote,
 } from "lucide-react";
 import GingaSymbol from "@/components/GingaSymbol";
-import { lerHostToken, useAcao, useEstadoMesa } from "@/lib/jogo/cliente";
+import DimensaoIcone from "@/components/DimensaoIcone";
+import { lerHostToken, useAcao, useContagemRegressiva, useEstadoMesa } from "@/lib/jogo/cliente";
 import { textoContraste, etiquetaResultado } from "@/lib/jogo/ui";
-import type { EstadoMesa } from "@/lib/jogo/tipos";
+import { formatarContagem, SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
+import type { CartaAtiva as CartaAtivaTipo, EstadoMesa } from "@/lib/jogo/tipos";
 
 export default function MesaPage() {
   const params = useParams<{ codigo: string }>();
@@ -268,15 +274,22 @@ function PainelDimensoes({ estado }: { estado: EstadoMesa }) {
         return (
           <div
             key={d.dimensao}
-            className="rounded-2xl p-5 shadow-glass-dark"
+            className="rounded-2xl p-5 shadow-glass-dark flex items-center gap-4"
             style={{ backgroundColor: d.corHex, color: corTexto }}
           >
-            <p className="text-sm font-semibold leading-tight">{d.dimensao}</p>
-            <p className="font-display text-3xl font-bold mt-2">
-              {d.jogadas}
-              <span className="text-lg opacity-70"> / {d.total}</span>
-            </p>
-            <p className="text-xs opacity-70 mt-1">cartas jogadas</p>
+            <span
+              className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center p-2"
+              style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+            >
+              <DimensaoIcone dimensao={d.dimensao} className="w-full h-full" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold leading-tight">{d.dimensao}</p>
+              <p className="font-display text-3xl font-bold mt-1">
+                {d.jogadas}
+                <span className="text-lg opacity-70"> / {d.total}</span>
+              </p>
+            </div>
           </div>
         );
       })}
@@ -287,6 +300,7 @@ function PainelDimensoes({ estado }: { estado: EstadoMesa }) {
 function CartaAtiva({ estado }: { estado: EstadoMesa }) {
   const carta = estado.cartaAtiva;
   const corTexto = carta ? textoContraste(carta.corHex) : "#ffffff";
+  const haRoda = estado.jogadores.length > 1;
 
   return (
     <div className="min-h-[420px]">
@@ -302,9 +316,17 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
             style={{ backgroundColor: carta.corHex, color: corTexto }}
           >
             <div className="flex items-center justify-between gap-4 flex-wrap">
-              <p className="text-sm font-semibold uppercase tracking-widest opacity-80">
-                {carta.dimensao}
-              </p>
+              <div className="flex items-center gap-3">
+                <span
+                  className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center p-2.5"
+                  style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+                >
+                  <DimensaoIcone dimensao={carta.dimensao} className="w-full h-full" />
+                </span>
+                <p className="text-sm font-semibold uppercase tracking-widest opacity-80">
+                  {carta.dimensao}
+                </p>
+              </div>
               <p className="text-sm opacity-80">
                 Puxada por <strong>{carta.jogadorNome}</strong>
               </p>
@@ -318,6 +340,12 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
             <p className="mt-8 text-base sm:text-lg leading-relaxed font-medium border-t border-current/20 pt-6 max-w-2xl">
               {carta.pergunta}
             </p>
+
+            {haRoda && (
+              <div className="mt-8 border-t border-current/20 pt-6">
+                <FaseCartaHost carta={carta} corTexto={corTexto} />
+              </div>
+            )}
           </motion.div>
         ) : (
           <motion.div
@@ -337,6 +365,62 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function FaseCartaHost({ carta, corTexto }: { carta: CartaAtivaTipo; corTexto: string }) {
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+  const emEscuta = carta.fase === "escuta";
+
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex items-center gap-2 font-display text-2xl font-bold">
+        {emEscuta ? <Ear className="w-6 h-6" /> : <Vote className="w-6 h-6" />}
+        {formatarContagem(emEscuta ? escutaRestante : votacaoRestante)}
+        <span className="text-sm font-normal opacity-70">
+          {emEscuta
+            ? `de ${Math.floor(SEGUNDOS_ESCUTA / 60)} min de escuta`
+            : `de ${SEGUNDOS_VOTACAO}s de votação`}
+        </span>
+      </div>
+      {!emEscuta && (
+        <div className="flex items-center gap-4 text-sm font-semibold">
+          <span className="flex items-center gap-1.5">
+            <ThumbsUp className="w-4 h-4" /> {carta.votos.gingou}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <ThumbsDown className="w-4 h-4" /> {carta.votos.voltou}
+          </span>
+          <span className="flex items-center gap-1.5 opacity-70">
+            <Users className="w-4 h-4" /> {carta.votos.jaVotaram.length}/{carta.votos.totalVotantes}
+            {" · precisa de "}
+            {carta.votos.necessarios}
+          </span>
+        </div>
+      )}
+      <div
+        className="h-1.5 w-full rounded-full overflow-hidden"
+        style={{ backgroundColor: "rgba(255,255,255,0.25)" }}
+      >
+        <motion.div
+          className="h-full rounded-full"
+          style={{ backgroundColor: corTexto }}
+          animate={{
+            width: `${
+              Math.min(
+                1,
+                Math.max(
+                  0,
+                  (emEscuta ? escutaRestante / SEGUNDOS_ESCUTA : votacaoRestante / SEGUNDOS_VOTACAO)
+                )
+              ) * 100
+            }%`,
+          }}
+          transition={{ ease: "linear", duration: 0.25 }}
+        />
+      </div>
     </div>
   );
 }
@@ -416,9 +500,11 @@ function UltimasCartas({ estado }: { estado: EstadoMesa }) {
                 className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-2.5"
               >
                 <span
-                  className="w-3 h-8 rounded-full shrink-0"
+                  className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center p-1.5"
                   style={{ backgroundColor: c.corHex }}
-                />
+                >
+                  <DimensaoIcone dimensao={c.dimensao} className="w-full h-full" />
+                </span>
                 <span className="min-w-0">
                   <span className="block text-sm text-white truncate">
                     <strong>{c.carta}</strong>{" "}

@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withTransaction } from "@/lib/jogo/db";
-import { buscarMesaPorCodigo, carregarEstadoPorCodigo, contarConquistas } from "@/lib/jogo/estado";
+import {
+  buscarMesaPorCodigo,
+  carregarEstadoPorCodigo,
+  contarConquistas,
+  resolverSorteioAtivo,
+  travarMesa,
+} from "@/lib/jogo/estado";
 import { rateLimit } from "@/lib/jogo/ratelimit";
 
 interface CartaRow {
@@ -36,12 +42,10 @@ export async function POST(
     }
 
     await withTransaction(async (client) => {
-      const mesaTravada = await client.query(
-        "select * from mesas_ginga where id = $1 for update",
-        [mesa.id]
-      );
-      const m = mesaTravada.rows[0];
+      const m = await travarMesa(client, mesa.id);
       if (!m) throw new ErroNegocio("Mesa não encontrada", 404);
+
+      await resolverSorteioAtivo(client, m);
 
       const jogadorRes = await client.query(
         "select id, nome, fichas, device_token from jogadores_ginga where id = $1 and mesa_id = $2",
@@ -60,14 +64,20 @@ export async function POST(
       }
 
       const ativaRes = await client.query(
-        `select s.id, s.jogador_id, b.dimensao
+        `select s.id, s.jogador_id, s.resultado, s.escuta_termina_em, b.dimensao
          from sorteios_ginga s join baralho_ginga b on b.id = s.carta_id
-         where s.id = $1`,
+         where s.id = $1 for update`,
         [m.carta_ativa_id]
       );
       const ativa = ativaRes.rows[0];
+      if (!ativa || ativa.resultado !== "ativa") {
+        throw new ErroNegocio("Esta carta já foi decidida", 409);
+      }
       if (ativa.jogador_id === jogadorId) {
         throw new ErroNegocio("Você não pode entrar na roda na sua própria carta", 409);
+      }
+      if (ativa.escuta_termina_em && new Date() < new Date(ativa.escuta_termina_em)) {
+        throw new ErroNegocio("Aguarde o tempo de escuta terminar para entrar na roda", 409);
       }
       if (jogador.fichas <= 0) {
         throw new ErroNegocio("Você não tem fichas suficientes", 409);

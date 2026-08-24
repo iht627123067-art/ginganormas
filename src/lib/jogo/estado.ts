@@ -1,7 +1,8 @@
 import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
-import { query } from "./db";
+import { query, withTransaction } from "./db";
 import type { EstadoMesa, EstadoMesaValor, ResultadoSorteio } from "./tipos";
+import { calcularFase } from "./votacao";
 
 const CODIGO_PREFIXO = "GNG";
 
@@ -50,9 +51,12 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
             carta: string;
             definicao: string;
             pergunta: string;
+            escuta_termina_em: Date | null;
+            votacao_termina_em: Date | null;
           }>(
             `select s.id as sorteio_id, s.jogador_id, j.nome as jogador_nome,
-                    b.id as carta_id, b.dimensao, b.cor_hex, b.carta, b.definicao, b.pergunta
+                    b.id as carta_id, b.dimensao, b.cor_hex, b.carta, b.definicao, b.pergunta,
+                    s.escuta_termina_em, s.votacao_termina_em
              from sorteios_ginga s
              join baralho_ginga b on b.id = s.carta_id
              join jogadores_ginga j on j.id = s.jogador_id
@@ -115,6 +119,42 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
 
   const ativa = ativaRows[0];
 
+  let cartaAtiva: EstadoMesa["cartaAtiva"] = null;
+  if (ativa) {
+    const votosRows = await query<{ jogador_id: string; voto: ResultadoSorteio | "gingou" | "voltou" }>(
+      "select jogador_id, voto from votos_ginga where sorteio_id = $1",
+      [ativa.sorteio_id]
+    );
+    const totalVotantes = Math.max(0, jogadoresRows.length - 1);
+    const necessarios = Math.floor(totalVotantes / 2) + 1;
+    const votosGingou = votosRows.filter((v) => v.voto === "gingou").length;
+    const votosVoltou = votosRows.filter((v) => v.voto === "voltou").length;
+    const escutaTerminaEm = ativa.escuta_termina_em ?? new Date();
+    const votacaoTerminaEm = ativa.votacao_termina_em ?? new Date();
+
+    cartaAtiva = {
+      sorteioId: ativa.sorteio_id,
+      jogadorId: ativa.jogador_id,
+      jogadorNome: ativa.jogador_nome,
+      cartaId: ativa.carta_id,
+      dimensao: ativa.dimensao,
+      corHex: ativa.cor_hex,
+      carta: ativa.carta,
+      definicao: ativa.definicao,
+      pergunta: ativa.pergunta,
+      fase: calcularFase(new Date(), escutaTerminaEm, votacaoTerminaEm),
+      escutaTerminaEm: escutaTerminaEm.toISOString(),
+      votacaoTerminaEm: votacaoTerminaEm.toISOString(),
+      votos: {
+        gingou: votosGingou,
+        voltou: votosVoltou,
+        necessarios,
+        totalVotantes,
+        jaVotaram: votosRows.map((v) => v.jogador_id),
+      },
+    };
+  }
+
   return {
     codigo: mesa.codigo,
     nome: mesa.nome,
@@ -128,19 +168,7 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
       fichas: j.fichas,
       conquistas: conquistasPorJogador.get(j.id) ?? [],
     })),
-    cartaAtiva: ativa
-      ? {
-          sorteioId: ativa.sorteio_id,
-          jogadorId: ativa.jogador_id,
-          jogadorNome: ativa.jogador_nome,
-          cartaId: ativa.carta_id,
-          dimensao: ativa.dimensao,
-          corHex: ativa.cor_hex,
-          carta: ativa.carta,
-          definicao: ativa.definicao,
-          pergunta: ativa.pergunta,
-        }
-      : null,
+    cartaAtiva,
     ultimasCartas: ultimasRows.map((u) => ({
       cartaId: u.carta_id,
       dimensao: u.dimensao,
@@ -167,6 +195,21 @@ export async function carregarEstadoPorCodigo(
 ): Promise<{ mesa: MesaRow; estado: EstadoMesa } | null> {
   const mesa = await buscarMesaPorCodigo(codigo);
   if (!mesa) return null;
+
+  if (mesa.estado === "em_jogo" && mesa.carta_ativa_id) {
+    await withTransaction(async (client) => {
+      const mesaTravada = await travarMesa(client, mesa.id);
+      if (!mesaTravada) return;
+      const resolvida = await resolverSorteioAtivo(client, mesaTravada);
+      if (resolvida) {
+        mesa.carta_ativa_id = mesaTravada.carta_ativa_id;
+        mesa.turno_jogador_id = mesaTravada.turno_jogador_id;
+        mesa.estado = mesaTravada.estado;
+        mesa.vencedor_jogador_id = mesaTravada.vencedor_jogador_id;
+      }
+    });
+  }
+
   return { mesa, estado: await carregarEstadoMesa(mesa) };
 }
 
@@ -241,4 +284,111 @@ export async function contarConquistas(
     [jogadorId]
   );
   return Number(res.rows[0]?.total ?? 0);
+}
+
+interface SorteioAtivoRow {
+  id: string;
+  carta_id: string;
+  jogador_id: string;
+  resultado: ResultadoSorteio;
+  escuta_termina_em: Date | null;
+  votacao_termina_em: Date | null;
+}
+
+// Resolve a carta ativa da mesa (bloqueada em `mesa`) se a maioria simples da
+// roda já aprovou/reprovou, ou se o tempo de votação expirou. Muta `mesa` in
+// place para refletir turno/carta/estado novos. Mesas com 0 outros jogadores
+// (teste solo) não são resolvidas aqui — seguem pela rota /decidir manual.
+export async function resolverSorteioAtivo(
+  client: PoolClient,
+  mesa: MesaRow
+): Promise<boolean> {
+  if (!mesa.carta_ativa_id) return false;
+
+  const sorteioRes = await client.query<SorteioAtivoRow>(
+    `select id, carta_id, jogador_id, resultado, escuta_termina_em, votacao_termina_em
+     from sorteios_ginga where id = $1 for update`,
+    [mesa.carta_ativa_id]
+  );
+  const sorteio = sorteioRes.rows[0];
+  if (!sorteio || sorteio.resultado !== "ativa") return false;
+
+  const jogadoresRes = await client.query<{ total: string }>(
+    "select count(*) as total from jogadores_ginga where mesa_id = $1",
+    [mesa.id]
+  );
+  const totalOutros = Number(jogadoresRes.rows[0]?.total ?? 0) - 1;
+  if (totalOutros <= 0) return false;
+
+  const votosRes = await client.query<{ voto: string; n: string }>(
+    "select voto, count(*)::int as n from votos_ginga where sorteio_id = $1 group by voto",
+    [sorteio.id]
+  );
+  let votosGingou = 0;
+  let votosVoltou = 0;
+  for (const r of votosRes.rows) {
+    if (r.voto === "gingou") votosGingou = Number(r.n);
+    else if (r.voto === "voltou") votosVoltou = Number(r.n);
+  }
+  const maioria = Math.floor(totalOutros / 2) + 1;
+  const agora = new Date();
+  const votacaoExpirada = !!sorteio.votacao_termina_em && agora >= new Date(sorteio.votacao_termina_em);
+
+  let decisao: "gingou" | "voltou" | null = null;
+  if (votosGingou >= maioria) decisao = "gingou";
+  else if (votosVoltou >= maioria) decisao = "voltou";
+  else if (votacaoExpirada) decisao = votosGingou > votosVoltou ? "gingou" : "voltou";
+
+  if (!decisao) return false;
+
+  await aplicarDecisao(client, mesa, sorteio, decisao);
+  return true;
+}
+
+async function aplicarDecisao(
+  client: PoolClient,
+  mesa: MesaRow,
+  sorteio: SorteioAtivoRow,
+  decisao: "gingou" | "voltou"
+): Promise<void> {
+  await client.query(
+    "update sorteios_ginga set resultado = $1, resolvido_em = now() where id = $2",
+    [decisao, sorteio.id]
+  );
+
+  if (decisao === "gingou") {
+    const cartaRes = await client.query<{ dimensao: string }>(
+      "select dimensao from baralho_ginga where id = $1",
+      [sorteio.carta_id]
+    );
+    const dimensao = cartaRes.rows[0]?.dimensao;
+    if (dimensao) {
+      await client.query(
+        `insert into conquistas_ginga (mesa_id, jogador_id, dimensao, carta_id)
+         values ($1, $2, $3, $4) on conflict (jogador_id, dimensao) do nothing`,
+        [mesa.id, sorteio.jogador_id, dimensao, sorteio.carta_id]
+      );
+    }
+  }
+
+  const totalConquistas = await contarConquistas(client, sorteio.jogador_id);
+  if (totalConquistas >= 5) {
+    await client.query(
+      `update mesas_ginga set carta_ativa_id = null, estado = 'encerrada',
+       vencedor_jogador_id = $1, turno_jogador_id = null where id = $2`,
+      [sorteio.jogador_id, mesa.id]
+    );
+    mesa.carta_ativa_id = null;
+    mesa.estado = "encerrada";
+    mesa.vencedor_jogador_id = sorteio.jogador_id;
+    mesa.turno_jogador_id = null;
+  } else {
+    const proximo = await proximoTurno(client, mesa.id, mesa.turno_jogador_id);
+    await client.query(
+      "update mesas_ginga set carta_ativa_id = null, turno_jogador_id = $1 where id = $2",
+      [proximo, mesa.id]
+    );
+    mesa.carta_ativa_id = null;
+    mesa.turno_jogador_id = proximo;
+  }
 }

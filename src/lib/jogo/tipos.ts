@@ -17,10 +17,24 @@ export interface JogadorEstado {
   conquistas: string[]; // dimensões fechadas
 }
 
+export type FaseCarta = "escuta" | "votacao" | "expirada";
+
+export interface VotosResumo {
+  gingou: number;
+  voltou: number;
+  necessarios: number;
+  totalVotantes: number;
+  jaVotaram: string[]; // ids dos jogadores que já registraram voto nesta carta
+}
+
 export interface CartaAtiva extends CartaInfo {
   sorteioId: string;
   jogadorId: string;
   jogadorNome: string;
+  fase: FaseCarta;
+  escutaTerminaEm: string;
+  votacaoTerminaEm: string;
+  votos: VotosResumo;
 }
 
 export interface UltimaCarta extends CartaInfo {

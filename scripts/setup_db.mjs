@@ -40,6 +40,7 @@ async function main() {
 
   const schemaPath = path.join(rootDir, "sql", "001_schema_jogo.sql");
   const seedPath = path.join(rootDir, "sql", "002_seed_baralho.sql");
+  const votacaoPath = path.join(rootDir, "sql", "003_votacao_roda.sql");
 
   console.log("📜 Executando 001_schema_jogo.sql...");
   const schemaSql = fs.readFileSync(schemaPath, "utf-8");
@@ -50,6 +51,11 @@ async function main() {
   const seedSql = fs.readFileSync(seedPath, "utf-8");
   await client.query(seedSql);
   console.log("✅ Cartas inseridas/atualizadas com sucesso!");
+
+  console.log("🗳️  Executando 003_votacao_roda.sql...");
+  const votacaoSql = fs.readFileSync(votacaoPath, "utf-8");
+  await client.query(votacaoSql);
+  console.log("✅ Tabelas de votação criadas com sucesso!");
 
   // Verificação
   const cartasRes = await client.query("select count(*) as total from baralho_ginga");

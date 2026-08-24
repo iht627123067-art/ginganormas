@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { withTransaction } from "@/lib/jogo/db";
 import { buscarMesaPorCodigo, carregarEstadoPorCodigo } from "@/lib/jogo/estado";
 import { rateLimit } from "@/lib/jogo/ratelimit";
+import { SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
 
 interface CartaRow {
   id: string;
@@ -74,9 +75,12 @@ export async function POST(
       }
 
       const sorteioRes = await client.query(
-        `insert into sorteios_ginga (mesa_id, carta_id, jogador_id, resultado)
-         values ($1, $2, $3, 'ativa') returning id`,
-        [mesa.id, carta.id, jogadorId]
+        `insert into sorteios_ginga
+           (mesa_id, carta_id, jogador_id, resultado, escuta_termina_em, votacao_termina_em)
+         values ($1, $2, $3, 'ativa',
+           now() + make_interval(secs => $4), now() + make_interval(secs => $5))
+         returning id`,
+        [mesa.id, carta.id, jogadorId, SEGUNDOS_ESCUTA, SEGUNDOS_ESCUTA + SEGUNDOS_VOTACAO]
       );
       await client.query(
         "update mesas_ginga set carta_ativa_id = $1 where id = $2",

@@ -1,27 +1,36 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   CheckCircle2,
+  Ear,
   Hand,
   Loader2,
+  PartyPopper,
   RotateCcw,
   Sparkles,
+  ThumbsDown,
+  ThumbsUp,
   Trophy,
-  Undo2,
+  Users,
+  Vote,
 } from "lucide-react";
 import Link from "next/link";
 import GingaSymbol from "@/components/GingaSymbol";
+import DimensaoIcone from "@/components/DimensaoIcone";
 import {
   lerSessaoJogador,
   useAcao,
+  useContagemRegressiva,
   useEstadoMesa,
   type SessaoJogador,
 } from "@/lib/jogo/cliente";
 import { textoContraste } from "@/lib/jogo/ui";
+import { formatarContagem, SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
+import type { CartaAtiva, EstadoMesa, JogadorEstado } from "@/lib/jogo/tipos";
 
 export default function JogadorPage() {
   const params = useParams<{ codigo: string; jogadorId: string }>();
@@ -32,6 +41,10 @@ export default function JogadorPage() {
   const [sessao, setSessao] = useState<SessaoJogador | null>(null);
   const [verificado, setVerificado] = useState(false);
 
+  const eu = estado?.jogadores.find((j) => j.id === jogadorId);
+  const conquistasAnteriorRef = useRef<number | null>(null);
+  const [celebracaoGingou, setCelebracaoGingou] = useState(false);
+
   useEffect(() => {
     const s = lerSessaoJogador(codigo);
     if (!s || s.jogadorId !== jogadorId) {
@@ -41,6 +54,21 @@ export default function JogadorPage() {
     setSessao(s);
     setVerificado(true);
   }, [codigo, jogadorId, router]);
+
+  useEffect(() => {
+    const atual = eu?.conquistas.length;
+    if (atual === undefined) return;
+    const anterior = conquistasAnteriorRef.current;
+    if (anterior !== null && atual > anterior) {
+      setCelebracaoGingou(true);
+      const t = setTimeout(() => setCelebracaoGingou(false), 1800);
+      conquistasAnteriorRef.current = atual;
+      return () => clearTimeout(t);
+    }
+    conquistasAnteriorRef.current = atual;
+  }, [eu?.conquistas.length]);
+
+  const [efeitoRoda, setEfeitoRoda] = useState(false);
 
   if (!verificado) {
     return (
@@ -71,7 +99,6 @@ export default function JogadorPage() {
 
   if (!estado || !sessao) return null;
 
-  const eu = estado.jogadores.find((j) => j.id === jogadorId);
   if (!eu) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-3 px-6 text-center">
@@ -89,7 +116,10 @@ export default function JogadorPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col px-4 py-5 pb-10 max-w-lg mx-auto w-full">
+    <div className="min-h-screen flex flex-col px-4 py-5 pb-10 max-w-lg mx-auto w-full relative">
+      <EfeitoCelebracao ativo={celebracaoGingou} texto="Você gingou! +1 dimensão" />
+      <EfeitoCelebracao ativo={efeitoRoda} texto="Você entrou na roda! +1 dimensão" tom="gold" />
+
       <header className="flex items-center justify-between gap-3 mb-6">
         <Link
           href="/jogo"
@@ -143,11 +173,57 @@ export default function JogadorPage() {
                 decisao,
               })
             }
-            onRoda={() => executar("roda", { jogadorId, deviceToken: sessao.deviceToken })}
+            onVotar={(voto) =>
+              executar("votar", { jogadorId, deviceToken: sessao.deviceToken, voto })
+            }
+            onPular={() => executar("pular", { jogadorId, deviceToken: sessao.deviceToken })}
+            onRoda={async () => {
+              const ok = await executar("roda", { jogadorId, deviceToken: sessao.deviceToken });
+              if (ok) {
+                setEfeitoRoda(true);
+                setTimeout(() => setEfeitoRoda(false), 1600);
+              }
+            }}
           />
         )}
       </main>
     </div>
+  );
+}
+
+function EfeitoCelebracao({
+  ativo,
+  texto,
+  tom = "forest",
+}: {
+  ativo: boolean;
+  texto: string;
+  tom?: "forest" | "gold";
+}) {
+  return (
+    <AnimatePresence>
+      {ativo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none px-6"
+        >
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0, y: 10 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 18 }}
+            className={`flex items-center gap-3 rounded-2xl px-6 py-4 shadow-gold ${
+              tom === "gold" ? "bg-gold-gradient text-brand-950" : "bg-forest-700 text-white"
+            }`}
+          >
+            <PartyPopper className="w-7 h-7" />
+            <span className="font-display text-lg font-bold">{texto}</span>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -159,16 +235,27 @@ function MinhasDimensoes({
   progresso: { dimensao: string; corHex: string }[];
 }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1.5">
       {progresso.map((d) => {
         const fechou = conquistas.includes(d.dimensao);
         return (
           <span
             key={d.dimensao}
             title={d.dimensao}
-            className="h-2.5 flex-1 rounded-full transition-colors"
-            style={{ backgroundColor: fechou ? d.corHex : "rgba(255,255,255,0.12)" }}
-          />
+            className="relative flex-1 aspect-square rounded-xl flex items-center justify-center transition-all"
+            style={{
+              backgroundColor: fechou ? d.corHex : "rgba(255,255,255,0.06)",
+              boxShadow: fechou ? "0 2px 10px -2px rgba(0,0,0,0.4)" : undefined,
+            }}
+          >
+            <DimensaoIcone
+              dimensao={d.dimensao}
+              className={`w-1/2 h-1/2 transition-opacity ${fechou ? "opacity-100" : "opacity-25"}`}
+            />
+            {fechou && (
+              <CheckCircle2 className="absolute -top-1.5 -right-1.5 w-4 h-4 text-white bg-forest-700 rounded-full" />
+            )}
+          </span>
         );
       })}
       <span className="text-xs text-white/50 shrink-0 ml-1">
@@ -199,13 +286,17 @@ function JogoEmAndamento({
   processando,
   onPuxar,
   onDecidir,
+  onVotar,
+  onPular,
   onRoda,
 }: {
-  estado: NonNullable<ReturnType<typeof useEstadoMesa>["estado"]>;
+  estado: EstadoMesa;
   meuId: string;
   processando: boolean;
   onPuxar: () => void;
   onDecidir: (decisao: "gingou" | "voltou") => void;
+  onVotar: (voto: "gingou" | "voltou") => void;
+  onPular: () => void;
   onRoda: () => void;
 }) {
   const carta = estado.cartaAtiva;
@@ -213,58 +304,59 @@ function JogoEmAndamento({
   const ehMinhaVez = estado.turnoJogadorId === meuId;
   const jogadorDaVez = estado.jogadores.find((j) => j.id === estado.turnoJogadorId);
   const eu = estado.jogadores.find((j) => j.id === meuId);
+  const haRoda = estado.jogadores.length > 1;
   const dimensaoDaCarta = carta
     ? estado.progresso.find((d) => d.dimensao === carta.dimensao)
     : null;
   const possoEntrarNaRoda =
     !!carta &&
     !ehMinhaCarta &&
+    carta.fase !== "escuta" &&
     (eu?.fichas ?? 0) > 0 &&
     !eu?.conquistas.includes(carta.dimensao) &&
     (dimensaoDaCarta ? dimensaoDaCarta.jogadas < dimensaoDaCarta.total : true);
 
   if (carta && ehMinhaCarta) {
+    if (!haRoda) {
+      return (
+        <CartaDecisaoSolo
+          key={carta.sorteioId}
+          carta={carta}
+          processando={processando}
+          onDecidir={onDecidir}
+        />
+      );
+    }
     return (
-      <CartaDecisao
+      <CartaMinhaVez
+        key={carta.sorteioId}
         carta={carta}
         processando={processando}
-        onDecidir={onDecidir}
+        onPular={onPular}
       />
     );
   }
 
   if (carta && !ehMinhaCarta) {
     return (
-      <div className="flex-1 flex flex-col">
-        <CartaVisivel carta={carta} />
-        <div className="mt-5">
-          {possoEntrarNaRoda ? (
-            <button
-              onClick={onRoda}
-              disabled={processando}
-              className="w-full rounded-2xl bg-gold-gradient py-5 font-display text-xl font-bold text-brand-950 shadow-gold hover:brightness-105 transition disabled:opacity-50 flex items-center justify-center gap-2"
-            >
-              {processando ? (
-                <Loader2 className="w-6 h-6 animate-spin" />
-              ) : (
-                <Hand className="w-6 h-6" />
-              )}
-              Entro na roda! (gasta 1 ficha)
-            </button>
-          ) : (
-            <p className="text-center text-sm text-white/40">
-              {(eu?.fichas ?? 0) === 0
-                ? "Você está sem fichas para entrar na roda."
-                : eu?.conquistas.includes(carta.dimensao)
-                  ? "Você já fechou esta dimensão."
-                  : "Sem cartas disponíveis nesta dimensão."}
-            </p>
-          )}
-          <p className="mt-3 text-center text-sm text-white/50">
-            Aguardando a decisão de <strong>{carta.jogadorNome}</strong>…
-          </p>
-        </div>
-      </div>
+      <CartaDaRoda
+        key={carta.sorteioId}
+        carta={carta}
+        meuId={meuId}
+        processando={processando}
+        possoEntrarNaRoda={possoEntrarNaRoda}
+        motivoBloqueio={
+          (eu?.fichas ?? 0) === 0
+            ? "Você está sem fichas para entrar na roda."
+            : eu?.conquistas.includes(carta.dimensao)
+              ? "Você já fechou esta dimensão."
+              : dimensaoDaCarta && dimensaoDaCarta.jogadas >= dimensaoDaCarta.total
+                ? "Sem cartas disponíveis nesta dimensão."
+                : null
+        }
+        onVotar={onVotar}
+        onRoda={onRoda}
+      />
     );
   }
 
@@ -310,29 +402,28 @@ function JogoEmAndamento({
   );
 }
 
-interface Carta {
-  carta: string;
-  dimensao: string;
-  corHex: string;
-  definicao: string;
-  pergunta: string;
-  jogadorNome: string;
-}
-
-function CartaVisivel({ carta }: { carta: Carta }) {
+function CartaVisivel({ carta }: { carta: CartaAtiva }) {
   const corTexto = textoContraste(carta.corHex);
   return (
     <motion.div
       initial={{ rotateY: 90, opacity: 0 }}
       animate={{ rotateY: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="rounded-3xl p-6 shadow-glass-dark"
+      className="rounded-3xl p-6 shadow-glass-dark relative overflow-hidden"
       style={{ backgroundColor: carta.corHex, color: corTexto }}
     >
-      <p className="text-xs font-semibold uppercase tracking-widest opacity-80">
-        {carta.dimensao}
-      </p>
-      <h2 className="font-display text-4xl font-bold mt-3 leading-none">
+      <div className="flex items-center gap-3">
+        <span
+          className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center p-2"
+          style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+        >
+          <DimensaoIcone dimensao={carta.dimensao} className="w-full h-full" />
+        </span>
+        <p className="text-xs font-semibold uppercase tracking-widest opacity-80">
+          {carta.dimensao}
+        </p>
+      </div>
+      <h2 className="font-display text-4xl font-bold mt-4 leading-none">
         {carta.carta}
       </h2>
       <p className="mt-4 text-sm leading-relaxed opacity-90">{carta.definicao}</p>
@@ -346,16 +437,267 @@ function CartaVisivel({ carta }: { carta: Carta }) {
   );
 }
 
-function CartaDecisao({
+function BarraContagem({
+  segundosRestantes,
+  segundosTotal,
+  corBarra,
+}: {
+  segundosRestantes: number;
+  segundosTotal: number;
+  corBarra: string;
+}) {
+  const proporcao = segundosTotal > 0 ? Math.min(1, Math.max(0, segundosRestantes / segundosTotal)) : 0;
+  return (
+    <div className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+      <motion.div
+        className={`h-full rounded-full ${corBarra}`}
+        animate={{ width: `${proporcao * 100}%` }}
+        transition={{ ease: "linear", duration: 0.25 }}
+      />
+    </div>
+  );
+}
+
+function CartaMinhaVez({
+  carta,
+  processando,
+  onPular,
+}: {
+  carta: CartaAtiva;
+  processando: boolean;
+  onPular: () => void;
+}) {
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+  const emEscuta = carta.fase === "escuta";
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <CartaVisivel carta={carta} />
+      <div className="mt-5 rounded-2xl border border-white/10 bg-dark-card/80 p-5 text-center">
+        {emEscuta ? (
+          <>
+            <div className="flex items-center justify-center gap-2 text-gold-300">
+              <Ear className="w-5 h-5" />
+              <p className="font-display text-2xl font-bold">
+                {formatarContagem(escutaRestante)}
+              </p>
+            </div>
+            <p className="mt-1 text-sm text-white/60">
+              A roda está te escutando. Responda com calma!
+            </p>
+            <BarraContagem
+              segundosRestantes={escutaRestante}
+              segundosTotal={SEGUNDOS_ESCUTA}
+              corBarra="bg-gold-gradient"
+            />
+            <button
+              onClick={onPular}
+              disabled={processando}
+              className="mt-4 w-full rounded-2xl border border-gold-500/40 bg-gold-500/10 py-3.5 font-semibold text-gold-300 hover:bg-gold-500/20 active:scale-[0.99] transition disabled:opacity-50 flex items-center justify-center gap-2"
+            >
+              {processando ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle2 className="w-5 h-5" />}
+              Terminei de falar — abrir votação
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center justify-center gap-2 text-white">
+              <Vote className="w-5 h-5" />
+              <p className="font-display text-2xl font-bold">
+                {formatarContagem(votacaoRestante)}
+              </p>
+            </div>
+            <p className="mt-1 text-sm text-white/60">
+              A roda está votando se você gingou…
+            </p>
+            <BarraContagem
+              segundosRestantes={votacaoRestante}
+              segundosTotal={SEGUNDOS_VOTACAO}
+              corBarra="bg-forest-700"
+            />
+            <PlacarVotos votos={carta.votos} />
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function PlacarVotos({ votos }: { votos: CartaAtiva["votos"] }) {
+  if (votos.totalVotantes === 0) return null;
+  return (
+    <div className="mt-4 flex items-center justify-center gap-4 text-sm">
+      <span className="flex items-center gap-1.5 text-forest-500">
+        <ThumbsUp className="w-4 h-4" /> {votos.gingou}
+      </span>
+      <span className="flex items-center gap-1.5 text-white/40">
+        <ThumbsDown className="w-4 h-4" /> {votos.voltou}
+      </span>
+      <span className="flex items-center gap-1.5 text-white/40">
+        <Users className="w-4 h-4" /> {votos.jaVotaram.length}/{votos.totalVotantes}
+      </span>
+      <span className="text-white/30 text-xs">
+        (precisa de {votos.necessarios})
+      </span>
+    </div>
+  );
+}
+
+function CartaDaRoda({
+  carta,
+  meuId,
+  processando,
+  possoEntrarNaRoda,
+  motivoBloqueio,
+  onVotar,
+  onRoda,
+}: {
+  carta: CartaAtiva;
+  meuId: string;
+  processando: boolean;
+  possoEntrarNaRoda: boolean;
+  motivoBloqueio: string | null;
+  onVotar: (voto: "gingou" | "voltou") => void;
+  onRoda: () => void;
+}) {
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+  const emEscuta = carta.fase === "escuta";
+  const jaVotei = carta.votos.jaVotaram.includes(meuId);
+
+  const jaVoteiAnteriorRef = useRef(jaVotei);
+  const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false);
+  useEffect(() => {
+    if (jaVotei && !jaVoteiAnteriorRef.current) {
+      setMostrarConfirmacao(true);
+      const t = setTimeout(() => setMostrarConfirmacao(false), 1300);
+      jaVoteiAnteriorRef.current = jaVotei;
+      return () => clearTimeout(t);
+    }
+    jaVoteiAnteriorRef.current = jaVotei;
+  }, [jaVotei]);
+
+  return (
+    <div className="flex-1 flex flex-col">
+      <CartaVisivel carta={carta} />
+
+      <div className="mt-5">
+        {emEscuta ? (
+          <div className="rounded-2xl border border-white/10 bg-dark-card/80 p-5 text-center">
+            <div className="flex items-center justify-center gap-2 text-gold-300">
+              <Ear className="w-5 h-5" />
+              <p className="font-display text-2xl font-bold">
+                {formatarContagem(escutaRestante)}
+              </p>
+            </div>
+            <p className="mt-1 text-sm text-white/60">
+              Escutando <strong>{carta.jogadorNome}</strong>… a votação abre em seguida.
+            </p>
+            <BarraContagem
+              segundosRestantes={escutaRestante}
+              segundosTotal={SEGUNDOS_ESCUTA}
+              corBarra="bg-gold-gradient"
+            />
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-white/10 bg-dark-card/80 p-5">
+            <div className="flex items-center justify-center gap-2 text-white">
+              <Vote className="w-5 h-5" />
+              <p className="font-display text-xl font-bold">
+                {formatarContagem(votacaoRestante)}
+              </p>
+            </div>
+            <BarraContagem
+              segundosRestantes={votacaoRestante}
+              segundosTotal={SEGUNDOS_VOTACAO}
+              corBarra="bg-forest-700"
+            />
+            <PlacarVotos votos={carta.votos} />
+
+            <AnimatePresence mode="wait">
+              {jaVotei ? (
+                <motion.div
+                  key="votou"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-forest-700/20 border border-forest-700/40 py-3 text-forest-500 font-medium"
+                >
+                  <motion.span
+                    animate={
+                      mostrarConfirmacao
+                        ? { scale: [1, 1.4, 1], rotate: [0, 8, -8, 0] }
+                        : { scale: 1, rotate: 0 }
+                    }
+                    transition={{ duration: 0.5 }}
+                  >
+                    <CheckCircle2 className="w-5 h-5" />
+                  </motion.span>
+                  Voto registrado — aguardando a roda
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="votar"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="mt-4 grid grid-cols-2 gap-3"
+                >
+                  <button
+                    onClick={() => onVotar("gingou")}
+                    disabled={processando}
+                    className="rounded-2xl bg-forest-700 py-3.5 font-display font-bold text-white shadow-glass-dark hover:brightness-110 active:scale-[0.98] transition disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    <ThumbsUp className="w-5 h-5" />
+                    Gingou!
+                  </button>
+                  <button
+                    onClick={() => onVotar("voltou")}
+                    disabled={processando}
+                    className="rounded-2xl border border-white/25 bg-white/5 py-3.5 font-medium text-white/80 hover:bg-white/10 active:scale-[0.98] transition disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    <ThumbsDown className="w-5 h-5" />
+                    Ainda não
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
+        <div className="mt-4">
+          {possoEntrarNaRoda ? (
+            <button
+              onClick={onRoda}
+              disabled={processando}
+              className="w-full rounded-2xl bg-gold-gradient py-5 font-display text-xl font-bold text-brand-950 shadow-gold hover:brightness-105 transition disabled:opacity-50 flex items-center justify-center gap-2"
+            >
+              {processando ? (
+                <Loader2 className="w-6 h-6 animate-spin" />
+              ) : (
+                <Hand className="w-6 h-6" />
+              )}
+              Entro na roda! (gasta 1 ficha)
+            </button>
+          ) : emEscuta ? null : (
+            motivoBloqueio && (
+              <p className="text-center text-sm text-white/40">{motivoBloqueio}</p>
+            )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CartaDecisaoSolo({
   carta,
   processando,
   onDecidir,
 }: {
-  carta: Carta;
+  carta: CartaAtiva;
   processando: boolean;
   onDecidir: (decisao: "gingou" | "voltou") => void;
 }) {
-  const corTexto = textoContraste(carta.corHex);
   return (
     <div className="flex-1 flex flex-col">
       <CartaVisivel carta={carta} />
@@ -377,12 +719,12 @@ function CartaDecisao({
           disabled={processando}
           className="rounded-2xl border border-white/25 bg-white/5 py-4 font-medium text-white/80 hover:bg-white/10 active:scale-[0.99] transition disabled:opacity-50 flex items-center justify-center gap-2"
         >
-          <Undo2 className="w-5 h-5" />
+          <ThumbsDown className="w-5 h-5" />
           Voltar à mesa — descartar
         </button>
       </div>
       <p className="mt-3 text-center text-xs text-white/40">
-        Se a roda conversar bem sobre a pergunta, a dimensão é sua.
+        Modo solo: sem outros jogadores na mesa, a decisão é sua.
       </p>
     </div>
   );
@@ -392,7 +734,7 @@ function FimDeJogoJogador({
   estado,
   meuId,
 }: {
-  estado: NonNullable<ReturnType<typeof useEstadoMesa>["estado"]>;
+  estado: EstadoMesa;
   meuId: string;
 }) {
   const venci = estado.vencedorJogadorId === meuId;
@@ -426,7 +768,7 @@ function FimDeJogoJogador({
         <ul className="space-y-2 text-left">
           {[...estado.jogadores]
             .sort((a, b) => b.conquistas.length - a.conquistas.length)
-            .map((j, i) => (
+            .map((j: JogadorEstado, i) => (
               <li
                 key={j.id}
                 className={`flex items-center justify-between rounded-xl px-3 py-2 text-sm ${

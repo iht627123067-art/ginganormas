@@ -123,6 +123,26 @@ export async function acaoMesa(
   }
 }
 
+function segundosAte(alvoIso: string | null | undefined): number {
+  if (!alvoIso) return 0;
+  return Math.max(0, (new Date(alvoIso).getTime() - Date.now()) / 1000);
+}
+
+// Contagem regressiva client-side até um horário ISO vindo do servidor.
+// Interpola entre os polls (a cada 250ms) para o timer parecer fluido.
+export function useContagemRegressiva(alvoIso: string | null | undefined): number {
+  const [restante, setRestante] = useState(() => segundosAte(alvoIso));
+
+  useEffect(() => {
+    setRestante(segundosAte(alvoIso));
+    if (!alvoIso) return;
+    const id = setInterval(() => setRestante(segundosAte(alvoIso)), 250);
+    return () => clearInterval(id);
+  }, [alvoIso]);
+
+  return restante;
+}
+
 export function useAcao(codigo: string) {
   const [processando, setProcessando] = useState(false);
   const [erroAcao, setErroAcao] = useState<string | null>(null);

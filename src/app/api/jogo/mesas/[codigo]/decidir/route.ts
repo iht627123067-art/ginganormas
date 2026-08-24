@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withTransaction } from "@/lib/jogo/db";
-import { buscarMesaPorCodigo, carregarEstadoPorCodigo, contarConquistas, proximoTurno } from "@/lib/jogo/estado";
+import {
+  buscarMesaPorCodigo,
+  carregarEstadoPorCodigo,
+  contarConquistas,
+  proximoTurno,
+  resolverSorteioAtivo,
+  travarMesa,
+} from "@/lib/jogo/estado";
 import { rateLimit } from "@/lib/jogo/ratelimit";
 
 export async function POST(
@@ -33,12 +40,10 @@ export async function POST(
     }
 
     await withTransaction(async (client) => {
-      const mesaTravada = await client.query(
-        "select * from mesas_ginga where id = $1 for update",
-        [mesa.id]
-      );
-      const m = mesaTravada.rows[0];
+      const m = await travarMesa(client, mesa.id);
       if (!m) throw new ErroNegocio("Mesa não encontrada", 404);
+
+      await resolverSorteioAtivo(client, m);
 
       const jogadorRes = await client.query(
         "select id, device_token from jogadores_ginga where id = $1 and mesa_id = $2",
@@ -54,6 +59,17 @@ export async function POST(
       }
       if (!m.carta_ativa_id) {
         throw new ErroNegocio("Não há carta ativa para decidir", 409);
+      }
+
+      const contagemRes = await client.query(
+        "select count(*) as total from jogadores_ginga where mesa_id = $1",
+        [mesa.id]
+      );
+      if (Number(contagemRes.rows[0]?.total ?? 0) > 1) {
+        throw new ErroNegocio(
+          "Com mais de 1 jogador, quem decide é a roda — use a votação depois do tempo de escuta.",
+          409
+        );
       }
 
       const ativaRes = await client.query(
