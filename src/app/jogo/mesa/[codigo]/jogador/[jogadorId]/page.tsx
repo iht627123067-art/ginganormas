@@ -678,7 +678,12 @@ function CartaDaRoda({
               )}
               Entro na roda! (gasta 1 ficha)
             </button>
-          ) : emEscuta ? null : (
+          ) : emEscuta ? (
+            <p className="text-center text-sm text-white/40 flex items-center justify-center gap-1.5">
+              <Hand className="w-4 h-4" />
+              Entrar na roda libera assim que a escuta terminar
+            </p>
+          ) : (
             motivoBloqueio && (
               <p className="text-center text-sm text-white/40">{motivoBloqueio}</p>
             )
