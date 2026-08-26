@@ -18,6 +18,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "data" / "baralho_ginga_online.csv"
+CSV_INTRO_PATH = ROOT / "data" / "baralho_ginga_dimensoes_intro.csv"
 DEFAULT_OUT = ROOT / "entregas" / "baralho_ginga_online.docx"
 
 
@@ -26,9 +27,13 @@ def hex_to_rgb(hex_color):
     return RGBColor(int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
-def carregar_cartas():
-    with open(CSV_PATH, newline="", encoding="utf-8") as f:
+def carregar_csv(path):
+    with open(path, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def carregar_cartas():
+    return carregar_csv(CSV_PATH)
 
 
 def agrupar_por_dimensao(cartas):
@@ -43,7 +48,7 @@ def agrupar_por_dimensao(cartas):
     return ordem, grupos
 
 
-def montar_documento(cartas, out_path):
+def montar_documento(cartas, cartas_intro, out_path):
     ordem, grupos = agrupar_por_dimensao(cartas)
 
     doc = Document()
@@ -61,16 +66,40 @@ def montar_documento(cartas, out_path):
     instrucoes = doc.add_paragraph()
     instrucoes.add_run("Regras para devolver o arquivo sem perder nada na reimportação:\n").bold = True
     for linha in [
-        "• Não apague nem edite a coluna ID das cartas existentes (ex.: N01, I03).",
+        "• Não apague nem edite a coluna ID das cartas existentes (ex.: N01, I03, G00).",
         "• Para remover uma carta, apague a linha inteira da tabela.",
         "• Para sugerir uma carta nova, adicione uma linha na tabela da dimensão "
         "correspondente e deixe a coluna ID em branco — um ID novo é gerado na "
         "reimportação.",
+        "• A ordem das dimensões no baralho é sempre: Governança, Incentivos, Normas, "
+        "Gestão de capacidades, Ambiência.",
         "• Não é preciso editar mais nenhum outro arquivo: ao devolver este .docx, o "
         "script de importação atualiza sozinho a versão impressa, a versão online e "
         "o banco de dados do jogo.",
     ]:
         doc.add_paragraph(linha, style="List Bullet")
+
+    doc.add_heading("Cartas de abertura — uma por dimensão", level=1)
+    doc.add_paragraph(
+        "Estas 5 cartas abrem o baralho e apresentam cada dimensão antes de suas 10 "
+        "cartas de jogo. Não fazem parte do sorteio da roda online."
+    )
+    tabela_intro = doc.add_table(rows=1, cols=4)
+    tabela_intro.style = "Light Grid Accent 1"
+    hdr = tabela_intro.rows[0].cells
+    hdr[0].text = "ID"
+    hdr[1].text = "Dimensão"
+    hdr[2].text = "Carta"
+    hdr[3].text = "Explicação"
+    for c in cartas_intro:
+        row = tabela_intro.add_row().cells
+        row[0].text = c["id"]
+        row[1].text = c["dimensao"]
+        row[2].text = c["carta"]
+        row[3].text = c["definicao"]
+    doc.add_paragraph()
+
+    doc.add_heading("Cartas do baralho — 10 por dimensão", level=1)
 
     for dimensao in ordem:
         cartas_dim = grupos[dimensao]
@@ -104,8 +133,9 @@ def montar_documento(cartas, out_path):
 def main():
     out_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_OUT
     cartas = carregar_cartas()
-    montar_documento(cartas, out_path)
-    print(f"OK — {len(cartas)} cartas exportadas para {out_path}")
+    cartas_intro = carregar_csv(CSV_INTRO_PATH)
+    montar_documento(cartas, cartas_intro, out_path)
+    print(f"OK — {len(cartas_intro)} cartas de abertura + {len(cartas)} cartas de jogo exportadas para {out_path}")
 
 
 if __name__ == "__main__":

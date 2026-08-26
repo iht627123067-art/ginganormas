@@ -64,11 +64,11 @@ export interface EstadoMesa {
   cartasRestantes: number;
 }
 
-// Dimensões e cores fixas do baralho (referência: baralho_ginga_online.csv)
+// Dimensões e cores fixas do baralho (referência: data/baralho_ginga_online.csv)
 export const DIMENSOES: { nome: string; cor: string }[] = [
-  { nome: "Normas", cor: "#0e3e66" },
   { nome: "Governança", cor: "#cc76a7" },
   { nome: "Incentivos", cor: "#ebbe28" },
+  { nome: "Normas", cor: "#0e3e66" },
   { nome: "Gestão de capacidades", cor: "#0a6637" },
   { nome: "Ambiência", cor: "#d14b2a" },
 ];
