@@ -1,12 +1,11 @@
 // Gera sql/002_seed_baralho.sql a partir do CSV canônico do baralho GINGA.
-// Uso: node scripts/gerar_seed_baralho.mjs <caminho/do/baralho_ginga_online.csv>
+// Uso: node scripts/gerar_seed_baralho.mjs [caminho/do/baralho_ginga_online.csv]
+// Sem argumento, usa data/baralho_ginga_online.csv (fonte canônica do repo).
 import { readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const csvPath = process.argv[2];
-if (!csvPath) {
-  console.error("Uso: node scripts/gerar_seed_baralho.mjs <baralho_ginga_online.csv>");
-  process.exit(1);
-}
+const csvPath =
+  process.argv[2] ?? fileURLToPath(new URL("../data/baralho_ginga_online.csv", import.meta.url));
 
 function parseCsv(text) {
   const rows = [];
