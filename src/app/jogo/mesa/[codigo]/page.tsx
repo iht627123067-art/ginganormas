@@ -19,7 +19,13 @@ import {
 } from "lucide-react";
 import GingaSymbol from "@/components/GingaSymbol";
 import DimensaoIcone from "@/components/DimensaoIcone";
-import { lerHostToken, useAcao, useContagemRegressiva, useEstadoMesa } from "@/lib/jogo/cliente";
+import {
+  lerHostToken,
+  lerSessaoJogador,
+  useAcao,
+  useContagemRegressiva,
+  useEstadoMesa,
+} from "@/lib/jogo/cliente";
 import { textoContraste, etiquetaResultado } from "@/lib/jogo/ui";
 import { formatarContagem, SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
 import type { CartaAtiva as CartaAtivaTipo, EstadoMesa } from "@/lib/jogo/tipos";
@@ -30,14 +36,20 @@ export default function MesaPage() {
   const { estado, erro, carregando } = useEstadoMesa(codigo);
   const { executar, processando, erroAcao, setErroAcao } = useAcao(codigo);
   const [hostToken, setHostToken] = useState<string | null>(null);
+  const [hostJogadorId, setHostJogadorId] = useState<string | null>(null);
   const [origem, setOrigem] = useState("");
 
   useEffect(() => {
     setHostToken(lerHostToken(codigo));
+    setHostJogadorId(lerSessaoJogador(codigo)?.jogadorId ?? null);
     setOrigem(window.location.origin);
   }, [codigo]);
 
   const ehHost = hostToken !== null;
+  const linkJogadorHost =
+    hostJogadorId && estado?.jogadores.some((j) => j.id === hostJogadorId)
+      ? `/jogo/mesa/${codigo}/jogador/${hostJogadorId}`
+      : null;
 
   const linkEntrada = origem
     ? `${origem}/jogo/entrar?codigo=${encodeURIComponent(codigo)}`
@@ -93,6 +105,18 @@ export default function MesaPage() {
           </div>
         )}
       </header>
+
+      {linkJogadorHost && (
+        <a
+          href={linkJogadorHost}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-6 inline-flex items-center gap-2 rounded-xl border border-gold-500/40 bg-gold-500/10 px-4 py-2.5 text-sm font-medium text-gold-300 hover:bg-gold-500/20 transition"
+        >
+          <Hand className="w-4 h-4" />
+          Jogar também — abre sua jogada em outra aba
+        </a>
+      )}
 
       {erroAcao && (
         <p className="mb-4 rounded-xl bg-red-500/15 border border-red-500/30 px-4 py-3 text-sm text-red-300">

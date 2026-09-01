@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import GingaSymbol from "@/components/GingaSymbol";
-import { salvarHostToken } from "@/lib/jogo/cliente";
+import { salvarHostToken, salvarSessaoJogador } from "@/lib/jogo/cliente";
 
 export default function CriarMesaPage() {
   const router = useRouter();
   const [nome, setNome] = useState("");
+  const [apelido, setApelido] = useState("");
+  const [apenasFacilitar, setApenasFacilitar] = useState(false);
   const [criando, setCriando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+
+  const vouJogar = !apenasFacilitar;
 
   const criar = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +35,31 @@ export default function CriarMesaPage() {
         return;
       }
       salvarHostToken(data.codigo, data.hostToken);
+
+      if (vouJogar && apelido.trim().length >= 2) {
+        try {
+          const resJogador = await fetch(
+            `/api/jogo/mesas/${encodeURIComponent(data.codigo)}/entrar`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ nome: apelido.trim() }),
+            }
+          );
+          const dataJogador = await resJogador.json();
+          if (resJogador.ok) {
+            salvarSessaoJogador(data.codigo, {
+              jogadorId: dataJogador.jogadorId,
+              deviceToken: dataJogador.deviceToken,
+              nome: apelido.trim(),
+            });
+          }
+        } catch {
+          // a mesa já foi criada; se a entrada como jogador falhar, o
+          // facilitador ainda pode entrar manualmente depois pelo código
+        }
+      }
+
       router.push(`/jogo/mesa/${data.codigo}`);
     } catch {
       setErro("Falha de conexão. Tente novamente.");
@@ -73,6 +102,41 @@ export default function CriarMesaPage() {
               autoFocus
             />
 
+            <label className="mt-5 flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={apenasFacilitar}
+                onChange={(e) => setApenasFacilitar(e.target.checked)}
+                className="mt-0.5 w-4 h-4 rounded border-white/30 bg-white/5 accent-gold-500"
+              />
+              <span className="text-sm text-white/70">
+                Só vou facilitar, não vou jogar
+                <span className="block text-xs text-white/40 mt-0.5">
+                  Por padrão, você também entra na roda como jogador. Marque
+                  aqui se quiser só conduzir a mesa.
+                </span>
+              </span>
+            </label>
+
+            {vouJogar && (
+              <>
+                <label
+                  htmlFor="apelido-host"
+                  className="mt-5 block text-sm font-medium text-white/70 mb-2"
+                >
+                  Seu apelido (para jogar)
+                </label>
+                <input
+                  id="apelido-host"
+                  value={apelido}
+                  onChange={(e) => setApelido(e.target.value)}
+                  placeholder="Como a roda vai te chamar"
+                  maxLength={24}
+                  className="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-gold-500/60"
+                />
+              </>
+            )}
+
             {erro && (
               <p className="mt-3 text-sm text-red-400" role="alert">
                 {erro}
@@ -81,7 +145,11 @@ export default function CriarMesaPage() {
 
             <button
               type="submit"
-              disabled={criando || nome.trim().length < 2}
+              disabled={
+                criando ||
+                nome.trim().length < 2 ||
+                (vouJogar && apelido.trim().length < 2)
+              }
               className="mt-6 w-full rounded-xl bg-gold-gradient py-3.5 font-display font-bold text-brand-950 shadow-gold hover:brightness-105 transition disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {criando && <Loader2 className="w-5 h-5 animate-spin" />}
@@ -93,6 +161,8 @@ export default function CriarMesaPage() {
             Ao criar a mesa você se torna o host: sua tela vira a mesa
             projetada, com código e QR code para os jogadores entrarem. Mantenha
             esta aba aberta no projetor/TV durante o jogo.
+            {vouJogar &&
+              " Como você também vai jogar, use o botão \"Jogar também\" na tela da mesa para abrir sua jogada em outra aba/aparelho."}
           </p>
         </div>
       </div>

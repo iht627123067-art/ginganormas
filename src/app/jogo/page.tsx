@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Dices, LogIn, Play, Users, Sparkles, Trophy } from "lucide-react";
 import GingaSymbol from "@/components/GingaSymbol";
+import DimensaoIcone from "@/components/DimensaoIcone";
 import { DIMENSOES } from "@/lib/jogo/tipos";
 
 export const metadata: Metadata = {
@@ -36,13 +37,19 @@ export default function JogoLandingPage() {
           {DIMENSOES.map((d) => (
             <span
               key={d.nome}
-              className="px-3 py-1.5 rounded-full text-sm font-medium text-white"
+              className="flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full text-sm font-medium text-white"
               style={{ backgroundColor: d.cor }}
             >
+              <span className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center p-1 bg-white/30">
+                <DimensaoIcone dimensao={d.nome} className="w-full h-full" />
+              </span>
               {d.nome}
             </span>
           ))}
         </div>
+        <p className="mt-3 text-xs text-white/40 tracking-wide">
+          G · I · N · G · A — a sequência oficial da Roda GINGA
+        </p>
 
         <div className="mt-10 grid sm:grid-cols-2 gap-4 text-left">
           <Link

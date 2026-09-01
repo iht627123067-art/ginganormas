@@ -3,9 +3,24 @@
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Loader2, LogIn } from "lucide-react";
+import { ArrowLeft, DoorOpen, Loader2, LogIn, Users } from "lucide-react";
 import GingaSymbol from "@/components/GingaSymbol";
 import { lerSessaoJogador, salvarSessaoJogador } from "@/lib/jogo/cliente";
+import type { EstadoMesaValor } from "@/lib/jogo/tipos";
+
+interface MesaAberta {
+  codigo: string;
+  nome: string;
+  estado: EstadoMesaValor;
+  jogadores: number;
+  criadaEm: string;
+}
+
+const ETIQUETA_ESTADO: Record<EstadoMesaValor, string> = {
+  lobby: "Aguardando início",
+  em_jogo: "Em andamento",
+  encerrada: "Encerrada",
+};
 
 function EntrarForm() {
   const router = useRouter();
@@ -15,6 +30,22 @@ function EntrarForm() {
   const [entrando, setEntrando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [sessaoAnterior, setSessaoAnterior] = useState<{ nome: string; jogadorId: string } | null>(null);
+  const [mesasAbertas, setMesasAbertas] = useState<MesaAberta[] | null>(null);
+
+  useEffect(() => {
+    let vivo = true;
+    fetch("/api/jogo/mesas", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : { mesas: [] }))
+      .then((data) => {
+        if (vivo) setMesasAbertas(data.mesas ?? []);
+      })
+      .catch(() => {
+        if (vivo) setMesasAbertas([]);
+      });
+    return () => {
+      vivo = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (codigo.length >= 7) {
@@ -66,6 +97,11 @@ function EntrarForm() {
     router.push(`/jogo/mesa/${codigo}/jogador/${sessaoAnterior.jogadorId}`);
   };
 
+  const selecionarMesaAberta = (codigoMesa: string) => {
+    setCodigo(codigoMesa);
+    document.getElementById("apelido")?.focus();
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -96,6 +132,41 @@ function EntrarForm() {
                 Você já jogou nesta mesa neste aparelho — toque para retomar.
               </span>
             </button>
+          )}
+
+          {mesasAbertas && mesasAbertas.length > 0 && (
+            <div className="mb-6">
+              <p className="flex items-center gap-1.5 text-sm font-medium text-white/70 mb-2">
+                <DoorOpen className="w-4 h-4" /> Salas abertas agora
+              </p>
+              <ul className="space-y-2 max-h-48 overflow-y-auto pr-1">
+                {mesasAbertas.map((m) => (
+                  <li key={m.codigo}>
+                    <button
+                      type="button"
+                      onClick={() => selecionarMesaAberta(m.codigo)}
+                      className={`w-full flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5 text-left transition ${
+                        codigo === m.codigo
+                          ? "border-gold-500/60 bg-gold-500/10"
+                          : "border-white/10 bg-white/5 hover:bg-white/10"
+                      }`}
+                    >
+                      <span className="min-w-0">
+                        <span className="block text-sm font-medium text-white truncate">
+                          {m.nome}
+                        </span>
+                        <span className="block text-xs text-white/40 font-mono">
+                          {m.codigo} · {ETIQUETA_ESTADO[m.estado]}
+                        </span>
+                      </span>
+                      <span className="shrink-0 flex items-center gap-1 text-xs text-white/50">
+                        <Users className="w-3.5 h-3.5" /> {m.jogadores}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
           <form onSubmit={entrar}>

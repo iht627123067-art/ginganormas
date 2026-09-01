@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { query, withTransaction } from "@/lib/jogo/db";
 import { gerarCodigo, gerarToken, carregarEstadoPorCodigo } from "@/lib/jogo/estado";
 import { rateLimit } from "@/lib/jogo/ratelimit";
+import type { EstadoMesaValor } from "@/lib/jogo/tipos";
+
+const MAX_JOGADORES = 12;
 
 export async function POST(req: NextRequest) {
   if (!rateLimit(req, "mesas")) {
@@ -49,8 +52,52 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
-  return NextResponse.json({ error: "Método não suportado" }, { status: 405 });
+export interface MesaAberta {
+  codigo: string;
+  nome: string;
+  estado: EstadoMesaValor;
+  jogadores: number;
+  criadaEm: string;
+}
+
+export async function GET(req: NextRequest) {
+  if (!rateLimit(req, "mesas-listar")) {
+    return NextResponse.json({ error: "Muitas requisições. Tente novamente em instantes." }, { status: 429 });
+  }
+
+  try {
+    const rows = await query<{
+      codigo: string;
+      nome: string;
+      estado: EstadoMesaValor;
+      criada_em: Date;
+      jogadores: string;
+    }>(
+      `select m.codigo, m.nome, m.estado, m.criada_em,
+              count(j.id) as jogadores
+       from mesas_ginga m
+       left join jogadores_ginga j on j.mesa_id = m.id
+       where m.estado <> 'encerrada'
+       group by m.id
+       having count(j.id) < $1
+       order by m.criada_em desc
+       limit 20`,
+      [MAX_JOGADORES]
+    );
+
+    const mesas: MesaAberta[] = rows.map((r) => ({
+      codigo: r.codigo,
+      nome: r.nome,
+      estado: r.estado,
+      jogadores: Number(r.jogadores),
+      criadaEm: r.criada_em.toISOString(),
+    }));
+
+    return NextResponse.json({ mesas });
+  } catch (err) {
+    console.error("[jogo/mesas] erro ao listar mesas:", err);
+    return NextResponse.json({ error: "Erro ao listar mesas" }, { status: 500 });
+  }
 }
 
 export const dynamic = "force-dynamic";
