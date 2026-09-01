@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
        left join jogadores_ginga j on j.mesa_id = m.id
        where m.estado <> 'encerrada'
        group by m.id
-       having count(j.id) < $1
+       having count(j.id) > 0 and count(j.id) < $1 -- esconde mesas sem ninguém dentro
        order by m.criada_em desc
        limit 20`,
       [MAX_JOGADORES]
