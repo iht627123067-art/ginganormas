@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Dices, LogIn, Play, Users, Sparkles, Trophy } from "lucide-react";
+import { Dices, Footprints, Play, Users, Sparkles, Trophy } from "lucide-react";
 import GingaSymbol from "@/components/GingaSymbol";
 import DimensaoIcone from "@/components/DimensaoIcone";
 import { DIMENSOES } from "@/lib/jogo/tipos";
@@ -52,12 +52,12 @@ export default function JogoLandingPage() {
             href="/jogo/entrar"
             className="group rounded-2xl bg-gold-gradient p-6 shadow-gold hover:brightness-105 transition"
           >
-            <LogIn className="w-7 h-7 text-brand-950 mb-3" />
+            <Footprints className="w-7 h-7 text-brand-950 mb-3" />
             <h2 className="font-display text-xl font-bold text-brand-950">
-              Tenho um código
+              Bora gingar!
             </h2>
             <p className="mt-1 text-brand-950/80 text-sm">
-              Entre na mesa de um facilitador com o código ou QR code.
+              Já tem o código de uma mesa? Entre e junte-se à roda.
             </p>
           </Link>
           <Link

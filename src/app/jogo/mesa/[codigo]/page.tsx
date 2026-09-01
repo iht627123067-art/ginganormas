@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
 import {
+  Crown,
   Ear,
   Loader2,
   Pause,
@@ -574,6 +575,8 @@ function FaseCartaHost({
 }
 
 function Placar({ estado }: { estado: EstadoMesa }) {
+  const maxConquistas = Math.max(0, ...estado.jogadores.map((j) => j.conquistas.length));
+
   return (
     <div className="rounded-3xl border border-white/10 bg-dark-card/80 backdrop-blur p-6">
       <h2 className="font-display text-lg font-bold text-white mb-4">
@@ -582,6 +585,7 @@ function Placar({ estado }: { estado: EstadoMesa }) {
       <ul className="space-y-3">
         <AnimatePresence>
           {estado.jogadores.map((j) => {
+            const ehLider = maxConquistas > 0 && j.conquistas.length === maxConquistas;
             return (
               <motion.li
                 key={j.id}
@@ -594,7 +598,14 @@ function Placar({ estado }: { estado: EstadoMesa }) {
                     : "bg-white/5 border border-white/10"
                 }`}
               >
-                <span className="font-medium text-white truncate">{j.nome}</span>
+                <span className="flex items-center gap-1.5 min-w-0">
+                  {ehLider && (
+                    <span title="Mais dimensões fechadas" className="shrink-0">
+                      <Crown className="w-4 h-4 text-gold-400" />
+                    </span>
+                  )}
+                  <span className="font-medium text-white truncate">{j.nome}</span>
+                </span>
                 <span className="flex items-center gap-2 shrink-0">
                   <span className="flex gap-1">
                     {estado.progresso.map((d) => {

@@ -349,14 +349,17 @@ export async function resolverSorteioAtivo(
     if (r.voto === "gingou") votosGingou = Number(r.n);
     else if (r.voto === "voltou") votosVoltou = Number(r.n);
   }
-  const maioria = Math.floor(totalOutros / 2) + 1;
   const agora = new Date();
   const votacaoExpirada = !!sorteio.votacao_termina_em && agora >= new Date(sorteio.votacao_termina_em);
+  // A votação fica aberta pelos 30s inteiros mesmo se a maioria já tiver se
+  // formado — só resolve antes do tempo se literalmente todo mundo já votou
+  // (não há mais ninguém que possa mudar o resultado).
+  const todosVotaram = votosGingou + votosVoltou >= totalOutros;
 
   let decisao: "gingou" | "voltou" | null = null;
-  if (votosGingou >= maioria) decisao = "gingou";
-  else if (votosVoltou >= maioria) decisao = "voltou";
-  else if (votacaoExpirada) decisao = votosGingou > votosVoltou ? "gingou" : "voltou";
+  if (votacaoExpirada || todosVotaram) {
+    decisao = votosGingou > votosVoltou ? "gingou" : "voltou";
+  }
 
   if (!decisao) return false;
 
