@@ -10,6 +10,7 @@ import {
   Hand,
   Loader2,
   PartyPopper,
+  PauseCircle,
   RotateCcw,
   Sparkles,
   ThumbsDown,
@@ -29,7 +30,12 @@ import {
   type SessaoJogador,
 } from "@/lib/jogo/cliente";
 import { textoContraste } from "@/lib/jogo/ui";
-import { formatarContagem, SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
+import {
+  formatarContagem,
+  SEGUNDOS_ESCUTA,
+  SEGUNDOS_ESCUTA_RODA,
+  SEGUNDOS_VOTACAO,
+} from "@/lib/jogo/votacao";
 import type { CartaAtiva, EstadoMesa, JogadorEstado } from "@/lib/jogo/tipos";
 
 export default function JogadorPage() {
@@ -308,13 +314,10 @@ function JogoEmAndamento({
   const dimensaoDaCarta = carta
     ? estado.progresso.find((d) => d.dimensao === carta.dimensao)
     : null;
-  const possoEntrarNaRoda =
-    !!carta &&
-    !ehMinhaCarta &&
-    carta.fase !== "escuta" &&
-    (eu?.fichas ?? 0) > 0 &&
-    !eu?.conquistas.includes(carta.dimensao) &&
-    (dimensaoDaCarta ? dimensaoDaCarta.jogadas < dimensaoDaCarta.total : true);
+  const jaFechouDimensao = carta ? !!eu?.conquistas.includes(carta.dimensao) : false;
+  const semCartasNaDimensao = dimensaoDaCarta
+    ? dimensaoDaCarta.jogadas >= dimensaoDaCarta.total
+    : false;
 
   if (carta && ehMinhaCarta) {
     if (!haRoda) {
@@ -344,16 +347,8 @@ function JogoEmAndamento({
         carta={carta}
         meuId={meuId}
         processando={processando}
-        possoEntrarNaRoda={possoEntrarNaRoda}
-        motivoBloqueio={
-          (eu?.fichas ?? 0) === 0
-            ? "Você está sem fichas para entrar na roda."
-            : eu?.conquistas.includes(carta.dimensao)
-              ? "Você já fechou esta dimensão."
-              : dimensaoDaCarta && dimensaoDaCarta.jogadas >= dimensaoDaCarta.total
-                ? "Sem cartas disponíveis nesta dimensão."
-                : null
-        }
+        jaFechouDimensao={jaFechouDimensao}
+        semCartasNaDimensao={semCartasNaDimensao}
         onVotar={onVotar}
         onRoda={onRoda}
       />
@@ -412,16 +407,26 @@ function CartaVisivel({ carta }: { carta: CartaAtiva }) {
       className="rounded-3xl p-6 shadow-glass-dark relative overflow-hidden"
       style={{ backgroundColor: carta.corHex, color: corTexto }}
     >
-      <div className="flex items-center gap-3">
-        <span
-          className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center p-2"
-          style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
-        >
-          <DimensaoIcone dimensao={carta.dimensao} className="w-full h-full" />
-        </span>
-        <p className="text-xs font-semibold uppercase tracking-widest opacity-80">
-          {carta.dimensao}
-        </p>
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-3">
+          <span
+            className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center p-2"
+            style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+          >
+            <DimensaoIcone dimensao={carta.dimensao} className="w-full h-full" />
+          </span>
+          <p className="text-xs font-semibold uppercase tracking-widest opacity-80">
+            {carta.dimensao}
+          </p>
+        </div>
+        {carta.ehEntradaRoda && (
+          <span
+            className="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full"
+            style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+          >
+            <Hand className="w-3 h-3" /> Entrou na roda
+          </span>
+        )}
       </div>
       <h2 className="font-display text-4xl font-bold mt-4 leading-none">
         {carta.carta}
@@ -431,7 +436,7 @@ function CartaVisivel({ carta }: { carta: CartaAtiva }) {
         {carta.pergunta}
       </p>
       <p className="mt-4 text-xs opacity-70">
-        Puxada por {carta.jogadorNome}
+        {carta.ehEntradaRoda ? "Fala de" : "Puxada por"} {carta.jogadorNome}
       </p>
     </motion.div>
   );
@@ -458,6 +463,15 @@ function BarraContagem({
   );
 }
 
+function IndicadorPausado() {
+  return (
+    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-gold-300 flex items-center justify-center gap-1.5">
+      <PauseCircle className="w-3.5 h-3.5" />
+      Pausado pelo facilitador
+    </p>
+  );
+}
+
 function CartaMinhaVez({
   carta,
   processando,
@@ -467,9 +481,11 @@ function CartaMinhaVez({
   processando: boolean;
   onPular: () => void;
 }) {
-  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
-  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm, carta.pausadoEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm, carta.pausadoEm);
+  const segundosEscutaTotal = carta.ehEntradaRoda ? SEGUNDOS_ESCUTA_RODA : SEGUNDOS_ESCUTA;
   const emEscuta = carta.fase === "escuta";
+  const pausado = !!carta.pausadoEm;
 
   return (
     <div className="flex-1 flex flex-col">
@@ -484,16 +500,19 @@ function CartaMinhaVez({
               </p>
             </div>
             <p className="mt-1 text-sm text-white/60">
-              A roda está te escutando. Responda com calma!
+              {carta.ehEntradaRoda
+                ? "Você entrou na roda — conte sua própria experiência!"
+                : "A roda está te escutando. Responda com calma!"}
             </p>
+            {pausado && <IndicadorPausado />}
             <BarraContagem
               segundosRestantes={escutaRestante}
-              segundosTotal={SEGUNDOS_ESCUTA}
+              segundosTotal={segundosEscutaTotal}
               corBarra="bg-gold-gradient"
             />
             <button
               onClick={onPular}
-              disabled={processando}
+              disabled={processando || pausado}
               className="mt-4 w-full rounded-2xl border border-gold-500/40 bg-gold-500/10 py-3.5 font-semibold text-gold-300 hover:bg-gold-500/20 active:scale-[0.99] transition disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {processando ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle2 className="w-5 h-5" />}
@@ -511,6 +530,7 @@ function CartaMinhaVez({
             <p className="mt-1 text-sm text-white/60">
               A roda está votando se você gingou…
             </p>
+            {pausado && <IndicadorPausado />}
             <BarraContagem
               segundosRestantes={votacaoRestante}
               segundosTotal={SEGUNDOS_VOTACAO}
@@ -548,23 +568,41 @@ function CartaDaRoda({
   carta,
   meuId,
   processando,
-  possoEntrarNaRoda,
-  motivoBloqueio,
+  jaFechouDimensao,
+  semCartasNaDimensao,
   onVotar,
   onRoda,
 }: {
   carta: CartaAtiva;
   meuId: string;
   processando: boolean;
-  possoEntrarNaRoda: boolean;
-  motivoBloqueio: string | null;
+  jaFechouDimensao: boolean;
+  semCartasNaDimensao: boolean;
   onVotar: (voto: "gingou" | "voltou") => void;
   onRoda: () => void;
 }) {
-  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
-  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm, carta.pausadoEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm, carta.pausadoEm);
+  const segundosParaLiberarRoda = useContagemRegressiva(carta.rodaLiberaEm);
+  const segundosEscutaTotal = carta.ehEntradaRoda ? SEGUNDOS_ESCUTA_RODA : SEGUNDOS_ESCUTA;
   const emEscuta = carta.fase === "escuta";
+  const pausado = !!carta.pausadoEm;
   const jaVotei = carta.votos.jaVotaram.includes(meuId);
+  const jaReservei = carta.rodaSolicitanteId === meuId;
+  const outraPessoaReservou = !!carta.rodaSolicitanteId && !jaReservei;
+  const liberadoParaEntrar = segundosParaLiberarRoda <= 0;
+  const possoEntrarNaRoda =
+    !carta.ehEntradaRoda &&
+    !pausado &&
+    !carta.rodaSolicitanteId &&
+    liberadoParaEntrar &&
+    !jaFechouDimensao &&
+    !semCartasNaDimensao;
+  const motivoBloqueio = jaFechouDimensao
+    ? "Você já fechou esta dimensão."
+    : semCartasNaDimensao
+      ? "Sem cartas disponíveis nesta dimensão."
+      : null;
 
   const jaVoteiAnteriorRef = useRef(jaVotei);
   const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false);
@@ -594,9 +632,10 @@ function CartaDaRoda({
             <p className="mt-1 text-sm text-white/60">
               Escutando <strong>{carta.jogadorNome}</strong>… a votação abre em seguida.
             </p>
+            {pausado && <IndicadorPausado />}
             <BarraContagem
               segundosRestantes={escutaRestante}
-              segundosTotal={SEGUNDOS_ESCUTA}
+              segundosTotal={segundosEscutaTotal}
               corBarra="bg-gold-gradient"
             />
           </div>
@@ -608,6 +647,7 @@ function CartaDaRoda({
                 {formatarContagem(votacaoRestante)}
               </p>
             </div>
+            {pausado && <IndicadorPausado />}
             <BarraContagem
               segundosRestantes={votacaoRestante}
               segundosTotal={SEGUNDOS_VOTACAO}
@@ -644,7 +684,7 @@ function CartaDaRoda({
                 >
                   <button
                     onClick={() => onVotar("gingou")}
-                    disabled={processando}
+                    disabled={processando || pausado}
                     className="rounded-2xl bg-forest-700 py-3.5 font-display font-bold text-white shadow-glass-dark hover:brightness-110 active:scale-[0.98] transition disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     <ThumbsUp className="w-5 h-5" />
@@ -652,7 +692,7 @@ function CartaDaRoda({
                   </button>
                   <button
                     onClick={() => onVotar("voltou")}
-                    disabled={processando}
+                    disabled={processando || pausado}
                     className="rounded-2xl border border-white/25 bg-white/5 py-3.5 font-medium text-white/80 hover:bg-white/10 active:scale-[0.98] transition disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     <ThumbsDown className="w-5 h-5" />
@@ -665,7 +705,22 @@ function CartaDaRoda({
         )}
 
         <div className="mt-4">
-          {possoEntrarNaRoda ? (
+          {carta.ehEntradaRoda ? null : jaReservei ? (
+            <div className="rounded-2xl border border-gold-500/40 bg-gold-500/10 px-4 py-3.5 text-center">
+              <p className="text-sm font-semibold text-gold-300 flex items-center justify-center gap-1.5">
+                <Hand className="w-4 h-4" /> Você entrou na roda!
+              </p>
+              <p className="mt-1 text-xs text-white/50">
+                Aguarde o fim da votação de {carta.jogadorNome} — sua vez de falar começa em
+                seguida.
+              </p>
+            </div>
+          ) : outraPessoaReservou ? (
+            <p className="text-center text-sm text-white/40 flex items-center justify-center gap-1.5">
+              <Hand className="w-4 h-4" />
+              Alguém já entrou na roda para falar em seguida
+            </p>
+          ) : possoEntrarNaRoda ? (
             <button
               onClick={onRoda}
               disabled={processando}
@@ -676,12 +731,12 @@ function CartaDaRoda({
               ) : (
                 <Hand className="w-6 h-6" />
               )}
-              Entro na roda! (gasta 1 ficha)
+              Entro na roda!
             </button>
-          ) : emEscuta ? (
+          ) : !liberadoParaEntrar ? (
             <p className="text-center text-sm text-white/40 flex items-center justify-center gap-1.5">
               <Hand className="w-4 h-4" />
-              Entrar na roda libera assim que a escuta terminar
+              Entrar na roda libera em {Math.ceil(segundosParaLiberarRoda)}s
             </p>
           ) : (
             motivoBloqueio && (

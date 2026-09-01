@@ -41,6 +41,8 @@ async function main() {
   const schemaPath = path.join(rootDir, "sql", "001_schema_jogo.sql");
   const seedPath = path.join(rootDir, "sql", "002_seed_baralho.sql");
   const votacaoPath = path.join(rootDir, "sql", "003_votacao_roda.sql");
+  const poderesPath = path.join(rootDir, "sql", "004_poderes_facilitador.sql");
+  const rodaV2Path = path.join(rootDir, "sql", "005_entrar_na_roda_v2.sql");
 
   console.log("📜 Executando 001_schema_jogo.sql...");
   const schemaSql = fs.readFileSync(schemaPath, "utf-8");
@@ -56,6 +58,16 @@ async function main() {
   const votacaoSql = fs.readFileSync(votacaoPath, "utf-8");
   await client.query(votacaoSql);
   console.log("✅ Tabelas de votação criadas com sucesso!");
+
+  console.log("🎛️  Executando 004_poderes_facilitador.sql...");
+  const poderesSql = fs.readFileSync(poderesPath, "utf-8");
+  await client.query(poderesSql);
+  console.log("✅ Colunas de poderes do facilitador criadas com sucesso!");
+
+  console.log("🎙️  Executando 005_entrar_na_roda_v2.sql...");
+  const rodaV2Sql = fs.readFileSync(rodaV2Path, "utf-8");
+  await client.query(rodaV2Sql);
+  console.log("✅ Colunas de reserva de entrada na roda criadas com sucesso!");
 
   // Verificação
   const cartasRes = await client.query("select count(*) as total from baralho_ginga");

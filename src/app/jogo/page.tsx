@@ -33,23 +33,19 @@ export default function JogoLandingPage() {
           as cinco dimensões da inovação no setor público.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-2">
+        <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-6">
           {DIMENSOES.map((d) => (
-            <span
-              key={d.nome}
-              className="flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full text-sm font-medium text-white"
-              style={{ backgroundColor: d.cor }}
-            >
-              <span className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center p-1 bg-white/30">
-                <DimensaoIcone dimensao={d.nome} className="w-full h-full" />
+            <div key={d.nome} className="flex flex-col items-center gap-2">
+              <DimensaoIcone dimensao={d.nome} className="w-10 h-10 sm:w-12 sm:h-12" />
+              <span
+                className="px-3 py-1.5 rounded-full text-sm font-medium text-white"
+                style={{ backgroundColor: d.cor }}
+              >
+                {d.nome}
               </span>
-              {d.nome}
-            </span>
+            </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-white/40 tracking-wide">
-          G · I · N · G · A — a sequência oficial da Roda GINGA
-        </p>
 
         <div className="mt-10 grid sm:grid-cols-2 gap-4 text-left">
           <Link
@@ -90,7 +86,7 @@ export default function JogoLandingPage() {
               icone: Sparkles,
               titulo: "Entro na roda!",
               texto:
-                "Se a carta não é sua, entre na roda: gaste 1 ficha, ganhe uma carta extra da mesma dimensão e feche-a na hora.",
+                "30s após a carta ser puxada, você pode reservar sua vez de falar. Quando a votação atual termina, você ganha 2 minutos para contar sua própria experiência — e a roda decide se você gingou.",
             },
             {
               icone: Trophy,
@@ -112,7 +108,7 @@ export default function JogoLandingPage() {
 
         <p className="mt-10 text-sm text-white/40 flex items-center justify-center gap-2">
           <Users className="w-4 h-4" /> 3 a 12 jogadores por mesa · 50 cartas ·
-          3 fichas por jogador
+          1 pessoa por vez entra na roda
         </p>
       </div>
     </div>

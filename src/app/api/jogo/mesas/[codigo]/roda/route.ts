@@ -3,19 +3,16 @@ import { withTransaction } from "@/lib/jogo/db";
 import {
   buscarMesaPorCodigo,
   carregarEstadoPorCodigo,
-  contarConquistas,
   resolverSorteioAtivo,
   travarMesa,
 } from "@/lib/jogo/estado";
 import { rateLimit } from "@/lib/jogo/ratelimit";
+import { SEGUNDOS_LIBERA_RODA } from "@/lib/jogo/votacao";
 
-interface CartaRow {
-  id: string;
-  dimensao: string;
-}
-
-// "Entro na roda!": outro jogador paga 1 ficha própria, ganha carta extra
-// da mesma dimensão da carta ativa e conquista aquela dimensão imediatamente.
+// "Entro na roda!": reserva a vez de falar depois da carta atual. Libera
+// SEGUNDOS_LIBERA_RODA após a carta ser puxada, só uma pessoa por vez pode
+// reservar, e a fala de quem reservou só começa quando a carta atual for
+// decidida (ver aplicarDecisao em lib/jogo/estado.ts).
 export async function POST(
   req: NextRequest,
   { params }: { params: { codigo: string } }
@@ -48,7 +45,7 @@ export async function POST(
       await resolverSorteioAtivo(client, m);
 
       const jogadorRes = await client.query(
-        "select id, nome, fichas, device_token from jogadores_ginga where id = $1 and mesa_id = $2",
+        "select id, device_token from jogadores_ginga where id = $1 and mesa_id = $2",
         [jogadorId, mesa.id]
       );
       const jogador = jogadorRes.rows[0];
@@ -64,7 +61,8 @@ export async function POST(
       }
 
       const ativaRes = await client.query(
-        `select s.id, s.jogador_id, s.resultado, s.escuta_termina_em, b.dimensao
+        `select s.id, s.jogador_id, s.resultado, s.pausado_em, s.criado_em,
+                s.roda_solicitante_id, s.eh_entrada_roda, b.dimensao
          from sorteios_ginga s join baralho_ginga b on b.id = s.carta_id
          where s.id = $1 for update`,
         [m.carta_ativa_id]
@@ -76,11 +74,18 @@ export async function POST(
       if (ativa.jogador_id === jogadorId) {
         throw new ErroNegocio("Você não pode entrar na roda na sua própria carta", 409);
       }
-      if (ativa.escuta_termina_em && new Date() < new Date(ativa.escuta_termina_em)) {
-        throw new ErroNegocio("Aguarde o tempo de escuta terminar para entrar na roda", 409);
+      if (ativa.eh_entrada_roda) {
+        throw new ErroNegocio("Não é possível entrar na roda durante a fala de quem já entrou", 409);
       }
-      if (jogador.fichas <= 0) {
-        throw new ErroNegocio("Você não tem fichas suficientes", 409);
+      if (ativa.roda_solicitante_id) {
+        throw new ErroNegocio("Já há uma pessoa na fila para entrar na roda", 409);
+      }
+      if (ativa.pausado_em) {
+        throw new ErroNegocio("O facilitador pausou o tempo — aguarde retomar", 409);
+      }
+      const liberaEm = new Date(ativa.criado_em).getTime() + SEGUNDOS_LIBERA_RODA * 1000;
+      if (Date.now() < liberaEm) {
+        throw new ErroNegocio("Aguarde alguns segundos para poder entrar na roda", 409);
       }
 
       const jaConquistou = await client.query(
@@ -91,42 +96,22 @@ export async function POST(
         throw new ErroNegocio("Você já fechou esta dimensão", 409);
       }
 
-      const cartaRes = await client.query<CartaRow>(
-        `select b.id, b.dimensao from baralho_ginga b
+      const temCarta = await client.query(
+        `select 1 from baralho_ginga b
          where b.dimensao = $1 and not exists (
            select 1 from sorteios_ginga s where s.mesa_id = $2 and s.carta_id = b.id
          )
-         order by random() limit 1`,
+         limit 1`,
         [ativa.dimensao, mesa.id]
       );
-      const cartaExtra = cartaRes.rows[0];
-      if (!cartaExtra) {
+      if (!temCarta.rowCount || temCarta.rowCount === 0) {
         throw new ErroNegocio("Não há mais cartas desta dimensão no baralho", 409);
       }
 
       await client.query(
-        `insert into sorteios_ginga (mesa_id, carta_id, jogador_id, resultado, resolvido_em)
-         values ($1, $2, $3, 'entrei_na_roda', now())`,
-        [mesa.id, cartaExtra.id, jogadorId]
+        "update sorteios_ginga set roda_solicitante_id = $1 where id = $2",
+        [jogadorId, ativa.id]
       );
-      await client.query(
-        "update jogadores_ginga set fichas = fichas - 1 where id = $1",
-        [jogadorId]
-      );
-      await client.query(
-        `insert into conquistas_ginga (mesa_id, jogador_id, dimensao, carta_id)
-         values ($1, $2, $3, $4) on conflict (jogador_id, dimensao) do nothing`,
-        [mesa.id, jogadorId, cartaExtra.dimensao, cartaExtra.id]
-      );
-
-      const totalConquistas = await contarConquistas(client, jogadorId);
-      if (totalConquistas >= 5) {
-        await client.query(
-          `update mesas_ginga set estado = 'encerrada', vencedor_jogador_id = $1,
-           turno_jogador_id = null where id = $2`,
-          [jogadorId, mesa.id]
-        );
-      }
     });
 
     const resultado = await carregarEstadoPorCodigo(mesa.codigo);

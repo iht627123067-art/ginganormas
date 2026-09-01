@@ -62,7 +62,7 @@ export async function POST(
       }
 
       const sorteioRes = await client.query(
-        `select id, jogador_id, resultado, escuta_termina_em, votacao_termina_em
+        `select id, jogador_id, resultado, escuta_termina_em, votacao_termina_em, pausado_em
          from sorteios_ginga where id = $1 for update`,
         [mesaTravada.carta_ativa_id]
       );
@@ -72,6 +72,9 @@ export async function POST(
       }
       if (sorteio.jogador_id === jogadorId) {
         throw new ErroNegocio("Você não pode votar na própria carta", 403);
+      }
+      if (sorteio.pausado_em) {
+        throw new ErroNegocio("O facilitador pausou o tempo — aguarde retomar", 409);
       }
 
       const agora = new Date();

@@ -7,8 +7,10 @@ import { QRCodeSVG } from "qrcode.react";
 import {
   Ear,
   Loader2,
+  Pause,
   Play,
   RotateCcw,
+  SkipForward,
   ThumbsDown,
   ThumbsUp,
   Trophy,
@@ -27,7 +29,12 @@ import {
   useEstadoMesa,
 } from "@/lib/jogo/cliente";
 import { textoContraste, etiquetaResultado } from "@/lib/jogo/ui";
-import { formatarContagem, SEGUNDOS_ESCUTA, SEGUNDOS_VOTACAO } from "@/lib/jogo/votacao";
+import {
+  formatarContagem,
+  SEGUNDOS_ESCUTA,
+  SEGUNDOS_ESCUTA_RODA,
+  SEGUNDOS_VOTACAO,
+} from "@/lib/jogo/votacao";
 import type { CartaAtiva as CartaAtivaTipo, EstadoMesa } from "@/lib/jogo/tipos";
 
 export default function MesaPage() {
@@ -54,6 +61,10 @@ export default function MesaPage() {
   const linkEntrada = origem
     ? `${origem}/jogo/entrar?codigo=${encodeURIComponent(codigo)}`
     : `/jogo/entrar?codigo=${encodeURIComponent(codigo)}`;
+
+  const acaoFacilitador = (acao: string) => {
+    executar("facilitador", { hostToken, acao });
+  };
 
   if (carregando && !estado) {
     return (
@@ -133,7 +144,14 @@ export default function MesaPage() {
         } />
       )}
 
-      {estado.estado === "em_jogo" && <MesaEmJogo estado={estado} />}
+      {estado.estado === "em_jogo" && (
+        <MesaEmJogo
+          estado={estado}
+          ehHost={ehHost}
+          processando={processando}
+          acaoFacilitador={acaoFacilitador}
+        />
+      )}
 
       {estado.estado === "encerrada" && (
         <FimDeJogo
@@ -252,7 +270,17 @@ function Lobby({
   );
 }
 
-function MesaEmJogo({ estado }: { estado: EstadoMesa }) {
+function MesaEmJogo({
+  estado,
+  ehHost,
+  processando,
+  acaoFacilitador,
+}: {
+  estado: EstadoMesa;
+  ehHost: boolean;
+  processando: boolean;
+  acaoFacilitador: (acao: string) => void;
+}) {
   const jogadorDaVez = useMemo(
     () => estado.jogadores.find((j) => j.id === estado.turnoJogadorId) ?? null,
     [estado]
@@ -280,7 +308,12 @@ function MesaEmJogo({ estado }: { estado: EstadoMesa }) {
       <PainelDimensoes estado={estado} />
 
       <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">
-        <CartaAtiva estado={estado} />
+        <CartaAtiva
+          estado={estado}
+          ehHost={ehHost}
+          processando={processando}
+          acaoFacilitador={acaoFacilitador}
+        />
         <div className="space-y-8">
           <Placar estado={estado} />
           <UltimasCartas estado={estado} />
@@ -321,10 +354,24 @@ function PainelDimensoes({ estado }: { estado: EstadoMesa }) {
   );
 }
 
-function CartaAtiva({ estado }: { estado: EstadoMesa }) {
+function CartaAtiva({
+  estado,
+  ehHost,
+  processando,
+  acaoFacilitador,
+}: {
+  estado: EstadoMesa;
+  ehHost: boolean;
+  processando: boolean;
+  acaoFacilitador: (acao: string) => void;
+}) {
   const carta = estado.cartaAtiva;
   const corTexto = carta ? textoContraste(carta.corHex) : "#ffffff";
   const haRoda = estado.jogadores.length > 1;
+  const jogadorDaVez = estado.jogadores.find((j) => j.id === estado.turnoJogadorId);
+  const rodaSolicitante = carta?.rodaSolicitanteId
+    ? estado.jogadores.find((j) => j.id === carta.rodaSolicitanteId)
+    : null;
 
   return (
     <div className="min-h-[420px]">
@@ -350,9 +397,17 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
                 <p className="text-sm font-semibold uppercase tracking-widest opacity-80">
                   {carta.dimensao}
                 </p>
+                {carta.ehEntradaRoda && (
+                  <span
+                    className="flex items-center gap-1 text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-full"
+                    style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+                  >
+                    <Hand className="w-3.5 h-3.5" /> Entrou na roda
+                  </span>
+                )}
               </div>
               <p className="text-sm opacity-80">
-                Puxada por <strong>{carta.jogadorNome}</strong>
+                {carta.ehEntradaRoda ? "Fala de" : "Puxada por"} <strong>{carta.jogadorNome}</strong>
               </p>
             </div>
             <h3 className="font-display text-5xl sm:text-7xl font-bold mt-6 leading-none">
@@ -365,9 +420,22 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
               {carta.pergunta}
             </p>
 
+            {rodaSolicitante && (
+              <p className="mt-4 text-sm opacity-80 flex items-center gap-1.5">
+                <Hand className="w-4 h-4" />
+                Em seguida: <strong>{rodaSolicitante.nome}</strong> entra na roda
+              </p>
+            )}
+
             {haRoda && (
               <div className="mt-8 border-t border-current/20 pt-6">
-                <FaseCartaHost carta={carta} corTexto={corTexto} />
+                <FaseCartaHost
+                  carta={carta}
+                  corTexto={corTexto}
+                  ehHost={ehHost}
+                  processando={processando}
+                  acaoFacilitador={acaoFacilitador}
+                />
               </div>
             )}
           </motion.div>
@@ -386,6 +454,16 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
             <p className="text-white/40 text-sm mt-1">
               O jogador da vez puxa a carta no próprio aparelho.
             </p>
+            {ehHost && jogadorDaVez && (
+              <button
+                onClick={() => acaoFacilitador("pular_vez")}
+                disabled={processando}
+                className="mt-5 inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition disabled:opacity-40"
+              >
+                <SkipForward className="w-4 h-4" />
+                {jogadorDaVez.nome} não quer jogar — pular para o próximo
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -393,10 +471,24 @@ function CartaAtiva({ estado }: { estado: EstadoMesa }) {
   );
 }
 
-function FaseCartaHost({ carta, corTexto }: { carta: CartaAtivaTipo; corTexto: string }) {
-  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm);
-  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm);
+function FaseCartaHost({
+  carta,
+  corTexto,
+  ehHost,
+  processando,
+  acaoFacilitador,
+}: {
+  carta: CartaAtivaTipo;
+  corTexto: string;
+  ehHost: boolean;
+  processando: boolean;
+  acaoFacilitador: (acao: string) => void;
+}) {
+  const escutaRestante = useContagemRegressiva(carta.escutaTerminaEm, carta.pausadoEm);
+  const votacaoRestante = useContagemRegressiva(carta.votacaoTerminaEm, carta.pausadoEm);
+  const segundosEscutaTotal = carta.ehEntradaRoda ? SEGUNDOS_ESCUTA_RODA : SEGUNDOS_ESCUTA;
   const emEscuta = carta.fase === "escuta";
+  const pausado = !!carta.pausadoEm;
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
@@ -405,9 +497,17 @@ function FaseCartaHost({ carta, corTexto }: { carta: CartaAtivaTipo; corTexto: s
         {formatarContagem(emEscuta ? escutaRestante : votacaoRestante)}
         <span className="text-sm font-normal opacity-70">
           {emEscuta
-            ? `de ${Math.floor(SEGUNDOS_ESCUTA / 60)} min de escuta`
+            ? `de ${Math.floor(segundosEscutaTotal / 60)} min de escuta`
             : `de ${SEGUNDOS_VOTACAO}s de votação`}
         </span>
+        {pausado && (
+          <span
+            className="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+            style={{ backgroundColor: "rgba(255,255,255,0.35)" }}
+          >
+            Pausado
+          </span>
+        )}
       </div>
       {!emEscuta && (
         <div className="flex items-center gap-4 text-sm font-semibold">
@@ -437,7 +537,7 @@ function FaseCartaHost({ carta, corTexto }: { carta: CartaAtivaTipo; corTexto: s
                 1,
                 Math.max(
                   0,
-                  (emEscuta ? escutaRestante / SEGUNDOS_ESCUTA : votacaoRestante / SEGUNDOS_VOTACAO)
+                  (emEscuta ? escutaRestante / segundosEscutaTotal : votacaoRestante / SEGUNDOS_VOTACAO)
                 )
               ) * 100
             }%`,
@@ -445,6 +545,30 @@ function FaseCartaHost({ carta, corTexto }: { carta: CartaAtivaTipo; corTexto: s
           transition={{ ease: "linear", duration: 0.25 }}
         />
       </div>
+      {ehHost && (
+        <div className="w-full flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => acaoFacilitador(pausado ? "retomar" : "pausar")}
+            disabled={processando}
+            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold uppercase tracking-wide disabled:opacity-40 hover:brightness-110 transition"
+            style={{ backgroundColor: "rgba(255,255,255,0.25)", color: corTexto }}
+          >
+            {pausado ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+            {pausado ? "Retomar tempo" : "Pausar tempo"}
+          </button>
+          {emEscuta && !pausado && (
+            <button
+              onClick={() => acaoFacilitador("encerrar_escuta")}
+              disabled={processando}
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold uppercase tracking-wide disabled:opacity-40 hover:brightness-110 transition"
+              style={{ backgroundColor: "rgba(255,255,255,0.25)", color: corTexto }}
+            >
+              <SkipForward className="w-3.5 h-3.5" />
+              Encerrar fala — abrir votação
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -538,8 +662,10 @@ function UltimasCartas({ estado }: { estado: EstadoMesa }) {
                     {c.jogadorNome} — {etiquetaResultado(c.resultado)}
                   </span>
                 </span>
-                {c.resultado === "entrei_na_roda" && (
-                  <Hand className="w-4 h-4 text-gold-400 ml-auto shrink-0" />
+                {(c.ehEntradaRoda || c.resultado === "entrei_na_roda") && (
+                  <span title="Entrou na roda" className="ml-auto shrink-0">
+                    <Hand className="w-4 h-4 text-gold-400" />
+                  </span>
                 )}
               </motion.li>
             ))}

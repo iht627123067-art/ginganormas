@@ -2,6 +2,11 @@
 export const SEGUNDOS_ESCUTA = 180;
 export const SEGUNDOS_VOTACAO = 30;
 
+// "Entro na roda": libera 30s após a carta da vez ser puxada, e quem entra
+// tem 2 minutos de fala própria (menos que os 3 min da carta normal).
+export const SEGUNDOS_LIBERA_RODA = 30;
+export const SEGUNDOS_ESCUTA_RODA = 120;
+
 export type FaseCarta = "escuta" | "votacao" | "expirada";
 
 export function calcularFase(

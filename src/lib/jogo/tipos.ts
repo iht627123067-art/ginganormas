@@ -34,6 +34,10 @@ export interface CartaAtiva extends CartaInfo {
   fase: FaseCarta;
   escutaTerminaEm: string;
   votacaoTerminaEm: string;
+  pausadoEm: string | null;
+  ehEntradaRoda: boolean;
+  rodaSolicitanteId: string | null;
+  rodaLiberaEm: string;
   votos: VotosResumo;
 }
 
@@ -41,6 +45,7 @@ export interface UltimaCarta extends CartaInfo {
   jogadorNome: string;
   resultado: ResultadoSorteio;
   resolvidoEm: string | null;
+  ehEntradaRoda: boolean;
 }
 
 export interface ProgressoDimensao {

@@ -128,17 +128,30 @@ function segundosAte(alvoIso: string | null | undefined): number {
   return Math.max(0, (new Date(alvoIso).getTime() - Date.now()) / 1000);
 }
 
+function segundosCongelados(alvoIso: string, pausadoEmIso: string): number {
+  return Math.max(0, (new Date(alvoIso).getTime() - new Date(pausadoEmIso).getTime()) / 1000);
+}
+
 // Contagem regressiva client-side até um horário ISO vindo do servidor.
 // Interpola entre os polls (a cada 250ms) para o timer parecer fluido.
-export function useContagemRegressiva(alvoIso: string | null | undefined): number {
-  const [restante, setRestante] = useState(() => segundosAte(alvoIso));
+// Quando `pausadoEmIso` está presente, o tempo restante congela no valor
+// que tinha no instante da pausa, em vez de continuar descendo.
+export function useContagemRegressiva(
+  alvoIso: string | null | undefined,
+  pausadoEmIso?: string | null
+): number {
+  const calcular = () =>
+    alvoIso && pausadoEmIso ? segundosCongelados(alvoIso, pausadoEmIso) : segundosAte(alvoIso);
+
+  const [restante, setRestante] = useState(calcular);
 
   useEffect(() => {
-    setRestante(segundosAte(alvoIso));
-    if (!alvoIso) return;
+    setRestante(calcular());
+    if (!alvoIso || pausadoEmIso) return;
     const id = setInterval(() => setRestante(segundosAte(alvoIso)), 250);
     return () => clearInterval(id);
-  }, [alvoIso]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [alvoIso, pausadoEmIso]);
 
   return restante;
 }

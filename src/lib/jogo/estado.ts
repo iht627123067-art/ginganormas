@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { query, withTransaction } from "./db";
 import type { EstadoMesa, EstadoMesaValor, ResultadoSorteio } from "./tipos";
-import { calcularFase } from "./votacao";
+import { calcularFase, SEGUNDOS_ESCUTA_RODA, SEGUNDOS_LIBERA_RODA, SEGUNDOS_VOTACAO } from "./votacao";
 
 const CODIGO_PREFIXO = "GNG";
 
@@ -53,10 +53,15 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
             pergunta: string;
             escuta_termina_em: Date | null;
             votacao_termina_em: Date | null;
+            pausado_em: Date | null;
+            criado_em: Date;
+            roda_solicitante_id: string | null;
+            eh_entrada_roda: boolean;
           }>(
             `select s.id as sorteio_id, s.jogador_id, j.nome as jogador_nome,
                     b.id as carta_id, b.dimensao, b.cor_hex, b.carta, b.definicao, b.pergunta,
-                    s.escuta_termina_em, s.votacao_termina_em
+                    s.escuta_termina_em, s.votacao_termina_em, s.pausado_em, s.criado_em,
+                    s.roda_solicitante_id, s.eh_entrada_roda
              from sorteios_ginga s
              join baralho_ginga b on b.id = s.carta_id
              join jogadores_ginga j on j.id = s.jogador_id
@@ -72,9 +77,10 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
         jogador_nome: string;
         resultado: ResultadoSorteio;
         resolvido_em: Date | null;
+        eh_entrada_roda: boolean;
       }>(
         `select b.id as carta_id, b.dimensao, b.cor_hex, b.carta,
-                j.nome as jogador_nome, s.resultado, s.resolvido_em
+                j.nome as jogador_nome, s.resultado, s.resolvido_em, s.eh_entrada_roda
          from (
            select s2.*, row_number() over (order by s2.resolvido_em desc nulls last, s2.criado_em desc) as rn
            from sorteios_ginga s2
@@ -131,6 +137,9 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
     const votosVoltou = votosRows.filter((v) => v.voto === "voltou").length;
     const escutaTerminaEm = ativa.escuta_termina_em ?? new Date();
     const votacaoTerminaEm = ativa.votacao_termina_em ?? new Date();
+    // Enquanto pausada, a fase congela no instante da pausa em vez de
+    // avançar com o relógio real — evita que o tempo "vença" durante a pausa.
+    const agoraEfetivo = ativa.pausado_em ?? new Date();
 
     cartaAtiva = {
       sorteioId: ativa.sorteio_id,
@@ -142,9 +151,13 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
       carta: ativa.carta,
       definicao: ativa.definicao,
       pergunta: ativa.pergunta,
-      fase: calcularFase(new Date(), escutaTerminaEm, votacaoTerminaEm),
+      fase: calcularFase(agoraEfetivo, escutaTerminaEm, votacaoTerminaEm),
       escutaTerminaEm: escutaTerminaEm.toISOString(),
       votacaoTerminaEm: votacaoTerminaEm.toISOString(),
+      pausadoEm: ativa.pausado_em ? ativa.pausado_em.toISOString() : null,
+      ehEntradaRoda: ativa.eh_entrada_roda,
+      rodaSolicitanteId: ativa.roda_solicitante_id,
+      rodaLiberaEm: new Date(ativa.criado_em.getTime() + SEGUNDOS_LIBERA_RODA * 1000).toISOString(),
       votos: {
         gingou: votosGingou,
         voltou: votosVoltou,
@@ -179,6 +192,7 @@ export async function carregarEstadoMesa(mesa: MesaRow): Promise<EstadoMesa> {
       jogadorNome: u.jogador_nome,
       resultado: u.resultado,
       resolvidoEm: u.resolvido_em ? u.resolvido_em.toISOString() : null,
+      ehEntradaRoda: u.eh_entrada_roda,
     })),
     progresso: progressoRows.map((p) => ({
       dimensao: p.dimensao,
@@ -293,6 +307,9 @@ interface SorteioAtivoRow {
   resultado: ResultadoSorteio;
   escuta_termina_em: Date | null;
   votacao_termina_em: Date | null;
+  pausado_em: Date | null;
+  roda_solicitante_id: string | null;
+  eh_entrada_roda: boolean;
 }
 
 // Resolve a carta ativa da mesa (bloqueada em `mesa`) se a maioria simples da
@@ -306,12 +323,14 @@ export async function resolverSorteioAtivo(
   if (!mesa.carta_ativa_id) return false;
 
   const sorteioRes = await client.query<SorteioAtivoRow>(
-    `select id, carta_id, jogador_id, resultado, escuta_termina_em, votacao_termina_em
+    `select id, carta_id, jogador_id, resultado, escuta_termina_em, votacao_termina_em, pausado_em,
+            roda_solicitante_id, eh_entrada_roda
      from sorteios_ginga where id = $1 for update`,
     [mesa.carta_ativa_id]
   );
   const sorteio = sorteioRes.rows[0];
   if (!sorteio || sorteio.resultado !== "ativa") return false;
+  if (sorteio.pausado_em) return false; // congelada: facilitador pausou o tempo
 
   const jogadoresRes = await client.query<{ total: string }>(
     "select count(*) as total from jogadores_ginga where mesa_id = $1",
@@ -356,19 +375,18 @@ async function aplicarDecisao(
     [decisao, sorteio.id]
   );
 
-  if (decisao === "gingou") {
-    const cartaRes = await client.query<{ dimensao: string }>(
-      "select dimensao from baralho_ginga where id = $1",
-      [sorteio.carta_id]
+  const cartaRes = await client.query<{ dimensao: string }>(
+    "select dimensao from baralho_ginga where id = $1",
+    [sorteio.carta_id]
+  );
+  const dimensao = cartaRes.rows[0]?.dimensao ?? null;
+
+  if (decisao === "gingou" && dimensao) {
+    await client.query(
+      `insert into conquistas_ginga (mesa_id, jogador_id, dimensao, carta_id)
+       values ($1, $2, $3, $4) on conflict (jogador_id, dimensao) do nothing`,
+      [mesa.id, sorteio.jogador_id, dimensao, sorteio.carta_id]
     );
-    const dimensao = cartaRes.rows[0]?.dimensao;
-    if (dimensao) {
-      await client.query(
-        `insert into conquistas_ginga (mesa_id, jogador_id, dimensao, carta_id)
-         values ($1, $2, $3, $4) on conflict (jogador_id, dimensao) do nothing`,
-        [mesa.id, sorteio.jogador_id, dimensao, sorteio.carta_id]
-      );
-    }
   }
 
   const totalConquistas = await contarConquistas(client, sorteio.jogador_id);
@@ -382,13 +400,54 @@ async function aplicarDecisao(
     mesa.estado = "encerrada";
     mesa.vencedor_jogador_id = sorteio.jogador_id;
     mesa.turno_jogador_id = null;
-  } else {
-    const proximo = await proximoTurno(client, mesa.id, mesa.turno_jogador_id);
-    await client.query(
-      "update mesas_ginga set carta_ativa_id = null, turno_jogador_id = $1 where id = $2",
-      [proximo, mesa.id]
-    );
-    mesa.carta_ativa_id = null;
-    mesa.turno_jogador_id = proximo;
+    return;
   }
+
+  // Se alguém reservou "entro na roda" nesta carta (e esta carta não é ela
+  // mesma uma entrada na roda), a vez não avança ainda: puxa uma carta da
+  // mesma dimensão para quem reservou e dá a ela o palco (2 min de fala).
+  if (!sorteio.eh_entrada_roda && sorteio.roda_solicitante_id && dimensao) {
+    const cartaExtraRes = await client.query<{ id: string }>(
+      `select b.id from baralho_ginga b
+       where b.dimensao = $1 and not exists (
+         select 1 from sorteios_ginga s where s.mesa_id = $2 and s.carta_id = b.id
+       )
+       order by random() limit 1`,
+      [dimensao, mesa.id]
+    );
+    const cartaExtra = cartaExtraRes.rows[0];
+    if (cartaExtra) {
+      const novoSorteio = await client.query<{ id: string }>(
+        `insert into sorteios_ginga
+           (mesa_id, carta_id, jogador_id, resultado, eh_entrada_roda,
+            escuta_termina_em, votacao_termina_em)
+         values ($1, $2, $3, 'ativa', true,
+           now() + make_interval(secs => $4), now() + make_interval(secs => $5))
+         returning id`,
+        [
+          mesa.id,
+          cartaExtra.id,
+          sorteio.roda_solicitante_id,
+          SEGUNDOS_ESCUTA_RODA,
+          SEGUNDOS_ESCUTA_RODA + SEGUNDOS_VOTACAO,
+        ]
+      );
+      await client.query(
+        "update mesas_ginga set carta_ativa_id = $1 where id = $2",
+        [novoSorteio.rows[0].id, mesa.id]
+      );
+      mesa.carta_ativa_id = novoSorteio.rows[0].id;
+      return;
+    }
+    // Sem carta disponível nesta dimensão (não deveria acontecer, já que a
+    // reserva só é aceita com carta disponível) — segue o fluxo normal.
+  }
+
+  const proximo = await proximoTurno(client, mesa.id, mesa.turno_jogador_id);
+  await client.query(
+    "update mesas_ginga set carta_ativa_id = null, turno_jogador_id = $1 where id = $2",
+    [proximo, mesa.id]
+  );
+  mesa.carta_ativa_id = null;
+  mesa.turno_jogador_id = proximo;
 }
