@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Montserrat", "system-ui", "sans-serif"],
+        sans: ["Host Grotesk", "Inter", "system-ui", "sans-serif"],
+        display: ["Host Grotesk", "Inter", "system-ui", "sans-serif"],
         serif: ["Georgia", "serif"],
       },
       colors: {
@@ -27,29 +27,29 @@ const config: Config = {
           700: "#1C3870",
           800: "#132A60",
           900: "#0e3e66",   // azul profundo — cor do logo
-          950: "#091432",
+          950: "#020D0F",   // cinza escuro oficial — fundo mais escuro do jogo
         },
-        // GINGA Ouro Solar — acento (#F1C232 dos cabeçalhos solares)
+        // GINGA Amarelo Tupi — acento dourado (paleta oficial, manual slide 6)
         gold: {
-          50:  "#FFFBEB",
-          100: "#FEF3C7",
-          200: "#FDE68A",
-          300: "#FCD34D",
-          400: "#F5D63E",
-          500: "#F1C232",   // ouro GINGA
-          600: "#D4A51A",
-          700: "#B08010",
-          800: "#8C5E08",
-          900: "#6B4305",
+          50:  "#FEFBEA",
+          100: "#FBF3C4",
+          200: "#F7E792",
+          300: "#F3DA5F",
+          400: "#EFCE45",
+          500: "#EBBE28",   // amarelo tupi — oficial
+          600: "#C9A11D",
+          700: "#A17F16",
+          800: "#7A5F10",
+          900: "#4D3B09",
         },
-        // GINGA Verde Floresta — acento secundário (#13701F nos materiais)
+        // GINGA Verde Bandeira — acento verde (paleta oficial, manual slide 6)
         forest: {
-          50:  "#F0FDF4",
-          100: "#DCFCE7",
-          500: "#2E8B57",
-          600: "#176D40",
-          700: "#13701F",
-          800: "#0D5515",
+          50:  "#E8F6EE",
+          100: "#C7E9D6",
+          500: "#12854E",
+          600: "#0D7541",
+          700: "#0A6637",   // verde bandeira — oficial
+          800: "#084F2B",
         },
         // alias accent → ouro (compatibilidade com componentes existentes)
         accent: {
@@ -87,8 +87,8 @@ const config: Config = {
         "glass-dark": "0 4px 24px rgba(0,0,0,0.24)",
       },
       backgroundImage: {
-        "navy-gradient":  "linear-gradient(180deg, #0e3e66 0%, #091432 100%)",
-        "gold-gradient":  "linear-gradient(135deg, #F1C232 0%, #D4A51A 100%)",
+        "navy-gradient":  "linear-gradient(180deg, #0e3e66 0%, #020D0F 100%)",
+        "gold-gradient":  "linear-gradient(135deg, #EBBE28 0%, #C9A11D 100%)",
         "brand-gradient": "linear-gradient(135deg, #30578F 0%, #0e3e66 100%)",
       },
     },
