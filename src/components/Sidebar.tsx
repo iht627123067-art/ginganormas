@@ -9,6 +9,7 @@ import {
   Star,
   Newspaper,
   Dices,
+  Compass,
   Settings,
 } from "lucide-react";
 import clsx from "clsx";
@@ -18,6 +19,7 @@ import GingaSymbol from "@/components/GingaSymbol";
 const nav = [
   { href: "/marco-conceitual", icon: LayoutDashboard, label: "Marco Conceitual" },
   { href: "/legislacao",       icon: Scale,           label: "Legislação" },
+  { href: "/guia",            icon: Compass,         label: "Guia de Normativos" },
   { href: "/indice",           icon: BookMarked,      label: "Índice" },
   { href: "/recomendacoes",    icon: Star,            label: "Ginga Recomenda" },
   { href: "/noticias",         icon: Newspaper,       label: "Notícias" },

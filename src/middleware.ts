@@ -36,10 +36,11 @@ export function middleware(request: NextRequest) {
 
 // Configura o matcher do Next.js para interceptar todas as rotas públicas,
 // mas ignorando arquivos do Next.js, APIs públicas, o namespace público do
-// jogo (/jogo — qualquer pessoa cria/entra em mesas com código, sem login)
+// jogo (/jogo — qualquer pessoa cria/entra em mesas com código, sem login),
+// o Guia de Normativos (/guia — aberto aos servidores públicos, sem login)
 // e formatos de imagem/estilo comuns.
 export const config = {
   matcher: [
-    "/((?!api|jogo|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|css|js)$).*)",
+    "/((?!api|jogo|guia|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|css|js)$).*)",
   ],
 };

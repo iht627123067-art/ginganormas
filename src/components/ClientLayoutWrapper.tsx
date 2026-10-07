@@ -21,6 +21,12 @@ export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperPro
     );
   }
 
+  // O Guia de Normativos tem linguagem visual própria (leitor editorial em
+  // tela cheia), sem a Sidebar da plataforma
+  if (pathname.startsWith("/guia")) {
+    return <div className="w-screen h-screen overflow-y-auto print:h-auto print:w-auto print:overflow-visible">{children}</div>;
+  }
+
   // Layout padrão do dashboard (com Sidebar, container flexível e fundo acinzentado)
   return (
     <div className="flex h-screen w-screen overflow-hidden" style={{ background: "#ECEAE6" }}>

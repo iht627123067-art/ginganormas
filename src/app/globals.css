@@ -24,6 +24,13 @@
 }
 
 @layer components {
+  /* Guia de Normativos — marca-texto amarelo tupi sobre o dispositivo útil */
+  .marca-texto {
+    background: linear-gradient(transparent 14%, rgba(235, 190, 40, 0.42) 14%, rgba(235, 190, 40, 0.42) 90%, transparent 90%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
   /* Cartão padrão — editorial, sem blur */
   .card {
     @apply bg-white rounded-xl border border-slate-200 shadow-ginga;

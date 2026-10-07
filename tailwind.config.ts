@@ -13,6 +13,8 @@ const config: Config = {
         sans: ["Host Grotesk", "Inter", "system-ui", "sans-serif"],
         display: ["Host Grotesk", "Inter", "system-ui", "sans-serif"],
         serif: ["Georgia", "serif"],
+        // Texto legal do Guia de Normativos (Source Serif 4 via next/font)
+        lei: ["var(--font-lei)", "Georgia", "serif"],
       },
       colors: {
         // GINGA Azul Profundo — identidade primária (#0e3e66 no logo)

@@ -1,0 +1,3309 @@
+{
+ "obtidoEm": "2026-10-07",
+ "normas": {
+  "cf": {
+   "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+   "artigos": {
+    "218": [
+     {
+      "id": "caput",
+      "texto": "Art. 218. O Estado promoverá e incentivará o desenvolvimento científico, a pesquisa, a capacitação científica e tecnológica e a inovação.",
+      "notas": [
+       "Redação dada pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A pesquisa científica básica e tecnológica receberá tratamento prioritário do Estado, tendo em vista o bem público e o progresso da ciência, tecnologia e inovação.",
+      "notas": [
+       "Redação dada pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A pesquisa tecnológica voltar-se-á preponderantemente para a solução dos problemas brasileiros e para o desenvolvimento do sistema produtivo nacional e regional.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º O Estado apoiará a formação de recursos humanos nas áreas de ciência, pesquisa, tecnologia e inovação, inclusive por meio do apoio às atividades de extensão tecnológica, e concederá aos que delas se ocupem meios e condições especiais de trabalho.",
+      "notas": [
+       "Redação dada pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º A lei apoiará e estimulará as empresas que invistam em pesquisa, criação de tecnologia adequada ao País, formação e aperfeiçoamento de seus recursos humanos e que pratiquem sistemas de remuneração que assegurem ao empregado, desvinculada do salário, participação nos ganhos econômicos resultantes da produtividade de seu trabalho.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º É facultado aos Estados e ao Distrito Federal vincular parcela de sua receita orçamentária a entidades públicas de fomento ao ensino e à pesquisa científica e tecnológica.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º O Estado, na execução das atividades previstas no caput, estimulará a articulação entre entes, tanto públicos quanto privados, nas diversas esferas de governo.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º O Estado promoverá e incentivará a atuação no exterior das instituições públicas de ciência, tecnologia e inovação, com vistas à execução das atividades previstas no caput.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     }
+    ],
+    "219": [
+     {
+      "id": "caput",
+      "texto": "Art. 219. O mercado interno integra o patrimônio nacional e será incentivado de modo a viabilizar o desenvolvimento cultural e sócio-econômico, o bem-estar da população e a autonomia tecnológica do País, nos termos de lei federal.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O Estado estimulará a formação e o fortalecimento da inovação nas empresas, bem como nos demais entes, públicos ou privados, a constituição e a manutenção de parques e polos tecnológicos e de demais ambientes promotores da inovação, a atuação dos inventores independentes e a criação, absorção, difusão e transferência de tecnologia.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     }
+    ],
+    "219-A": [
+     {
+      "id": "caput",
+      "texto": "Art. 219-A. A União, os Estados, o Distrito Federal e os Municípios poderão firmar instrumentos de cooperação com órgãos e entidades públicos e com entidades privadas, inclusive para o compartilhamento de recursos humanos especializados e capacidade instalada, para a execução de projetos de pesquisa, de desenvolvimento científico e tecnológico e de inovação, mediante contrapartida financeira ou não financeira assumida pelo ente beneficiário, na forma da lei.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     }
+    ],
+    "219-B": [
+     {
+      "id": "caput",
+      "texto": "Art. 219-B. O Sistema Nacional de Ciência, Tecnologia e Inovação (SNCTI) será organizado em regime de colaboração entre entes, tanto públicos quanto privados, com vistas a promover o desenvolvimento científico e tecnológico e a inovação.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Lei federal disporá sobre as normas gerais do SNCTI.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Os Estados, o Distrito Federal e os Municípios legislarão concorrentemente sobre suas peculiaridades.",
+      "notas": [
+       "Incluído pela Emenda Constitucional nº 85, de 2015"
+      ]
+     }
+    ]
+   }
+  },
+  "l10973": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.973.htm",
+   "artigos": {
+    "2": [
+     {
+      "id": "caput",
+      "texto": "Art. 2º Para os efeitos desta Lei, considera-se:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - agência de fomento: órgão ou instituição de natureza pública ou privada que tenha entre os seus objetivos o financiamento de ações que visem a estimular e promover o desenvolvimento da ciência, da tecnologia e da inovação;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - criação: invenção, modelo de utilidade, desenho industrial, programa de computador, topografia de circuito integrado, nova cultivar ou cultivar essencialmente derivada e qualquer outro desenvolvimento tecnológico que acarrete ou possa acarretar o surgimento de novo produto, processo ou aperfeiçoamento incremental, obtida por um ou mais criadores;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - criador: pessoa física que seja inventora, obtentora ou autora de criação;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "III-A",
+      "texto": "III-A - incubadora de empresas: organização ou estrutura que objetiva estimular ou prestar apoio logístico, gerencial e tecnológico ao empreendedorismo inovador e intensivo em conhecimento, com o objetivo de facilitar a criação e o desenvolvimento de empresas que tenham como diferencial a realização de atividades voltadas à inovação;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "IV",
+      "texto": "IV - inovação: introdução de novidade ou aperfeiçoamento no ambiente produtivo e social que resulte em novos produtos, serviços ou processos ou que compreenda a agregação de novas funcionalidades ou características a produto, serviço ou processo já existente que possa resultar em melhorias e em efetivo ganho de qualidade ou desempenho;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "V",
+      "texto": "V - Instituição Científica, Tecnológica e de Inovação (ICT): órgão ou entidade da administração pública direta ou indireta ou pessoa jurídica de direito privado sem fins lucrativos legalmente constituída sob as leis brasileiras, com sede e foro no País, que inclua em sua missão institucional ou em seu objetivo social ou estatutário a pesquisa básica ou aplicada de caráter científico ou tecnológico ou o desenvolvimento de novos produtos, serviços ou processos;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016",
+       "Vide Decreto nº 9.841, de 2019"
+      ]
+     },
+     {
+      "id": "VI",
+      "texto": "VI - Núcleo de Inovação Tecnológica (NIT): estrutura instituída por uma ou mais ICTs, com ou sem personalidade jurídica própria, que tenha por finalidade a gestão de política institucional de inovação e por competências mínimas as atribuições previstas nesta Lei;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "VII",
+      "texto": "VII - fundação de apoio: fundação criada com a finalidade de dar apoio a projetos de pesquisa, ensino e extensão, projetos de desenvolvimento institucional, científico, tecnológico e projetos de estímulo à inovação de interesse das ICTs, registrada e credenciada no Ministério da Educação e no Ministério da Ciência, Tecnologia e Inovação, nos termos da Lei nº 8.958, de 20 de dezembro de 1994, e das demais legislações pertinentes nas esferas estadual, distrital e municipal;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016",
+       "Vide Decreto nº 9.841, de 2019"
+      ]
+     },
+     {
+      "id": "VIII",
+      "texto": "VIII - pesquisador público: ocupante de cargo público efetivo, civil ou militar, ou detentor de função ou emprego público que realize, como atribuição funcional, atividade de pesquisa, desenvolvimento e inovação;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "IX",
+      "texto": "IX - inventor independente: pessoa física, não ocupante de cargo efetivo, cargo militar ou emprego público, que seja inventor, obtentor ou autor de criação.",
+      "notas": []
+     },
+     {
+      "id": "X",
+      "texto": "X - parque tecnológico: complexo planejado de desenvolvimento empresarial e tecnológico, promotor da cultura de inovação, da competitividade industrial, da capacitação empresarial e da promoção de sinergias em atividades de pesquisa científica, de desenvolvimento tecnológico e de inovação, entre empresas e uma ou mais ICTs, com ou sem vínculo entre si;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "XI",
+      "texto": "XI - polo tecnológico: ambiente industrial e tecnológico caracterizado pela presença dominante de micro, pequenas e médias empresas com áreas correlatas de atuação em determinado espaço geográfico, com vínculos operacionais com ICT, recursos humanos, laboratórios e equipamentos organizados e com predisposição ao intercâmbio entre os entes envolvidos para consolidação, marketing e comercialização de novas tecnologias;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "XII",
+      "texto": "XII - extensão tecnológica: atividade que auxilia no desenvolvimento, no aperfeiçoamento e na difusão de soluções tecnológicas e na sua disponibilização à sociedade e ao mercado;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "XIII",
+      "texto": "XIII - bônus tecnológico: subvenção a microempresas e a empresas de pequeno e médio porte, com base em dotações orçamentárias de órgãos e entidades da administração pública, destinada ao pagamento de compartilhamento e uso de infraestrutura de pesquisa e desenvolvimento tecnológicos, de contratação de serviços tecnológicos especializados, ou transferência de tecnologia, quando esta for meramente complementar àqueles serviços, nos termos de regulamento;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "XIV",
+      "texto": "XIV - capital intelectual: conhecimento acumulado pelo pessoal da organização, passível de aplicação em projetos de pesquisa, desenvolvimento e inovação.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ],
+    "3": [
+     {
+      "id": "caput",
+      "texto": "Art. 3º A União, os Estados, o Distrito Federal, os Municípios e as respectivas agências de fomento poderão estimular e apoiar a constituição de alianças estratégicas e o desenvolvimento de projetos de cooperação envolvendo empresas, ICTs e entidades privadas sem fins lucrativos voltados para atividades de pesquisa e desenvolvimento, que objetivem a geração de produtos, processos e serviços inovadores e a transferência e a difusão de tecnologia.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O apoio previsto no caput poderá contemplar as redes e os projetos internacionais de pesquisa tecnológica, as ações de empreendedorismo tecnológico e de criação de ambientes de inovação, inclusive incubadoras e parques tecnológicos, e a formação e a capacitação de recursos humanos qualificados.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ],
+    "4": [
+     {
+      "id": "caput",
+      "texto": "Art. 4º A ICT pública poderá, mediante contrapartida financeira ou não financeira e por prazo determinado, nos termos de contrato ou convênio:",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "I",
+      "texto": "I - compartilhar seus laboratórios, equipamentos, instrumentos, materiais e demais instalações com ICT ou empresas em ações voltadas à inovação tecnológica para consecução das atividades de incubação, sem prejuízo de sua atividade finalística;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "II",
+      "texto": "II - permitir a utilização de seus laboratórios, equipamentos, instrumentos, materiais e demais instalações existentes em suas próprias dependências por ICT, empresas ou pessoas físicas voltadas a atividades de pesquisa, desenvolvimento e inovação, desde que tal permissão não interfira diretamente em sua atividade-fim nem com ela conflite;",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "III",
+      "texto": "III - permitir o uso de seu capital intelectual em projetos de pesquisa, desenvolvimento e inovação.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O compartilhamento e a permissão de que tratam os incisos I e II do caput obedecerão às prioridades, aos critérios e aos requisitos aprovados e divulgados pela ICT pública, observadas as respectivas disponibilidades e assegurada a igualdade de oportunidades a empresas e demais organizações interessadas.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ],
+    "9": [
+     {
+      "id": "caput",
+      "texto": "Art. 9º É facultado à ICT celebrar acordos de parceria com instituições públicas e privadas para realização de atividades conjuntas de pesquisa científica e tecnológica e de desenvolvimento de tecnologia, produto, serviço ou processo.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O servidor, o militar, o empregado da ICT pública e o aluno de curso técnico, de graduação ou de pós-graduação envolvidos na execução das atividades previstas no caput poderão receber bolsa de estímulo à inovação diretamente da ICT a que estejam vinculados, de fundação de apoio ou de agência de fomento.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º As partes deverão prever, em instrumento jurídico específico, a titularidade da propriedade intelectual e a participação nos resultados da exploração das criações resultantes da parceria, assegurando aos signatários o direito à exploração, ao licenciamento e à transferência de tecnologia, observado o disposto nos §§ 4º a 7º do art. 6º.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A propriedade intelectual e a participação nos resultados referidas no § 2º serão asseguradas às partes contratantes, nos termos do contrato, podendo a ICT ceder ao parceiro privado a totalidade dos direitos de propriedade intelectual mediante compensação financeira ou não financeira, desde que economicamente mensurável.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º A bolsa concedida nos termos deste artigo caracteriza-se como doação, não configura vínculo empregatício, não caracteriza contraprestação de serviços nem vantagem para o doador, para efeitos do disposto no art. 26 da Lei nº 9.250, de 26 de dezembro de 1995, e não integra a base de cálculo da contribuição previdenciária, aplicando-se o disposto neste parágrafo a fato pretérito, como previsto no inciso I do art. 106 da Lei nº 5.172, de 25 de outubro de 1966.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ],
+    "19": [
+     {
+      "id": "caput",
+      "texto": "Art. 19. A União, os Estados, o Distrito Federal, os Municípios, as ICTs e suas agências de fomento promoverão e incentivarão a pesquisa e o desenvolvimento de produtos, serviços e processos inovadores em empresas brasileiras e em entidades brasileiras de direito privado sem fins lucrativos, mediante a concessão de recursos financeiros, humanos, materiais ou de infraestrutura a serem ajustados em instrumentos específicos e destinados a apoiar atividades de pesquisa, desenvolvimento e inovação, para atender às prioridades das políticas industrial e tecnológica nacional.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º As prioridades da política industrial e tecnológica nacional de que trata o caput deste artigo serão estabelecidas em regulamento.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A concessão de recursos financeiros, sob a forma de subvenção econômica, financiamento ou participação societária, visando ao desenvolvimento de produtos ou processos inovadores, será precedida de aprovação de projeto pelo órgão ou entidade concedente.",
+      "notas": []
+     },
+     {
+      "id": "p2-A",
+      "texto": "§ 2º-A. São instrumentos de estímulo à inovação nas empresas, quando aplicáveis, entre outros:",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.I",
+      "texto": "I - subvenção econômica;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.II",
+      "texto": "II - financiamento;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.III",
+      "texto": "III - participação societária;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.IV",
+      "texto": "IV - bônus tecnológico;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.V",
+      "texto": "V - encomenda tecnológica;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.VI",
+      "texto": "VI - incentivos fiscais;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.VII",
+      "texto": "VII - concessão de bolsas;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.VIII",
+      "texto": "VIII - uso do poder de compra do Estado;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.IX",
+      "texto": "IX - fundos de investimentos;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.X",
+      "texto": "X - fundos de participação;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.XI",
+      "texto": "XI - títulos financeiros, incentivados ou não;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2-A.XII",
+      "texto": "XII - previsão de investimento em pesquisa e desenvolvimento em contratos de concessão de serviços públicos ou em regulações setoriais.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A concessão da subvenção econômica prevista no § 1º deste artigo implica, obrigatoriamente, a assunção de contrapartida pela empresa beneficiária, na forma estabelecida nos instrumentos de ajuste específicos.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O Poder Executivo regulamentará a subvenção econômica de que trata este artigo, assegurada a destinação de percentual mínimo dos recursos do Fundo Nacional de Desenvolvimento Científico e Tecnológico - FNDCT.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Os recursos de que trata o § 4º deste artigo serão objeto de programação orçamentária em categoria específica do FNDCT, não sendo obrigatória sua aplicação na destinação setorial originária, sem prejuízo da alocação de outros recursos do FNDCT destinados à subvenção econômica.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º As iniciativas de que trata este artigo poderão ser estendidas a ações visando a:",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.I",
+      "texto": "I - apoio financeiro, econômico e fiscal direto a empresas para as atividades de pesquisa, desenvolvimento e inovação tecnológica;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.II",
+      "texto": "II - constituição de parcerias estratégicas e desenvolvimento de projetos de cooperação entre ICT e empresas e entre empresas, em atividades de pesquisa e desenvolvimento, que tenham por objetivo a geração de produtos, serviços e processos inovadores;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.III",
+      "texto": "III - criação, implantação e consolidação de incubadoras de empresas, de parques e polos tecnológicos e de demais ambientes promotores da inovação;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.IV",
+      "texto": "IV - implantação de redes cooperativas para inovação tecnológica;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.V",
+      "texto": "V - adoção de mecanismos para atração, criação e consolidação de centros de pesquisa e desenvolvimento de empresas brasileiras e estrangeiras;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.VI",
+      "texto": "VI - utilização do mercado de capitais e de crédito em ações de inovação;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.VII",
+      "texto": "VII - cooperação internacional para inovação e para transferência de tecnologia;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.VIII",
+      "texto": "VIII - internacionalização de empresas brasileiras por meio de inovação tecnológica;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.IX",
+      "texto": "IX - indução de inovação por meio de compras públicas;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.X",
+      "texto": "X - utilização de compensação comercial, industrial e tecnológica em contratações públicas;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.XI",
+      "texto": "XI - previsão de cláusulas de investimento em pesquisa e desenvolvimento em concessões públicas e em regimes especiais de incentivos econômicos;",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6.XII",
+      "texto": "XII - implantação de solução de inovação para apoio e incentivo a atividades tecnológicas ou de inovação em microempresas e em empresas de pequeno porte.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º A União, os Estados, o Distrito Federal e os Municípios poderão utilizar mais de um instrumento de estímulo à inovação a fim de conferir efetividade aos programas de inovação em empresas.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º Os recursos destinados à subvenção econômica serão aplicados no financiamento de atividades de pesquisa, desenvolvimento tecnológico e inovação em empresas, admitida sua destinação para despesas de capital e correntes, desde que voltadas preponderantemente à atividade financiada.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ],
+    "20": [
+     {
+      "id": "caput",
+      "texto": "Art. 20. Os órgãos e entidades da administração pública, em matéria de interesse público, poderão contratar diretamente ICT, entidades de direito privado sem fins lucrativos ou empresas, isoladamente ou em consórcios, voltadas para atividades de pesquisa e de reconhecida capacitação tecnológica no setor, visando à realização de atividades de pesquisa, desenvolvimento e inovação que envolvam risco tecnológico, para solução de problema técnico específico ou obtenção de produto, serviço ou processo inovador.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Considerar-se-á desenvolvida na vigência do contrato a que se refere o caput deste artigo a criação intelectual pertinente ao seu objeto cuja proteção seja requerida pela empresa contratada até 2 (dois) anos após o seu término.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Findo o contrato sem alcance integral ou com alcance parcial do resultado almejado, o órgão ou entidade contratante, a seu exclusivo critério, poderá, mediante auditoria técnica e financeira, prorrogar seu prazo de duração ou elaborar relatório final dando-o por encerrado.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º O pagamento decorrente da contratação prevista no caput será efetuado proporcionalmente aos trabalhos executados no projeto, consoante o cronograma físico-financeiro aprovado, com a possibilidade de adoção de remunerações adicionais associadas ao alcance de metas de desempenho no projeto.",
+      "notas": [
+       "Redação pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O fornecimento, em escala ou não, do produto ou processo inovador resultante das atividades de pesquisa, desenvolvimento e inovação encomendadas na forma do caput poderá ser contratado mediante dispensa de licitação, inclusive com o próprio desenvolvedor da encomenda, observado o disposto em regulamento específico.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Para os fins do caput e do § 4º, a administração pública poderá, mediante justificativa expressa, contratar concomitantemente mais de uma ICT, entidade de direito privado sem fins lucrativos ou empresa com o objetivo de:",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p5.I",
+      "texto": "I - desenvolver alternativas para solução de problema técnico específico ou obtenção de produto ou processo inovador; ou",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p5.II",
+      "texto": "II - executar partes de um mesmo objeto.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º Observadas as diretrizes previstas em regulamento específico, os órgãos e as entidades da administração pública federal competentes para regulação, revisão, aprovação, autorização ou licenciamento atribuído ao poder público, inclusive para fins de vigilância sanitária, preservação ambiental, importação de bens e segurança, estabelecerão normas e procedimentos especiais, simplificados e prioritários que facilitem:",
+      "notas": [
+       "Incluído pela Lei nº 13.322, de 2016"
+      ]
+     },
+     {
+      "id": "p6.I",
+      "texto": "I - a realização das atividades de pesquisa, desenvolvimento ou inovação encomendadas na forma do caput;",
+      "notas": [
+       "Incluído pela Lei nº 13.322, de 2016"
+      ]
+     },
+     {
+      "id": "p6.II",
+      "texto": "II - a obtenção dos produtos para pesquisa e desenvolvimento necessários à realização das atividades descritas no inciso I deste parágrafo; e",
+      "notas": [
+       "Incluído pela Lei nº 13.322, de 2016"
+      ]
+     },
+     {
+      "id": "p6.III",
+      "texto": "III - a fabricação, a produção e a contratação de produto, serviço ou processo inovador resultante das atividades descritas no inciso I deste parágrafo.",
+      "notas": [
+       "Incluído pela Lei nº 13.322, de 2016"
+      ]
+     }
+    ],
+    "20-A": [
+     {
+      "id": "caput",
+      "texto": "Art. 20-A. (VETADO):",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "I",
+      "texto": "I - (VETADO);",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "II",
+      "texto": "II - (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Aplicam-se ao procedimento de contratação as regras próprias do ente ou entidade da administração pública contratante.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Outras hipóteses de contratação de prestação de serviços ou fornecimento de bens elaborados com aplicação sistemática de conhecimentos científicos e tecnológicos poderão ser previstas em regulamento.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Nas contratações de que trata este artigo, deverá ser observado o disposto no inciso IV do art. 27.",
+      "notas": [
+       "Incluído pela Lei nº 13.243, de 2016"
+      ]
+     }
+    ]
+   }
+  },
+  "d9283": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9283.htm",
+   "artigos": {
+    "2": [
+     {
+      "id": "caput",
+      "texto": "Art. 2º Para os fins do disposto neste Decreto, considera-se:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - entidade gestora - entidade de direito público ou privado responsável pela gestão de ambientes promotores de inovação;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - ambientes promotores da inovação - espaços propícios à inovação e ao empreendedorismo, que constituem ambientes característicos da economia baseada no conhecimento, articulam as empresas, os diferentes níveis de governo, as Instituições Científicas, Tecnológicas e de Inovação, as agências de fomento ou organizações da sociedade civil, e envolvem duas dimensões:",
+      "notas": []
+     },
+     {
+      "id": "II.a",
+      "texto": "a) ecossistemas de inovação - espaços que agregam infraestrutura e arranjos institucionais e culturais, que atraem empreendedores e recursos financeiros, constituem lugares que potencializam o desenvolvimento da sociedade do conhecimento e compreendem, entre outros, parques científicos e tecnológicos, cidades inteligentes, distritos de inovação e polos tecnológicos; e",
+      "notas": []
+     },
+     {
+      "id": "II.b",
+      "texto": "b) mecanismos de geração de empreendimentos - mecanismos promotores de empreendimentos inovadores e de apoio ao desenvolvimento de empresas nascentes de base tecnológica, que envolvem negócios inovadores, baseados em diferenciais tecnológicos e buscam a solução de problemas ou desafios sociais e ambientais, oferecem suporte para transformar ideias em empreendimentos de sucesso, e compreendem, entre outros, incubadoras de empresas, aceleradoras de negócios, espaços abertos de trabalho cooperativo e laboratórios abertos de prototipagem de produtos e processos;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - risco tecnológico - possibilidade de insucesso no desenvolvimento de solução, decorrente de processo em que o resultado é incerto em função do conhecimento técnico-científico insuficiente à época em que se decide pela realização da ação;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - Instituição Científica, Tecnológica e de Inovação pública - ICT pública - aquela abrangida pelo inciso V do caput do art. 2º da Lei nº 10.973, de 2004, integrante da administração pública direta ou indireta, incluídas as empresas públicas e as sociedades de economia mista; e",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - Instituição Científica, Tecnológica e de Inovação privada - ICT privada - aquela abrangida pelo inciso V do caput do art. 2º da Lei nº 10.973, de 2004, constituída sob a forma de pessoa jurídica de direito privado sem fins lucrativos.",
+      "notas": []
+     }
+    ],
+    "27": [
+     {
+      "id": "caput",
+      "texto": "Art. 27. Os órgãos e as entidades da administração pública poderão contratar diretamente ICT pública ou privada, entidades de direito privado sem fins lucrativos ou empresas, isoladamente ou em consórcio, voltadas para atividades de pesquisa e de reconhecida capacitação tecnológica no setor, com vistas à realização de atividades de pesquisa, desenvolvimento e inovação que envolvam risco tecnológico, para solução de problema técnico específico ou obtenção de produto, serviço ou processo inovador, nos termos do art. 20 da Lei nº 10.973, de 2004, e do inciso XXXI do art. 24 da Lei nº 8.666, de 1993.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Para os fins do caput, são consideradas como voltadas para atividades de pesquisa aquelas entidades, públicas ou privadas, com ou sem fins lucrativos, que tenham experiência na realização de atividades de pesquisa, desenvolvimento e inovação, dispensadas as seguintes exigências:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - que conste expressamente do ato constitutivo da contratada a realização de pesquisa entre os seus objetivos institucionais; e",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - que a contratada se dedique, exclusivamente, às atividades de pesquisa.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Na contratação da encomenda, também poderão ser incluídos os custos das atividades que precedem a introdução da solução, do produto, do serviço ou do processo inovador no mercado, dentre as quais:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - a fabricação de protótipos;",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - o escalonamento, como planta piloto para prova de conceito, testes e demonstração; e",
+      "notas": []
+     },
+     {
+      "id": "p2.III",
+      "texto": "III - a construção da primeira planta em escala comercial, quando houver interesse da administração pública no fornecimento de que trata o § 4º do art. 20 da Lei nº 10.973, de 2004.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Caberá ao contratante descrever as necessidades de modo a permitir que os interessados identifiquem a natureza do problema técnico existente e a visão global do produto, do serviço ou do processo inovador passível de obtenção, dispensadas as especificações técnicas do objeto devido à complexidade da atividade de pesquisa, desenvolvimento e inovação ou por envolver soluções inovadoras não disponíveis no mercado.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Na fase prévia à celebração do contrato, o órgão ou a entidade da administração pública deverá consultar potenciais contratados para obter informações necessárias à definição da encomenda, observado o seguinte:",
+      "notas": []
+     },
+     {
+      "id": "p4.I",
+      "texto": "I - a necessidade e a forma da consulta serão definidas pelo órgão ou pela entidade da administração pública;",
+      "notas": []
+     },
+     {
+      "id": "p4.II",
+      "texto": "II - as consultas não implicarão desembolso de recursos por parte do órgão ou da entidade da administração pública e tampouco preferência na escolha do fornecedor ou do executante; e",
+      "notas": []
+     },
+     {
+      "id": "p4.III",
+      "texto": "III - as consultas e as respostas dos potenciais contratados, quando feitas formalmente, deverão ser anexadas aos autos do processo de contratação, ressalvadas eventuais informações de natureza industrial, tecnológica ou comercial que devam ser mantidas sob sigilo.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º O órgão ou a entidade da administração pública contratante poderá criar, por meio de ato de sua autoridade máxima, comitê técnico de especialistas para assessorar a instituição na definição do objeto da encomenda, na escolha do futuro contratado, no monitoramento da execução contratual e nas demais funções previstas neste Decreto, observado o seguinte:",
+      "notas": []
+     },
+     {
+      "id": "p5.I",
+      "texto": "I - os membros do comitê técnico deverão assinar declaração de que não possuem conflito de interesse na realização da atividade de assessoria técnica ao contratante; e",
+      "notas": []
+     },
+     {
+      "id": "p5.II",
+      "texto": "II - a participação no comitê técnico será considerada prestação de serviço público relevante, não remunerada.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º As auditorias técnicas e financeiras a que se refere este Decreto poderão ser realizadas pelo comitê técnico de especialistas.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º O contratante definirá os parâmetros mínimos aceitáveis para utilização e desempenho da solução, do produto, do serviço ou do processo objeto da encomenda.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º A administração pública negociará a celebração do contrato de encomenda tecnológica, com um ou mais potenciais interessados, com vistas à obtenção das condições mais vantajosas de contratação, observadas as seguintes diretrizes:",
+      "notas": []
+     },
+     {
+      "id": "p8.I",
+      "texto": "I - a negociação será transparente, com documentação pertinente anexada aos autos do processo de contratação, ressalvadas eventuais informações de natureza industrial, tecnológica ou comercial que devam ser mantidas sob sigilo;",
+      "notas": []
+     },
+     {
+      "id": "p8.II",
+      "texto": "II - a escolha do contratado será orientada para a maior probabilidade de alcance do resultado pretendido pelo contratante, e não necessariamente para o menor preço ou custo, e a administração pública poderá utilizar, como fatores de escolha, a competência técnica, a capacidade de gestão, as experiências anteriores, a qualidade do projeto apresentado e outros critérios significativos de avaliação do contratado; e",
+      "notas": []
+     },
+     {
+      "id": "p8.III",
+      "texto": "III - o projeto específico de que trata o § 9º poderá ser objeto de negociação com o contratante, permitido ao contratado, durante a elaboração do projeto, consultar os gestores públicos responsáveis pela contratação e, se houver, o comitê técnico de especialistas.",
+      "notas": []
+     },
+     {
+      "id": "p9",
+      "texto": "§ 9º A celebração do contrato de encomenda tecnológica ficará condicionada à aprovação prévia de projeto específico, com etapas de execução do contrato estabelecidas em cronograma físico-financeiro, a ser elaborado pelo contratado, com observância aos objetivos a serem atingidos e aos requisitos que permitam a aplicação dos métodos e dos meios indispensáveis à verificação do andamento do projeto em cada etapa, além de outros elementos estabelecidos pelo contratante.",
+      "notas": []
+     },
+     {
+      "id": "p10",
+      "texto": "§ 10. A contratação prevista no caput poderá englobar a transferência de tecnologia para viabilizar a produção e o domínio de tecnologias essenciais para o País, definidas em atos específicos dos Ministros de Estados responsáveis por sua execução.",
+      "notas": []
+     },
+     {
+      "id": "p11",
+      "texto": "§ 11. Sem prejuízo da responsabilidade assumida no instrumento contratual, o contratado poderá subcontratar determinadas etapas da encomenda, até o limite previsto no termo de contrato, hipótese em que o subcontratado observará as mesmas regras de proteção do segredo industrial, tecnológico ou comercial aplicáveis ao contratado.",
+      "notas": []
+     }
+    ],
+    "28": [
+     {
+      "id": "caput",
+      "texto": "Art. 28. O contratante será informado quanto à evolução do projeto e aos resultados parciais alcançados e deverá monitorar a execução do objeto contratual, por meio da mensuração dos resultados alcançados em relação àqueles previstos, de modo a permitir a avaliação da sua perspectiva de êxito, além de indicar eventuais ajustes que preservem o interesse das partes no cumprimento dos objetivos pactuados.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Encerrada a vigência do contrato, sem alcance integral ou com alcance parcial do resultado almejado, o órgão ou a entidade contratante, a seu exclusivo critério, poderá, por meio de auditoria técnica e financeira:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - prorrogar o seu prazo de duração; ou",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - elaborar relatório final, hipótese em que será considerado encerrado.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O projeto contratado poderá ser descontinuado sempre que verificada a inviabilidade técnica ou econômica no seu desenvolvimento, por meio da rescisão do contrato:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - por ato unilateral da administração pública; ou",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - por acordo entre as partes, de modo amigável.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A inviabilidade técnica ou econômica referida no § 2º deverá ser comprovada por meio de avaliação técnica e financeira.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Na hipótese de descontinuidade do projeto contratado prevista no § 2º, o pagamento ao contratado cobrirá as despesas já incorridas na execução efetiva do projeto, consoante o cronograma físico-financeiro aprovado, mesmo que o contrato tenha sido celebrado sob a modalidade de preço fixo ou de preço fixo mais remuneração variável de incentivo.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Na hipótese de o projeto ser conduzido nos moldes contratados e os resultados obtidos serem diversos daqueles almejados em função do risco tecnológico, comprovado por meio de avaliação técnica e financeira, o pagamento obedecerá aos termos estabelecidos no contrato.",
+      "notas": []
+     }
+    ],
+    "29": [
+     {
+      "id": "caput",
+      "texto": "Art. 29. O pagamento decorrente do contrato de encomenda tecnológica será efetuado proporcionalmente aos trabalhos executados no projeto, consoante o cronograma físico-financeiro aprovado, com a possibilidade de adoção de remunerações adicionais associadas ao alcance de metas de desempenho no projeto, nos termos desta Subseção.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Os órgãos e as entidades da administração pública poderão utilizar diferentes modalidades de remuneração de contrato de encomenda para compartilhar o risco tecnológico e contornar a dificuldade de estimar os custos de atividades de pesquisa, desenvolvimento e inovação a partir de pesquisa de mercado, quais sejam:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - preço fixo;",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - preço fixo mais remuneração variável de incentivo;",
+      "notas": []
+     },
+     {
+      "id": "p1.III",
+      "texto": "III - reembolso de custos sem remuneração adicional;",
+      "notas": []
+     },
+     {
+      "id": "p1.IV",
+      "texto": "IV - reembolso de custos mais remuneração variável de incentivo; ou",
+      "notas": []
+     },
+     {
+      "id": "p1.V",
+      "texto": "V - reembolso de custos mais remuneração fixa de incentivo.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A escolha da modalidade de que trata este artigo deverá ser devidamente motivada nos autos do processo, conforme as especificidades do caso concreto, e aprovada expressamente pela autoridade superior.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Os contratos celebrados sob a modalidade de preço fixo são aqueles utilizados quando o risco tecnológico é baixo e em que é possível antever, com nível razoável de confiança, os reais custos da encomenda, hipótese em que o termo de contrato estabelecerá o valor a ser pago ao contratado e o pagamento ocorrerá ao final de cada etapa do projeto ou ao final do projeto.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O preço fixo somente poderá ser modificado:",
+      "notas": []
+     },
+     {
+      "id": "p4.I",
+      "texto": "I - se forem efetuados os ajustes de que trata o caput do art. 28;",
+      "notas": []
+     },
+     {
+      "id": "p4.II",
+      "texto": "II - na hipótese de reajuste por índice setorial ou geral de preços, nos prazos e nos limites autorizados pela legislação federal;",
+      "notas": []
+     },
+     {
+      "id": "p4.III",
+      "texto": "III - para recomposição do equilíbrio econômico-financeiro decorrente de caso fortuito ou força maior; ou",
+      "notas": []
+     },
+     {
+      "id": "p4.IV",
+      "texto": "IV - por necessidade de alteração do projeto ou das especificações para melhor adequação técnica aos objetivos da contratação, a pedido da administração pública, desde que não decorrentes de erros ou omissões por parte do contratado, observados os limites previstos no § 1º do art. 65 da Lei nº 8.666, de 1993.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Os contratos celebrados sob a modalidade de preço fixo mais remuneração variável de incentivo serão utilizados quando as partes puderem prever com margem de confiança os custos do projeto e quando for interesse do contratante estimular o atingimento de metas previstas no projeto relativas aos prazos ou ao desempenho técnico do contratado.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º Os contratos que prevejam o reembolso de custos serão utilizados quando os custos do projeto não forem conhecidos no momento da realização da encomenda em razão do risco tecnológico, motivo pelo qual estabelecem o pagamento das despesas incorridas pelo contratado na execução do objeto, hipótese em que será estabelecido limite máximo de gastos para fins de reserva de orçamento que o contratado não poderá exceder, exceto por sua conta e risco, sem prévio acerto com o contratante.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º Nos contratos que adotam apenas a modalidade de reembolso de custos sem remuneração adicional, a administração pública arcará somente com as despesas associadas ao projeto incorridas pelo contratado e não caberá remuneração ou outro pagamento além do custo.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º A modalidade de reembolso de custos sem remuneração adicional é indicada para encomenda tecnológica celebrada com entidade sem fins lucrativos ou cujo contratado tenha expectativa de ser compensado com benefícios indiretos, a exemplo de algum direito sobre a propriedade intelectual ou da transferência de tecnologia.",
+      "notas": []
+     },
+     {
+      "id": "p9",
+      "texto": "§ 9º Os contratos celebrados sob a modalidade de reembolso de custos mais remuneração variável de incentivo são aqueles que, além do reembolso de custos, adotam remunerações adicionais vinculadas ao alcance de metas previstas no projeto, em especial metas associadas à contenção de custos, ao desempenho técnico e aos prazos de execução ou de entrega.",
+      "notas": []
+     },
+     {
+      "id": "p10",
+      "texto": "§ 10. Os contratos celebrados sob a modalidade de reembolso de custos mais remuneração fixa de incentivo são aqueles que, além do reembolso dos custos, estabelecem o pagamento ao contratado de remuneração negociada entre as partes, que será definida no instrumento contratual e que somente poderá ser modificada nas hipóteses previstas nos incisos de I a IV do § 4º.",
+      "notas": []
+     },
+     {
+      "id": "p11",
+      "texto": "§ 11. A remuneração fixa de incentivo não poderá ser calculada como percentual das despesas efetivamente incorridas pelo contratado.",
+      "notas": []
+     },
+     {
+      "id": "p12",
+      "texto": "§ 12. A política de reembolso de custos pelo contratante observará as seguintes diretrizes:",
+      "notas": []
+     },
+     {
+      "id": "p12.I",
+      "texto": "I - separação correta entre os custos incorridos na execução da encomenda dos demais custos do contratado;",
+      "notas": []
+     },
+     {
+      "id": "p12.II",
+      "texto": "II - razoabilidade dos custos;",
+      "notas": []
+     },
+     {
+      "id": "p12.III",
+      "texto": "III - previsibilidade mínima dos custos; e",
+      "notas": []
+     },
+     {
+      "id": "p12.IV",
+      "texto": "IV - necessidade real dos custos apresentados pelo contratado para a execução da encomenda segundo os parâmetros estabelecidos no instrumento contratual.",
+      "notas": []
+     },
+     {
+      "id": "p13",
+      "texto": "§ 13. Nos contratos que prevejam o reembolso de custos, caberá ao contratante exigir do contratado sistema de contabilidade de custos adequado, a fim de que seja possível mensurar os custos reais da encomenda.",
+      "notas": []
+     },
+     {
+      "id": "p14",
+      "texto": "§ 14. As remunerações de incentivo serão definidas pelo contratante com base nas seguintes diretrizes:",
+      "notas": []
+     },
+     {
+      "id": "p14.I",
+      "texto": "I - compreensão do mercado de atuação do contratado;",
+      "notas": []
+     },
+     {
+      "id": "p14.II",
+      "texto": "II - avaliação correta dos riscos e das incertezas associadas à encomenda tecnológica;",
+      "notas": []
+     },
+     {
+      "id": "p14.III",
+      "texto": "III - economicidade;",
+      "notas": []
+     },
+     {
+      "id": "p14.IV",
+      "texto": "IV - compreensão da capacidade de entrega e do desempenho do contratado;",
+      "notas": []
+     },
+     {
+      "id": "p14.V",
+      "texto": "V - estabelecimento de metodologias de avaliação transparentes, razoáveis e auditáveis; e",
+      "notas": []
+     },
+     {
+      "id": "p14.VI",
+      "texto": "VI - compreensão dos impactos potenciais da superação ou do não atingimento das metas previstas no contrato.",
+      "notas": []
+     }
+    ],
+    "30": [
+     {
+      "id": "caput",
+      "texto": "Art. 30. As partes deverão definir, no instrumento contratual, a titularidade ou o exercício dos direitos de propriedade intelectual resultante da encomenda e poderão dispor sobre a cessão do direito de propriedade intelectual, o licenciamento para exploração da criação e a transferência de tecnologia, observado o disposto no § 4º e no § 5º do art. 6º da Lei nº 10.973, de 2004.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O contratante poderá, mediante demonstração de interesse público, ceder ao contratado a totalidade dos direitos de propriedade intelectual, por meio de compensação financeira ou não financeira, desde que economicamente mensurável, inclusive quanto ao licenciamento da criação à administração pública sem o pagamento de royalty ou de outro tipo de remuneração.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Na hipótese prevista no § 1º, o contrato de encomenda tecnológica deverá prever que o contratado detentor do direito exclusivo de exploração de criação protegida perderá automaticamente esse direito caso não comercialize a criação no prazo e nas condições definidos no contrato, situação em que os direitos de propriedade intelectual serão revertidos em favor da administração pública.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A transferência de tecnologia, a cessão de direitos e o licenciamento para exploração de criação cujo objeto interesse à defesa nacional observarão o disposto no § 3º do art. 75 da Lei nº 9.279, de 14 de maio de 1996.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Na hipótese de omissão do instrumento contratual, os resultados do projeto, a sua documentação e os direitos de propriedade intelectual pertencerão ao contratante.",
+      "notas": []
+     }
+    ],
+    "31": [
+     {
+      "id": "caput",
+      "texto": "Art. 31. O fornecimento, em escala ou não, do produto, do serviço ou do processo inovador resultante das atividades de pesquisa, desenvolvimento e inovação encomendadas na forma estabelecida neste Decreto poderá ser contratado com dispensa de licitação, inclusive com o próprio desenvolvedor da encomenda.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O contrato de encomenda tecnológica poderá prever opção de compra dos produtos, dos serviços ou dos processos resultantes da encomenda.",
+      "notas": []
+     }
+    ],
+    "32": [
+     {
+      "id": "caput",
+      "texto": "Art. 32. Quando o contrato de encomenda tecnológica estabelecer a previsão de fornecimento em escala do produto, do serviço ou do processo inovador, as partes poderão celebrar contrato, com dispensa de licitação, precedido da elaboração de planejamento do fornecimento, acompanhado de termo de referência com as especificações do objeto encomendado e de informações sobre:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - a justificativa econômica da contratação;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - a demanda do órgão ou da entidade;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - os métodos objetivos de mensuração do desempenho dos produtos, dos serviços ou dos processos inovadores; e",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - quando houver, as exigências de certificações emitidas por instituições públicas ou privadas credenciadas.",
+      "notas": []
+     }
+    ],
+    "33": [
+     {
+      "id": "caput",
+      "texto": "Art. 33. Compete aos Ministérios da Ciência, Tecnologia, Inovações e Comunicações e do Planejamento, Desenvolvimento e Gestão editar as normas complementares sobre o processo de encomenda tecnológica, sem prejuízo de sua aplicação imediata e das competências normativas de órgãos e entidades executores em suas esferas.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. Previamente à edição das normas complementares de que trata o caput, os Ministérios da Ciência, Tecnologia, Inovações e Comunicações e do Planejamento, Desenvolvimento e Gestão deverão realizar consulta pública.",
+      "notas": []
+     }
+    ],
+    "35": [
+     {
+      "id": "caput",
+      "texto": "Art. 35. O acordo de parceria para pesquisa, desenvolvimento e inovação é o instrumento jurídico celebrado por ICT com instituições públicas ou privadas para realização de atividades conjuntas de pesquisa científica e tecnológica e de desenvolvimento de tecnologia, produto, serviço ou processo, sem transferência de recursos financeiros públicos para o parceiro privado, observado o disposto no art. 9º da Lei nº 10.973, de 2004.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A celebração do acordo de parceria para pesquisa, desenvolvimento e inovação deverá ser precedida da negociação entre os parceiros do plano de trabalho, do qual deverá constar obrigatoriamente:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - a descrição das atividades conjuntas a serem executadas, de maneira a assegurar discricionariedade aos parceiros para exercer as atividades com vistas ao atingimento dos resultados pretendidos;",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - a estipulação das metas a serem atingidas e os prazos previstos para execução, além dos parâmetros a serem utilizados para a aferição do cumprimento das metas, considerados os riscos inerentes aos projetos de pesquisa, desenvolvimento e inovação;",
+      "notas": []
+     },
+     {
+      "id": "p1.III",
+      "texto": "III - a descrição, nos termos estabelecidos no § 3º, dos meios a serem empregados pelos parceiros; e",
+      "notas": []
+     },
+     {
+      "id": "p1.IV",
+      "texto": "IV - a previsão da concessão de bolsas, quando couber, nos termos estabelecidos no § 4º.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O plano de trabalho constará como anexo do acordo de parceria e será parte integrante e indissociável deste, e somente poderá ser modificado segundo os critérios e a forma definidos em comum acordo entre os partícipes.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º As instituições que integram os acordos de parceria para pesquisa, desenvolvimento e inovação poderão permitir a participação de recursos humanos delas integrantes para a realização das atividades conjuntas de pesquisa, desenvolvimento e inovação, inclusive para as atividades de apoio e de suporte, e também ficarão autorizadas a prover capital intelectual, serviços, equipamentos, materiais, propriedade intelectual, laboratórios, infraestrutura e outros meios pertinentes à execução do plano de trabalho.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O servidor, o militar, o empregado da ICT pública e o estudante de curso técnico, de graduação ou de pós-graduação, envolvidos na execução das atividades previstas no caput poderão receber bolsa de estímulo à inovação diretamente da ICT a que estiverem vinculados, de fundação de apoio ou de agência de fomento, observado o disposto no § 4º do art. 9º da Lei nº 10.973, de 2004.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Na hipótese de remuneração do capital intelectual, deverá haver cláusula específica no instrumento celebrado mediante estabelecimento de valores e destinação de comum acordo.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º O acordo de parceria para pesquisa, desenvolvimento e inovação poderá prever a transferência de recursos financeiros dos parceiros privados para os parceiros públicos, inclusive por meio de fundação de apoio, para a consecução das atividades previstas neste Decreto.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º Na hipótese prevista no § 6º, as agências de fomento poderão celebrar acordo de parceria para pesquisa, desenvolvimento e inovação para atender aos objetivos previstos no art. 3º da Lei nº 10.973, de 2004.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º A prestação de contas da ICT ou da agência de fomento, na hipótese prevista no § 6º, deverá ser disciplinada no acordo de parceria para pesquisa, desenvolvimento e inovação.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "lindb": {
+   "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del4657.htm",
+   "artigos": {
+    "20": [
+     {
+      "id": "caput",
+      "texto": "Art. 20. Nas esferas administrativa, controladora e judicial, não se decidirá com base em valores jurídicos abstratos sem que sejam consideradas as consequências práticas da decisão.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. A motivação demonstrará a necessidade e a adequação da medida imposta ou da invalidação de ato, contrato, ajuste, processo ou norma administrativa, inclusive em face das possíveis alternativas.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "21": [
+     {
+      "id": "caput",
+      "texto": "Art. 21. A decisão que, nas esferas administrativa, controladora ou judicial, decretar a invalidação de ato, contrato, ajuste, processo ou norma administrativa deverá indicar de modo expresso suas consequências jurídicas e administrativas.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. A decisão a que se refere o caput deste artigo deverá, quando for o caso, indicar as condições para que a regularização ocorra de modo proporcional e equânime e sem prejuízo aos interesses gerais, não se podendo impor aos sujeitos atingidos ônus ou perdas que, em função das peculiaridades do caso, sejam anormais ou excessivos.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "22": [
+     {
+      "id": "caput",
+      "texto": "Art. 22. Na interpretação de normas sobre gestão pública, serão considerados os obstáculos e as dificuldades reais do gestor e as exigências das políticas públicas a seu cargo, sem prejuízo dos direitos dos administrados.",
+      "notas": [
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Em decisão sobre regularidade de conduta ou validade de ato, contrato, ajuste, processo ou norma administrativa, serão consideradas as circunstâncias práticas que houverem imposto, limitado ou condicionado a ação do agente.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Na aplicação de sanções, serão consideradas a natureza e a gravidade da infração cometida, os danos que dela provierem para a administração pública, as circunstâncias agravantes ou atenuantes e os antecedentes do agente.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º As sanções aplicadas ao agente serão levadas em conta na dosimetria das demais sanções de mesma natureza e relativas ao mesmo fato.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "23": [
+     {
+      "id": "caput",
+      "texto": "Art. 23. A decisão administrativa, controladora ou judicial que estabelecer interpretação ou orientação nova sobre norma de conteúdo indeterminado, impondo novo dever ou novo condicionamento de direito, deverá prever regime de transição quando indispensável para que o novo dever ou condicionamento de direito seja cumprido de modo proporcional, equânime e eficiente e sem prejuízo aos interesses gerais.",
+      "notas": [
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "24": [
+     {
+      "id": "caput",
+      "texto": "Art. 24. A revisão, nas esferas administrativa, controladora ou judicial, quanto à validade de ato, contrato, ajuste, processo ou norma administrativa cuja produção já se houver completado levará em conta as orientações gerais da época, sendo vedado que, com base em mudança posterior de orientação geral, se declarem inválidas situações plenamente constituídas.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. Consideram-se orientações gerais as interpretações e especificações contidas em atos públicos de caráter geral ou em jurisprudência judicial ou administrativa majoritária, e ainda as adotadas por prática administrativa reiterada e de amplo conhecimento público.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "26": [
+     {
+      "id": "caput",
+      "texto": "Art. 26. Para eliminar irregularidade, incerteza jurídica ou situação contenciosa na aplicação do direito público, inclusive no caso de expedição de licença, a autoridade administrativa poderá, após oitiva do órgão jurídico e, quando for o caso, após realização de consulta pública, e presentes razões de relevante interesse geral, celebrar compromisso com os interessados, observada a legislação aplicável, o qual só produzirá efeitos a partir de sua publicação oficial.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O compromisso referido no caput deste artigo:",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - buscará solução jurídica proporcional, equânime, eficiente e compatível com os interesses gerais;",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p1.II",
+      "texto": "II – (VETADO);",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p1.III",
+      "texto": "III - não poderá conferir desoneração permanente de dever ou condicionamento de direito reconhecidos por orientação geral;",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p1.IV",
+      "texto": "IV - deverá prever com clareza as obrigações das partes, o prazo para seu cumprimento e as sanções aplicáveis em caso de descumprimento.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "27": [
+     {
+      "id": "caput",
+      "texto": "Art. 27. A decisão do processo, nas esferas administrativa, controladora ou judicial, poderá impor compensação por benefícios indevidos ou prejuízos anormais ou injustos resultantes do processo ou da conduta dos envolvidos.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A decisão sobre a compensação será motivada, ouvidas previamente as partes sobre seu cabimento, sua forma e, se for o caso, seu valor.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Para prevenir ou regular a compensação, poderá ser celebrado compromisso processual entre os envolvidos.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "28": [
+     {
+      "id": "caput",
+      "texto": "Art. 28. O agente público responderá pessoalmente por suas decisões ou opiniões técnicas em caso de dolo ou erro grosseiro.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ],
+    "29": [
+     {
+      "id": "caput",
+      "texto": "Art. 29. Em qualquer órgão ou Poder, a edição de atos normativos por autoridade administrativa, salvo os de mera organização interna, poderá ser precedida de consulta pública para manifestação de interessados, preferencialmente por meio eletrônico, a qual será considerada na decisão.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Vigência",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A convocação conterá a minuta do ato normativo e fixará o prazo e demais condições da consulta pública, observadas as normas legais e regulamentares específicas, se houver.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Vigência"
+      ]
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º (VETADO).",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Vigência"
+      ]
+     }
+    ],
+    "30": [
+     {
+      "id": "caput",
+      "texto": "Art. 30. As autoridades públicas devem atuar para aumentar a segurança jurídica na aplicação das normas, inclusive por meio de regulamentos, súmulas administrativas e respostas a consultas.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018",
+       "Regulamento"
+      ]
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. Os instrumentos previstos no caput deste artigo terão caráter vinculante em relação ao órgão ou entidade a que se destinam, até ulterior revisão.",
+      "notas": [
+       "Incluído pela Lei nº 13.655, de 2018"
+      ]
+     }
+    ]
+   }
+  },
+  "d9830": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9830.htm",
+   "artigos": {
+    "2": [
+     {
+      "id": "caput",
+      "texto": "Art. 2º A decisão será motivada com a contextualização dos fatos, quando cabível, e com a indicação dos fundamentos de mérito e jurídicos.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A motivação da decisão conterá os seus fundamentos e apresentará a congruência entre as normas e os fatos que a embasaram, de forma argumentativa.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A motivação indicará as normas, a interpretação jurídica, a jurisprudência ou a doutrina que a embasaram.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A motivação poderá ser constituída por declaração de concordância com o conteúdo de notas técnicas, pareceres, informações, decisões ou propostas que precederam a decisão.",
+      "notas": []
+     }
+    ],
+    "3": [
+     {
+      "id": "caput",
+      "texto": "Art. 3º A decisão que se basear exclusivamente em valores jurídicos abstratos observará o disposto no art. 2º e as consequências práticas da decisão.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Para fins do disposto neste Decreto, consideram-se valores jurídicos abstratos aqueles previstos em normas jurídicas com alto grau de indeterminação e abstração.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Na indicação das consequências práticas da decisão, o decisor apresentará apenas aquelas consequências práticas que, no exercício diligente de sua atuação, consiga vislumbrar diante dos fatos e fundamentos de mérito e jurídicos.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A motivação demonstrará a necessidade e a adequação da medida imposta, inclusive consideradas as possíveis alternativas e observados os critérios de adequação, proporcionalidade e de razoabilidade.",
+      "notas": []
+     }
+    ],
+    "8": [
+     {
+      "id": "caput",
+      "texto": "Art. 8º Na interpretação de normas sobre gestão pública, serão considerados os obstáculos, as dificuldades reais do agente público e as exigências das políticas públicas a seu cargo, sem prejuízo dos direitos dos administrados.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Na decisão sobre a regularidade de conduta ou a validade de atos, contratos, ajustes, processos ou normas administrativos, serão consideradas as circunstâncias práticas que impuseram, limitaram ou condicionaram a ação do agente público.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A decisão a que se refere o § 1º observará o disposto nos art. 2º, art. 3º ou art. 4º.",
+      "notas": []
+     }
+    ],
+    "10": [
+     {
+      "id": "caput",
+      "texto": "Art. 10. Na hipótese de a autoridade entender conveniente para eliminar irregularidade, incerteza jurídica ou situações contenciosas na aplicação do direito público, poderá celebrar compromisso com os interessados, observada a legislação aplicável e as seguintes condições:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - após oitiva do órgão jurídico;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - após realização de consulta pública, caso seja cabível; e",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - presença de razões de relevante interesse geral.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A decisão de celebrar o compromisso a que se refere o caput será motivada na forma do disposto no art. 2º.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O compromisso:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - buscará solução proporcional, equânime, eficiente e compatível com os interesses gerais;",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - não poderá conferir desoneração permanente de dever ou condicionamento de direito reconhecido por orientação geral; e",
+      "notas": []
+     },
+     {
+      "id": "p2.III",
+      "texto": "III - preverá:",
+      "notas": []
+     },
+     {
+      "id": "p2.III.a",
+      "texto": "a) as obrigações das partes;",
+      "notas": []
+     },
+     {
+      "id": "p2.III.b",
+      "texto": "b) o prazo e o modo para seu cumprimento;",
+      "notas": []
+     },
+     {
+      "id": "p2.III.c",
+      "texto": "c) a forma de fiscalização quanto a sua observância;",
+      "notas": []
+     },
+     {
+      "id": "p2.III.d",
+      "texto": "d) os fundamentos de fato e de direito;",
+      "notas": []
+     },
+     {
+      "id": "p2.III.e",
+      "texto": "e) a sua eficácia de título executivo extrajudicial; e",
+      "notas": []
+     },
+     {
+      "id": "p2.III.f",
+      "texto": "f) as sanções aplicáveis em caso de descumprimento.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º O compromisso firmado somente produzirá efeitos a partir de sua publicação.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O processo que subsidiar a decisão de celebrar o compromisso será instruído com:",
+      "notas": []
+     },
+     {
+      "id": "p4.I",
+      "texto": "I - o parecer técnico conclusivo do órgão competente sobre a viabilidade técnica, operacional e, quando for o caso, sobre as obrigações orçamentário-financeiras a serem assumidas;",
+      "notas": []
+     },
+     {
+      "id": "p4.II",
+      "texto": "II - o parecer conclusivo do órgão jurídico sobre a viabilidade jurídica do compromisso, que conterá a análise da minuta proposta;",
+      "notas": []
+     },
+     {
+      "id": "p4.III",
+      "texto": "III - a minuta do compromisso, que conterá as alterações decorrentes das análises técnica e jurídica previstas nos incisos I e II; e",
+      "notas": []
+     },
+     {
+      "id": "p4.IV",
+      "texto": "IV - a cópia de outros documentos que possam auxiliar na decisão de celebrar o compromisso.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Na hipótese de o compromisso depender de autorização do Advogado-Geral da União e de Ministro de Estado, nos termos do disposto no § 4º do art. 1º ou no art. 4º-A da Lei nº 9.469, de 10 de julho de 1997, ou ser firmado pela Advocacia-Geral da União, o processo de que trata o § 3º será acompanhado de manifestação de interesse da autoridade máxima do órgão ou da entidade da administração pública na celebração do compromisso.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º Na hipótese de que trata o § 5º, a decisão final quanto à celebração do compromisso será do Advogado-Geral da União, nos termos do disposto no parágrafo único do art. 4º-A da Lei nº 9.469, de 1997.",
+      "notas": []
+     }
+    ],
+    "12": [
+     {
+      "id": "caput",
+      "texto": "Art. 12. O agente público somente poderá ser responsabilizado por suas decisões ou opiniões técnicas se agir ou se omitir com dolo, direto ou eventual, ou cometer erro grosseiro, no desempenho de suas funções.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Considera-se erro grosseiro aquele manifesto, evidente e inescusável praticado com culpa grave, caracterizado por ação ou omissão com elevado grau de negligência, imprudência ou imperícia.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Não será configurado dolo ou erro grosseiro do agente público se não restar comprovada, nos autos do processo de responsabilização, situação ou circunstância fática capaz de caracterizar o dolo ou o erro grosseiro.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º O mero nexo de causalidade entre a conduta e o resultado danoso não implica responsabilização, exceto se comprovado o dolo ou o erro grosseiro do agente público.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º A complexidade da matéria e das atribuições exercidas pelo agente público serão consideradas em eventual responsabilização do agente público.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º O montante do dano ao erário, ainda que expressivo, não poderá, por si só, ser elemento para caracterizar o erro grosseiro ou o dolo.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º A responsabilização pela opinião técnica não se estende de forma automática ao decisor que a adotou como fundamento de decidir e somente se configurará se estiverem presentes elementos suficientes para o decisor aferir o dolo ou o erro grosseiro da opinião técnica ou se houver conluio entre os agentes.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º No exercício do poder hierárquico, só responderá por culpa in vigilando aquele cuja omissão caracterizar erro grosseiro ou dolo.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º O disposto neste artigo não exime o agente público de atuar de forma diligente e eficiente no cumprimento dos seus deveres constitucionais e legais.",
+      "notas": []
+     }
+    ],
+    "13": [
+     {
+      "id": "caput",
+      "texto": "Art. 13. A análise da regularidade da decisão não poderá substituir a atribuição do agente público, dos órgãos ou das entidades da administração pública no exercício de suas atribuições e competências, inclusive quanto à definição de políticas públicas.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A atução de órgãos de controle privilegiará ações de prevenção antes de processos sancionadores.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A eventual estimativa de prejuízo causado ao erário não poderá ser considerada isolada e exclusivamente como motivação para se concluir pela irregularidade de atos, contratos, ajustes, processos ou normas administrativos.",
+      "notas": []
+     }
+    ],
+    "19": [
+     {
+      "id": "caput",
+      "texto": "Art. 19. As autoridades públicas atuarão com vistas a aumentar a segurança jurídica na aplicação das normas, inclusive por meio de normas complementares, orientações normativas, súmulas, enunciados e respostas a consultas.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. Os instrumentos previstos no caput terão caráter vinculante em relação ao órgão ou à entidade da administração pública a que se destinarem, até ulterior revisão.",
+      "notas": []
+     }
+    ],
+    "20": [
+     {
+      "id": "caput",
+      "texto": "Art. 20. O parecer do Advogado-Geral da União de que tratam os art. 40 e art. 41 da Lei Complementar nº 73, 10 de fevereiro de 1993, aprovado pelo Presidente da República e publicado no Diário Oficial da União juntamente com o despacho presidencial, vincula os órgãos e as entidades da administração pública federal, que ficam obrigados a lhe dar fiel cumprimento.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O parecer do Advogado-Geral da União aprovado pelo Presidente da República, mas não publicado, obriga apenas as repartições interessadas, a partir do momento em que dele tenham ciência.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Os pareceres de que tratam o caput e o § 1º têm prevalência sobre outros mecanismos de uniformização de entendimento.",
+      "notas": []
+     }
+    ],
+    "21": [
+     {
+      "id": "caput",
+      "texto": "Art. 21. Os pareceres das consultorias jurídicas e dos órgãos de assessoramento jurídico, de que trata o art. 42 da Lei Complementar nº 73, de 1993, aprovados pelo respectivo Ministro de Estado, vinculam o órgão e as respectivas entidades vinculadas.",
+      "notas": []
+     }
+    ],
+    "22": [
+     {
+      "id": "caput",
+      "texto": "Art. 22. A autoridade que representa órgão central de sistema poderá editar orientações normativas ou enunciados que vincularão os órgãos setoriais e seccionais.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º As controvérsias jurídicas sobre a interpretação de norma, instrução ou orientação de órgão central de sistema poderão ser submetidas à Advocacia-Geral da União.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A submissão à Advocacia-Geral da União de que trata o § 1º será instruída com a posição do órgão jurídico do órgão central de sistema, do órgão jurídico que divergiu e dos outros órgãos que se pronunciaram sobre o caso.",
+      "notas": []
+     }
+    ],
+    "23": [
+     {
+      "id": "caput",
+      "texto": "Art. 23. A autoridade máxima de órgão ou da entidade da administração pública poderá editar enunciados que vinculem o próprio órgão ou a entidade e os seus órgãos subordinados.",
+      "notas": []
+     }
+    ],
+    "24": [
+     {
+      "id": "caput",
+      "texto": "Art. 24. Compete aos órgãos e às entidades da administração pública manter atualizados, em seus sítios eletrônicos, as normas complementares, as orientações normativas, as súmulas e os enunciados a que se referem os art. 19 ao art. 23.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "d9739": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9739.htm",
+   "artigos": {
+    "20": [
+     {
+      "id": "caput",
+      "texto": "Art. 20. As atividades de desenvolvimento organizacional dos órgãos e das entidades da administração pública federal direta, autárquica e fundacional são organizadas sob a forma de sistema, denominado Sistema de Organização e Inovação Institucional do Governo Federal - SIORG, com as seguintes finalidades:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - uniformizar e integrar ações das unidades que o compõem;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - constituir rede colaborativa destinada à melhoria da gestão pública;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - desenvolver padrões de qualidade e de racionalidade;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - proporcionar os meios para melhorar o desempenho institucional e otimizar a utilização dos recursos disponíveis; e",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - reduzir os custos operacionais e assegurar a continuidade dos processos de organização e inovação institucional.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. Para fins do disposto neste Decreto, consideram-se funções básicas de organização e inovação institucional:",
+      "notas": []
+     },
+     {
+      "id": "pu.I",
+      "texto": "I - definição das competências dos órgãos e das entidades e das atribuições de seus dirigentes;",
+      "notas": []
+     },
+     {
+      "id": "pu.II",
+      "texto": "II - organização e funcionamento da administração pública federal;",
+      "notas": []
+     },
+     {
+      "id": "pu.III",
+      "texto": "III - estabelecimento de programas de melhoria do desempenho dos órgãos e das entidades;",
+      "notas": []
+     },
+     {
+      "id": "pu.IV",
+      "texto": "IV - geração, adaptação e difusão de tecnologias de inovação;",
+      "notas": []
+     },
+     {
+      "id": "pu.V",
+      "texto": "V - racionalização de métodos e de processos administrativos;",
+      "notas": []
+     },
+     {
+      "id": "pu.VI",
+      "texto": "VI - elaboração de planos de formação, desenvolvimento e treinamento do pessoal envolvido na área de abrangência do sistema; e",
+      "notas": []
+     },
+     {
+      "id": "pu.VII",
+      "texto": "VII - difusão de informações organizacionais e de desempenho da gestão administrativa.",
+      "notas": []
+     }
+    ],
+    "21": [
+     {
+      "id": "caput",
+      "texto": "Art. 21. São integrantes do SIORG todas as unidades administrativas responsáveis pelas atividades de organização e inovação institucional da administração pública federal direta, autárquica e fundacional, observada a seguinte estrutura:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - órgão central - Ministério da Economia, por meio da Secretaria de Gestão da Secretaria Especial de Desburocratização, Gestão e Governo Digital;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - órgãos setoriais - Secretarias-Executivas ou equivalentes, assessoradas pelas unidades administrativas responsáveis pela área de organização e inovação institucional dos Ministérios e dos órgãos integrantes da Presidência da República; e",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - órgãos seccionais - diretorias administrativas ou equivalentes, que atuam na área de organização e inovação institucional, nas autarquias e nas fundações.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Para os fins do disposto neste Decreto, as unidades setoriais e seccionais do SIORG subordinam-se tecnicamente ao órgão central do SIORG, sem prejuízo da subordinação administrativa decorrente de sua posição na estrutura do órgão ou da entidade em que se encontrem.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Caberá às unidades setoriais a articulação com as unidades seccionais a elas vinculadas, com o objetivo de contribuir para a integração sistêmica do SIORG.",
+      "notas": []
+     }
+    ],
+    "22": [
+     {
+      "id": "caput",
+      "texto": "Art. 22. Ao órgão central do SIORG compete:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - definir, padronizar, sistematizar e estabelecer os procedimentos inerentes às atividades de organização e inovação institucional, por meio da edição de enunciados e de instruções;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - estabelecer fluxos de informação entre as unidades integrantes do SIORG e os demais sistemas de atividades auxiliares, com vistas a subsidiar os processos de decisão e a coordenação das atividades governamentais;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - gerar e difundir tecnologias e instrumentos metodológicos destinados ao planejamento, à execução e ao controle das atividades de organização e inovação institucional;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - orientar e conduzir o processo de organização e inovação institucional;",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - analisar e manifestar-se sobre propostas de:",
+      "notas": []
+     },
+     {
+      "id": "V.a",
+      "texto": "a) criação e extinção de órgãos e de entidades;",
+      "notas": []
+     },
+     {
+      "id": "V.b",
+      "texto": "b) definição das competências dos órgãos e das entidades e das atribuições de seus dirigentes;",
+      "notas": []
+     },
+     {
+      "id": "V.c",
+      "texto": "c) revisão de categoria jurídico-institucional dos órgãos e das entidades;",
+      "notas": []
+     },
+     {
+      "id": "V.d",
+      "texto": "d) remanejamento de cargos em comissão e de funções de confiança;",
+      "notas": []
+     },
+     {
+      "id": "V.e",
+      "texto": "e) criação, transformação e extinção de cargos públicos e funções de confiança; e",
+      "notas": []
+     },
+     {
+      "id": "V.f",
+      "texto": "f) aprovação e revisão de estrutura regimental e de estatuto;",
+      "notas": []
+     },
+     {
+      "id": "VI",
+      "texto": "VI - promover estudos e propor a criação, a fusão, a reorganização, a transferência e a extinção de órgãos e de entidades;",
+      "notas": []
+     },
+     {
+      "id": "VII",
+      "texto": "VII - administrar o cadastro de órgãos e de entidades; e",
+      "notas": []
+     },
+     {
+      "id": "VIII",
+      "texto": "VIII - gerenciar o cadastramento de usuários e definir o perfil de acesso para os responsáveis dos órgãos e das entidades que integram o SIORG.",
+      "notas": []
+     }
+    ],
+    "23": [
+     {
+      "id": "caput",
+      "texto": "Art. 23. Às unidades setoriais e seccionais do SIORG compete:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - cumprir e fazer cumprir as normas de organização e inovação institucional editadas pelo órgão central;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - propor ações e sugerir prioridades nas atividades de organização e inovação institucional da respectiva área de atuação;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - acompanhar e avaliar os programas e os projetos de organização e inovação institucional e informar ao órgão central;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - organizar e divulgar informações sobre estrutura regimental, estatuto, normas, rotinas, manuais de orientação, regimentos internos, instruções e procedimentos operacionais;",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - elaborar e rever periodicamente os documentos normativos necessários para o funcionamento das atividades de organização e inovação institucional, conforme os padrões e a orientação estabelecidos;",
+      "notas": []
+     },
+     {
+      "id": "VI",
+      "texto": "VI - normatizar, racionalizar e simplificar instrumentos, procedimentos e rotinas de trabalho;",
+      "notas": []
+     },
+     {
+      "id": "VII",
+      "texto": "VII - desenvolver padrões de qualidade e funcionalidade destinados à melhoria do desempenho dos trabalhos e dos serviços prestados;",
+      "notas": []
+     },
+     {
+      "id": "VIII",
+      "texto": "VIII - manter atualizadas, no sistema informatizado do SIORG, as informações sobre:",
+      "notas": []
+     },
+     {
+      "id": "VIII.a",
+      "texto": "a) a estrutura organizacional;",
+      "notas": []
+     },
+     {
+      "id": "VIII.b",
+      "texto": "b) o regimento interno;",
+      "notas": []
+     },
+     {
+      "id": "VIII.c",
+      "texto": "c) a denominação dos cargos em comissão, das funções de confiança e das unidades administrativas; e",
+      "notas": []
+     },
+     {
+      "id": "VIII.d",
+      "texto": "d) os endereços e os contatos institucionais; e",
+      "notas": []
+     },
+     {
+      "id": "IX",
+      "texto": "IX - disponibilizar, no sítio eletrônico do órgão ou da entidade, as estruturas organizacionais registradas no sistema informatizado do SIORG.",
+      "notas": []
+     }
+    ],
+    "24": [
+     {
+      "id": "caput",
+      "texto": "Art. 24. O suporte às atividades de organização e inovação institucional contará com um sistema informatizado que conterá o cadastro oficial com as seguintes informações dos órgãos e das entidades integrantes do SIORG:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - as estruturas;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - as competências;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - os cargos em comissão e as funções de confiança;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - o regimento interno; e",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - os endereços e os contatos institucionais.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O sistema informatizado de que trata o caput garantirá amplo acesso às informações de seu cadastro oficial.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "d10534": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/decreto/d10534.htm",
+   "artigos": {
+    "1": [
+     {
+      "id": "caput",
+      "texto": "Art. 1º Fica instituída a Política Nacional de Inovação, no âmbito da administração pública federal, com a finalidade de:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - orientar, coordenar e articular as estratégias, os programas e as ações de fomento à inovação no setor produtivo, para estimular o aumento da produtividade e da competitividade das empresas e demais instituições que gerem inovação no País, nos termos do disposto na Lei nº 10.973, de 2 de dezembro de 2004; e",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - estabelecer mecanismos de cooperação entre os Estados, o Distrito Federal e os Municípios para promover o alinhamento das iniciativas e das políticas federais de fomento à inovação com as iniciativas e as políticas formuladas e implementadas pelos outros entes federativos.",
+      "notas": []
+     }
+    ],
+    "2": [
+     {
+      "id": "caput",
+      "texto": "Art. 2º As estratégias, os programas e as ações da Política Nacional de Inovação têm a finalidade de garantir a inovação no ambiente produtivo e social, capaz de enfrentar os desafios associados ao desenvolvimento do País, nos termos do disposto na Lei nº 10.973, de 2 de dezembro de 2004.",
+      "notas": []
+     }
+    ],
+    "3": [
+     {
+      "id": "caput",
+      "texto": "Art. 3º A Política Nacional de Inovação consiste:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - no estabelecimento dos princípios, dos eixos, dos objetivos e das diretrizes de longo prazo que nortearão as estratégias, os programas e as ações do Governo federal que visam ao incentivo à inovação, à pesquisa e ao desenvolvimento no setor produtivo, para promover o aumento da produtividade e da competitividade da economia brasileira;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - na instituição do referencial para identificar, priorizar e alinhar as iniciativas e as políticas de fomento à inovação do Governo federal e para orientar a formulação de medidas novas de fomento e de apoio à inovação;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - na estruturação de governança interministerial para articular, orientar, priorizar e acompanhar a ação governamental no fomento e no apoio à inovação; e",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - no estabelecimento de diretrizes para monitorar e avaliar as políticas, os programas e as ações de fomento e de apoio do Governo federal à inovação.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "l14129": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm",
+   "artigos": {
+    "44": [
+     {
+      "id": "caput",
+      "texto": "Art. 44. Os entes públicos poderão instituir laboratórios de inovação, abertos à participação e à colaboração da sociedade para o desenvolvimento e a experimentação de conceitos, de ferramentas e de métodos inovadores para a gestão pública, a prestação de serviços públicos, o tratamento de dados produzidos pelo poder público e a participação do cidadão no controle da administração pública.",
+      "notas": []
+     }
+    ],
+    "45": [
+     {
+      "id": "caput",
+      "texto": "Art. 45. Os laboratórios de inovação terão como diretrizes:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - colaboração interinstitucional e com a sociedade;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - promoção e experimentação de tecnologias abertas e livres;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - uso de práticas de desenvolvimento e prototipação de softwares e de métodos ágeis para formulação e implementação de políticas públicas;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - foco na sociedade e no cidadão;",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - fomento à participação social e à transparência pública;",
+      "notas": []
+     },
+     {
+      "id": "VI",
+      "texto": "VI - incentivo à inovação;",
+      "notas": []
+     },
+     {
+      "id": "VII",
+      "texto": "VII - apoio ao empreendedorismo inovador e fomento a ecossistema de inovação tecnológica direcionado ao setor público;",
+      "notas": []
+     },
+     {
+      "id": "VIII",
+      "texto": "VIII - apoio a políticas públicas orientadas por dados e com base em evidências, a fim de subsidiar a tomada de decisão e de melhorar a gestão pública;",
+      "notas": []
+     },
+     {
+      "id": "IX",
+      "texto": "IX - estímulo à participação de servidores, de estagiários e de colaboradores em suas atividades;",
+      "notas": []
+     },
+     {
+      "id": "X",
+      "texto": "X - difusão de conhecimento no âmbito da administração pública.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "l14133": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm",
+   "artigos": {
+    "6": [
+     {
+      "id": "caput",
+      "texto": "Art. 6º Para os fins desta Lei, consideram-se:",
+      "notas": []
+     },
+     {
+      "id": "XLII",
+      "texto": "XLII - diálogo competitivo: modalidade de licitação para contratação de obras, serviços e compras em que a Administração Pública realiza diálogos com licitantes previamente selecionados mediante critérios objetivos, com o intuito de desenvolver uma ou mais alternativas capazes de atender às suas necessidades, devendo os licitantes apresentar proposta final após o encerramento dos diálogos;",
+      "notas": []
+     }
+    ],
+    "11": [
+     {
+      "id": "caput",
+      "texto": "Art. 11. O processo licitatório tem por objetivos:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - assegurar a seleção da proposta apta a gerar o resultado de contratação mais vantajoso para a Administração Pública, inclusive no que se refere ao ciclo de vida do objeto;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - assegurar tratamento isonômico entre os licitantes, bem como a justa competição;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - evitar contratações com sobrepreço ou com preços manifestamente inexequíveis e superfaturamento na execução dos contratos;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - incentivar a inovação e o desenvolvimento nacional sustentável.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. A alta administração do órgão ou entidade é responsável pela governança das contratações e deve implementar processos e estruturas, inclusive de gestão de riscos e controles internos, para avaliar, direcionar e monitorar os processos licitatórios e os respectivos contratos, com o intuito de alcançar os objetivos estabelecidos no caput deste artigo, promover um ambiente íntegro e confiável, assegurar o alinhamento das contratações ao planejamento estratégico e às leis orçamentárias e promover eficiência, efetividade e eficácia em suas contratações.",
+      "notas": []
+     }
+    ],
+    "32": [
+     {
+      "id": "caput",
+      "texto": "Art. 32. A modalidade diálogo competitivo é restrita a contratações em que a Administração:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - vise a contratar objeto que envolva as seguintes condições:",
+      "notas": []
+     },
+     {
+      "id": "I.a",
+      "texto": "a) inovação tecnológica ou técnica;",
+      "notas": []
+     },
+     {
+      "id": "I.b",
+      "texto": "b) impossibilidade de o órgão ou entidade ter sua necessidade satisfeita sem a adaptação de soluções disponíveis no mercado; e",
+      "notas": []
+     },
+     {
+      "id": "I.c",
+      "texto": "c) impossibilidade de as especificações técnicas serem definidas com precisão suficiente pela Administração;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - verifique a necessidade de definir e identificar os meios e as alternativas que possam satisfazer suas necessidades, com destaque para os seguintes aspectos:",
+      "notas": []
+     },
+     {
+      "id": "II.a",
+      "texto": "a) a solução técnica mais adequada;",
+      "notas": []
+     },
+     {
+      "id": "II.b",
+      "texto": "b) os requisitos técnicos aptos a concretizar a solução já definida;",
+      "notas": []
+     },
+     {
+      "id": "II.c",
+      "texto": "c) a estrutura jurídica ou financeira do contrato;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - (VETADO).",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Na modalidade diálogo competitivo, serão observadas as seguintes disposições:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - a Administração apresentará, por ocasião da divulgação do edital em sítio eletrônico oficial, suas necessidades e as exigências já definidas e estabelecerá prazo mínimo de 25 (vinte e cinco) dias úteis para manifestação de interesse na participação da licitação;",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - os critérios empregados para pré-seleção dos licitantes deverão ser previstos em edital, e serão admitidos todos os interessados que preencherem os requisitos objetivos estabelecidos;",
+      "notas": []
+     },
+     {
+      "id": "p1.III",
+      "texto": "III - a divulgação de informações de modo discriminatório que possa implicar vantagem para algum licitante será vedada;",
+      "notas": []
+     },
+     {
+      "id": "p1.IV",
+      "texto": "IV - a Administração não poderá revelar a outros licitantes as soluções propostas ou as informações sigilosas comunicadas por um licitante sem o seu consentimento;",
+      "notas": []
+     },
+     {
+      "id": "p1.V",
+      "texto": "V - a fase de diálogo poderá ser mantida até que a Administração, em decisão fundamentada, identifique a solução ou as soluções que atendam às suas necessidades;",
+      "notas": []
+     },
+     {
+      "id": "p1.VI",
+      "texto": "VI - as reuniões com os licitantes pré-selecionados serão registradas em ata e gravadas mediante utilização de recursos tecnológicos de áudio e vídeo;",
+      "notas": []
+     },
+     {
+      "id": "p1.VII",
+      "texto": "VII - o edital poderá prever a realização de fases sucessivas, caso em que cada fase poderá restringir as soluções ou as propostas a serem discutidas;",
+      "notas": []
+     },
+     {
+      "id": "p1.VIII",
+      "texto": "VIII - a Administração deverá, ao declarar que o diálogo foi concluído, juntar aos autos do processo licitatório os registros e as gravações da fase de diálogo, iniciar a fase competitiva com a divulgação de edital contendo a especificação da solução que atenda às suas necessidades e os critérios objetivos a serem utilizados para seleção da proposta mais vantajosa e abrir prazo, não inferior a 60 (sessenta) dias úteis, para todos os licitantes pré-selecionados na forma do inciso II deste parágrafo apresentarem suas propostas, que deverão conter os elementos necessários para a realização do projeto;",
+      "notas": []
+     },
+     {
+      "id": "p1.IX",
+      "texto": "IX - a Administração poderá solicitar esclarecimentos ou ajustes às propostas apresentadas, desde que não impliquem discriminação nem distorçam a concorrência entre as propostas;",
+      "notas": []
+     },
+     {
+      "id": "p1.X",
+      "texto": "X - a Administração definirá a proposta vencedora de acordo com critérios divulgados no início da fase competitiva, assegurada a contratação mais vantajosa como resultado;",
+      "notas": []
+     },
+     {
+      "id": "p1.XI",
+      "texto": "XI - o diálogo competitivo será conduzido por comissão de contratação composta de pelo menos 3 (três) servidores efetivos ou empregados públicos pertencentes aos quadros permanentes da Administração, admitida a contratação de profissionais para assessoramento técnico da comissão;",
+      "notas": []
+     },
+     {
+      "id": "p1.XII",
+      "texto": "XII - (VETADO).",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Os profissionais contratados para os fins do inciso XI do § 1º deste artigo assinarão termo de confidencialidade e abster-se-ão de atividades que possam configurar conflito de interesses.",
+      "notas": []
+     }
+    ],
+    "75": [
+     {
+      "id": "caput",
+      "texto": "Art. 75. É dispensável a licitação:",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - para contratação com vistas ao cumprimento do disposto nos arts. 3º, 3º-A, 4º, 5º e 20 da Lei nº 10.973, de 2 de dezembro de 2004, observados os princípios gerais de contratação constantes da referida Lei;",
+      "notas": []
+     }
+    ],
+    "81": [
+     {
+      "id": "caput",
+      "texto": "Art. 81. A Administração poderá solicitar à iniciativa privada, mediante procedimento aberto de manifestação de interesse a ser iniciado com a publicação de edital de chamamento público, a propositura e a realização de estudos, investigações, levantamentos e projetos de soluções inovadoras que contribuam com questões de relevância pública, na forma de regulamento.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Os estudos, as investigações, os levantamentos e os projetos vinculados à contratação e de utilidade para a licitação, realizados pela Administração ou com a sua autorização, estarão à disposição dos interessados, e o vencedor da licitação deverá ressarcir os dispêndios correspondentes, conforme especificado no edital.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A realização, pela iniciativa privada, de estudos, investigações, levantamentos e projetos em decorrência do procedimento de manifestação de interesse previsto no caput deste artigo:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - não atribuirá ao realizador direito de preferência no processo licitatório;",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - não obrigará o poder público a realizar licitação;",
+      "notas": []
+     },
+     {
+      "id": "p2.III",
+      "texto": "III - não implicará, por si só, direito a ressarcimento de valores envolvidos em sua elaboração;",
+      "notas": []
+     },
+     {
+      "id": "p2.IV",
+      "texto": "IV - será remunerada somente pelo vencedor da licitação, vedada, em qualquer hipótese, a cobrança de valores do poder público.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Para aceitação dos produtos e serviços de que trata o caput deste artigo, a Administração deverá elaborar parecer fundamentado com a demonstração de que o produto ou serviço entregue é adequado e suficiente à compreensão do objeto, de que as premissas adotadas são compatíveis com as reais necessidades do órgão e de que a metodologia proposta é a que propicia maior economia e vantagem entre as demais possíveis.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º O procedimento previsto no caput deste artigo poderá ser restrito a startups, assim considerados os microempreendedores individuais, as microempresas e as empresas de pequeno porte, de natureza emergente e com grande potencial, que se dediquem à pesquisa, ao desenvolvimento e à implementação de novos produtos ou serviços baseados em soluções tecnológicas inovadoras que possam causar alto impacto, exigida, na seleção definitiva da inovação, validação prévia fundamentada em métricas objetivas, de modo a demonstrar o atendimento das necessidades da Administração.",
+      "notas": []
+     }
+    ],
+    "169": [
+     {
+      "id": "caput",
+      "texto": "Art. 169. As contratações públicas deverão submeter-se a práticas contínuas e permanentes de gestão de riscos e de controle preventivo, inclusive mediante adoção de recursos de tecnologia da informação, e, além de estar subordinadas ao controle social, sujeitar-se-ão às seguintes linhas de defesa:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - primeira linha de defesa, integrada por servidores e empregados públicos, agentes de licitação e autoridades que atuam na estrutura de governança do órgão ou entidade;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - segunda linha de defesa, integrada pelas unidades de assessoramento jurídico e de controle interno do próprio órgão ou entidade;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - terceira linha de defesa, integrada pelo órgão central de controle interno da Administração e pelo tribunal de contas.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Na forma de regulamento, a implementação das práticas a que se refere o caput deste artigo será de responsabilidade da alta administração do órgão ou entidade e levará em consideração os custos e os benefícios decorrentes de sua implementação, optando-se pelas medidas que promovam relações íntegras e confiáveis, com segurança jurídica para todos os envolvidos, e que produzam o resultado mais vantajoso para a Administração, com eficiência, eficácia e efetividade nas contratações públicas.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Para a realização de suas atividades, os órgãos de controle deverão ter acesso irrestrito aos documentos e às informações necessárias à realização dos trabalhos, inclusive aos documentos classificados pelo órgão ou entidade nos termos da Lei nº 12.527, de 18 de novembro de 2011, e o órgão de controle com o qual foi compartilhada eventual informação sigilosa tornar-se-á corresponsável pela manutenção do seu sigilo.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Os integrantes das linhas de defesa a que se referem os incisos I, II e III do caput deste artigo observarão o seguinte:",
+      "notas": []
+     },
+     {
+      "id": "p3.I",
+      "texto": "I - quando constatarem simples impropriedade formal, adotarão medidas para o seu saneamento e para a mitigação de riscos de sua nova ocorrência, preferencialmente com o aperfeiçoamento dos controles preventivos e com a capacitação dos agentes públicos responsáveis;",
+      "notas": []
+     },
+     {
+      "id": "p3.II",
+      "texto": "II - quando constatarem irregularidade que configure dano à Administração, sem prejuízo das medidas previstas no inciso I deste § 3º, adotarão as providências necessárias para a apuração das infrações administrativas, observadas a segregação de funções e a necessidade de individualização das condutas, bem como remeterão ao Ministério Público competente cópias dos documentos cabíveis para a apuração dos ilícitos de sua competência.",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "d12002": {
+   "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/decreto/d12002.htm",
+   "artigos": {
+    "3": [
+     {
+      "id": "caput",
+      "texto": "Art. 3º Compete aos órgãos e às entidades da administração pública federal direta, autárquica e fundacional, previamente à elaboração do ato normativo, analisar o problema identificado e a solução a ser adotada.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O Anexo contém questões a serem avaliadas previamente à elaboração do ato normativo e consiste em guia para auxiliar na análise de que trata o caput.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O Anexo não deve ser formalmente preenchido.",
+      "notas": []
+     }
+    ],
+    "11": [
+     {
+      "id": "caput",
+      "texto": "Art. 11. As disposições normativas serão redigidas com clareza, precisão e ordem lógica, e observarão o seguinte:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - para obtenção da clareza:",
+      "notas": []
+     },
+     {
+      "id": "I.a",
+      "texto": "a) empregar as palavras e as expressões em seu sentido comum, exceto quando a norma versar sobre assunto técnico, hipótese em que se poderá empregar a nomenclatura própria da área sobre a qual dispõe o ato normativo;",
+      "notas": []
+     },
+     {
+      "id": "I.b",
+      "texto": "b) usar frases curtas e concisas;",
+      "notas": []
+     },
+     {
+      "id": "I.c",
+      "texto": "c) usar orações na ordem direta;",
+      "notas": []
+     },
+     {
+      "id": "I.d",
+      "texto": "d) evitar preciosismos, neologismos e adjetivações; e",
+      "notas": []
+     },
+     {
+      "id": "I.e",
+      "texto": "e) buscar a uniformidade do tempo verbal e usar, preferencialmente, o presente ou o futuro do presente do modo indicativo;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - para obtenção da precisão:",
+      "notas": []
+     },
+     {
+      "id": "II.a",
+      "texto": "a) articular a linguagem mais adequada, comum ou técnica, à compreensão do objetivo, do conteúdo e do alcance do ato normativo;",
+      "notas": []
+     },
+     {
+      "id": "II.b",
+      "texto": "b) respeitar as regras gramaticais e ortográficas da norma culta da língua portuguesa;",
+      "notas": []
+     },
+     {
+      "id": "II.c",
+      "texto": "c) expressar a ideia, quando repetida ao longo do texto, por meio das mesmas palavras, de modo a evitar o emprego de sinonímia;",
+      "notas": []
+     },
+     {
+      "id": "II.d",
+      "texto": "d) não usar palavra ou expressão:",
+      "notas": []
+     },
+     {
+      "id": "II.e",
+      "texto": "e) escolher termos que tenham o mesmo significado na maior parte do território nacional;",
+      "notas": []
+     },
+     {
+      "id": "II.f",
+      "texto": "f) quanto às siglas ou aos acrônimos:",
+      "notas": []
+     },
+     {
+      "id": "II.g",
+      "texto": "g) usar no penúltimo inciso, alínea, item ou subitem:",
+      "notas": []
+     },
+     {
+      "id": "II.h",
+      "texto": "h) grafar os números das seguintes formas:",
+      "notas": []
+     },
+     {
+      "id": "II.i",
+      "texto": "i) grafar as datas das seguintes formas:",
+      "notas": []
+     },
+     {
+      "id": "II.j",
+      "texto": "j) grafar a indicação do ano sem o ponto entre as casas do milhar e da centena;",
+      "notas": []
+     },
+     {
+      "id": "II.k",
+      "texto": "k) grafar a remissão aos atos normativos das seguintes formas:",
+      "notas": []
+     },
+     {
+      "id": "II.l",
+      "texto": "l) quanto às remissões:",
+      "notas": []
+     },
+     {
+      "id": "II.m",
+      "texto": "m) referir-se a unidades administrativas de forma completa na primeira menção, com a denominação das unidades administrativas superiores e do órgão ou da entidade a que pertençam; e",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - para a obtenção da ordem lógica:",
+      "notas": []
+     },
+     {
+      "id": "III.a",
+      "texto": "a) reunir sob as categorias de agregação – livro, título, capítulo, seção e subseção – apenas as disposições relacionadas com a matéria nelas especificada;",
+      "notas": []
+     },
+     {
+      "id": "III.b",
+      "texto": "b) restringir o conteúdo de cada artigo a apenas um assunto ou princípio;",
+      "notas": []
+     },
+     {
+      "id": "III.c",
+      "texto": "c) restringir o texto do dispositivo a apenas um período;",
+      "notas": []
+     },
+     {
+      "id": "III.d",
+      "texto": "d) expressar por meio dos parágrafos apenas os aspectos complementares à norma enunciada no caput do artigo e as exceções à regra por ela estabelecida; e",
+      "notas": []
+     },
+     {
+      "id": "III.e",
+      "texto": "e) promover as discriminações e as enumerações por meio dos incisos, das alíneas, dos itens e dos subitens.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Os atos normativos não conterão dispositivo com relação de conceitos, exceto quando usarem expressão ou palavra:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - nova, que não conste de dicionários de língua portuguesa, cujo significado não possa ser reconhecido imediatamente pelo intérprete, e que não possa ser substituída por outra já reconhecida; ou",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - com múltiplos significados, de modo que se torne necessário delimitar o significado empregado no ato normativo.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O uso de conceitos a que se refere o § 1º será justificado nos pareceres constantes do processo.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Os conceitos a que se refere o § 1º não poderão gerar antinomia com aqueles estabelecidos por entes públicos com competência na matéria.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º A expressão “e/ou” não será usada em atos normativos.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º O texto do primeiro artigo do ato normativo não formará locução com o verbo constante na ordem de execução nem será iniciado com verbo no infinitivo impessoal.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º Nos atos normativos que tratem da imposição de licenças ou autorizações como requisito para importações ou exportações, em razão de características das mercadorias, constará a identificação das mercadorias que se submetem aos processos de licenciamento ou de autorização, usada como referência sua classificação na Nomenclatura Comum do Mercosul.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º O disposto no § 6º não se aplica às normas de natureza tributária ou aduaneira de competência da Secretaria Especial da Receita Federal do Brasil do Ministério da Fazenda.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º Ressalvadas as normas de Direito Financeiro, os atos normativos não conterão textos explicativos, dissertativos ou que tenham como objetivo explicar iniciativas ou políticas públicas.",
+      "notas": []
+     },
+     {
+      "id": "p9",
+      "texto": "§ 9º A denominação de cargo público ou função de confiança mencionada em ato normativo poderá ser flexionada conforme o gênero da pessoa que a ocupe no momento da proposição do ato normativo.",
+      "notas": []
+     },
+     {
+      "id": "p10",
+      "texto": "§ 10. Alternativamente ao disposto no § 9º, as Ministras de Estado e os Ministros de Estado poderão ser referidos como autoridade máxima do órgão.",
+      "notas": []
+     }
+    ],
+    "27": [
+     {
+      "id": "caput",
+      "texto": "Art. 27. A consulta pública poderá ser realizada:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - no caso de ato normativo a ser submetido ao Presidente da República, pelos órgãos competentes para referendar a proposta final sobre a matéria; e",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - no caso de ato normativo inferior a decreto, pelo órgão ou pela entidade competente na matéria, em articulação com os órgãos e as entidades afetados pela proposta.",
+      "notas": []
+     }
+    ],
+    "29": [
+     {
+      "id": "caput",
+      "texto": "Art. 29. O ato de abertura da consulta pública conterá:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - o endereço do sítio eletrônico em que constará a proposta de ato normativo objeto de consulta pública e, quando couber, os documentos que a subsidiam;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - o endereço do sítio eletrônico em que serão recebidas as manifestações dos interessados; e",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - o período de realização da consulta pública.",
+      "notas": []
+     }
+    ],
+    "30": [
+     {
+      "id": "caput",
+      "texto": "Art. 30. As consultas públicas serão processadas e divulgadas no portal eletrônico Participa + Brasil.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º No caso de consulta pública referente a proposta de ato normativo inferior a decreto, a consulta pública poderá ser processada e divulgada em portal eletrônico do próprio órgão ou entidade.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O disposto no § 1º não afasta a obrigação de divulgação concomitante no portal eletrônico Participa + Brasil.",
+      "notas": []
+     }
+    ],
+    "32": [
+     {
+      "id": "caput",
+      "texto": "Art. 32. O resultado da consulta pública não vinculará o ente público.",
+      "notas": []
+     }
+    ],
+    "34": [
+     {
+      "id": "caput",
+      "texto": "Art. 34. Os colegiados criados por ato normativo inferior a decreto poderão ter as seguintes finalidades:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - assessoramento;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - articulação;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - monitoramento de políticas públicas;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - formulação de propostas;",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - normatização de questões internas do órgão, da entidade ou da unidade administrativa; e",
+      "notas": []
+     },
+     {
+      "id": "VI",
+      "texto": "VI - deliberação.",
+      "notas": []
+     },
+     {
+      "id": "pu",
+      "texto": "Parágrafo único. O colegiado criado por ato normativo inferior a decreto não poderá assumir competência atribuída a outro órgão, entidade ou unidade administrativa por ato normativo superior.",
+      "notas": []
+     }
+    ],
+    "58": [
+     {
+      "id": "caput",
+      "texto": "Art. 58. O parecer de mérito conterá:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - a análise do problema que o ato normativo visa solucionar;",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - os objetivos que se pretende alcançar;",
+      "notas": []
+     },
+     {
+      "id": "III",
+      "texto": "III - a identificação dos atingidos pelo ato normativo;",
+      "notas": []
+     },
+     {
+      "id": "IV",
+      "texto": "IV - quando aplicável, a estratégia e o prazo para implementação;",
+      "notas": []
+     },
+     {
+      "id": "V",
+      "texto": "V - a informação orçamentário-financeira, nos termos do disposto nos § 1º e § 2º;",
+      "notas": []
+     },
+     {
+      "id": "VI",
+      "texto": "VI - quando aplicável, a análise do impacto da medida:",
+      "notas": []
+     },
+     {
+      "id": "VI.a",
+      "texto": "a) sobre o meio ambiente; e",
+      "notas": []
+     },
+     {
+      "id": "VI.b",
+      "texto": "b) sobre outras políticas públicas, inclusive quanto à interação ou à sobreposição; e",
+      "notas": []
+     },
+     {
+      "id": "VII",
+      "texto": "VII - na hipótese de medida provisória ou de projeto de lei com adoção do procedimento legislativo de urgência previsto no art. 64, § 1º, da Constituição, a análise das consequências que resultariam do uso do processo legislativo regular.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A informação orçamentário-financeira de que trata o inciso V do caput explicitará se a proposta cria, expande ou aperfeiçoa ação governamental que acarrete aumento de despesas ou implique redução ou renúncia de receitas.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Se a proposta criar, expandir ou aperfeiçoar ação governamental que acarrete aumento de despesas ou implique redução ou renúncia de receitas, o parecer de mérito demonstrará o atendimento ao disposto na legislação fiscal, em especial, o atendimento ou a não aplicação do disposto:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - nos art. 167 e art. 169 da Constituição;",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - no art. 113 do Ato das Disposições Constitucionais Transitórias;",
+      "notas": []
+     },
+     {
+      "id": "p2.III",
+      "texto": "III - na Lei Complementar nº 101, de 4 de maio de 2000;",
+      "notas": []
+     },
+     {
+      "id": "p2.IV",
+      "texto": "IV - na lei de diretrizes orçamentárias; e",
+      "notas": []
+     },
+     {
+      "id": "p2.V",
+      "texto": "V - na lei orçamentária anual.",
+      "notas": []
+     }
+    ],
+    "anexo": [
+     {
+      "id": "q1",
+      "texto": "1. Qual é o problema identificado?",
+      "notas": []
+     },
+     {
+      "id": "q1.1",
+      "texto": "1.1. Alguma providência deve ser tomada?",
+      "notas": []
+     },
+     {
+      "id": "q1.2",
+      "texto": "1.2. Qual é o objetivo pretendido?",
+      "notas": []
+     },
+     {
+      "id": "q1.3",
+      "texto": "1.3. Quais foram as razões que determinaram a iniciativa?",
+      "notas": []
+     },
+     {
+      "id": "q1.4",
+      "texto": "1.4. Neste momento, como se apresenta a situação no plano fático e no plano jurídico?",
+      "notas": []
+     },
+     {
+      "id": "q1.5",
+      "texto": "1.5. Que falhas ou distorções foram identificadas?",
+      "notas": []
+     },
+     {
+      "id": "q1.6",
+      "texto": "1.6. Que repercussões tem o problema que se apresenta no âmbito da economia, da ciência, da técnica e da jurisprudência?",
+      "notas": []
+     },
+     {
+      "id": "q1.7",
+      "texto": "1.7. Qual é o conjunto de destinatários alcançados pelo problema? Qual é o número de casos a resolver?",
+      "notas": []
+     },
+     {
+      "id": "q1.8",
+      "texto": "1.8. O que poderá acontecer se nada for feito? O problema se agravará? Permanecerá estável? Poderá ser superado pela própria dinâmica social, sem a intervenção do Estado? Com que consequências?",
+      "notas": []
+     },
+     {
+      "id": "q2",
+      "texto": "2. Quais são as alternativas disponíveis?",
+      "notas": []
+     },
+     {
+      "id": "q2.1",
+      "texto": "2.1. Qual foi o resultado da análise do problema? Onde se situam as causas do problema? Sobre quais causas pode incidir a ação que se pretende executar?",
+      "notas": []
+     },
+     {
+      "id": "q2.2",
+      "texto": "2.2. Que instrumentos de ação parecem adequados para a consecução dos objetivos pretendidos, no todo ou em parte? (Exemplos: medidas destinadas à aplicação e à execução de dispositivos existentes; trabalhos junto à opinião pública; acordos; investimentos; programas de incentivo; auxílio para que os próprios destinatários alcançados pelo problema contribuam para a sua resolução; instauração de processo judicial com vistas à resolução do problema.)",
+      "notas": []
+     },
+     {
+      "id": "q2.3",
+      "texto": "2.3. Que instrumentos de ação parecem adequados, considerados os seguintes aspectos:",
+      "notas": []
+     },
+     {
+      "id": "q2.3.1",
+      "texto": "2.3.1. desgastes e encargos para os cidadãos e a economia;",
+      "notas": []
+     },
+     {
+      "id": "q2.3.2",
+      "texto": "2.3.2. eficácia (precisão, grau de probabilidade de consecução do objetivo pretendido);",
+      "notas": []
+     },
+     {
+      "id": "q2.3.3",
+      "texto": "2.3.3. custos e despesas para o orçamento público;",
+      "notas": []
+     },
+     {
+      "id": "q2.3.4",
+      "texto": "2.3.4. efeitos sobre o ordenamento jurídico e sobre as metas estabelecidas;",
+      "notas": []
+     },
+     {
+      "id": "q2.3.5",
+      "texto": "2.3.5. efeitos colaterais e outras consequências;",
+      "notas": []
+     },
+     {
+      "id": "q2.3.6",
+      "texto": "2.3.6. entendimento e aceitação por parte dos interessados e dos responsáveis pela execução; e",
+      "notas": []
+     },
+     {
+      "id": "q2.3.7",
+      "texto": "2.3.7. possibilidade de impugnação no Poder Judiciário?",
+      "notas": []
+     },
+     {
+      "id": "q6",
+      "texto": "6. O ato normativo deve ter prazo de vigência limitado?",
+      "notas": []
+     },
+     {
+      "id": "q6.1",
+      "texto": "6.1. Seria o caso de editar norma temporária?",
+      "notas": []
+     }
+    ]
+   }
+  },
+  "lcp182": {
+   "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp182.htm",
+   "artigos": {
+    "11": [
+     {
+      "id": "caput",
+      "texto": "Art. 11. Os órgãos e as entidades da administração pública com competência de regulamentação setorial poderão, individualmente ou em colaboração, no âmbito de programas de ambiente regulatório experimental ( sandbox regulatório), afastar a incidência de normas sob sua competência em relação à entidade regulada ou aos grupos de entidades reguladas.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A colaboração a que se refere o caput deste artigo poderá ser firmada entre os órgãos e as entidades, observadas suas competências.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º Entende-se por ambiente regulatório experimental ( sandbox regulatório) o disposto no inciso II do caput do art. 2º desta Lei Complementar.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º O órgão ou a entidade a que se refere o caput deste artigo disporá sobre o funcionamento do programa de ambiente regulatório experimental e estabelecerá:",
+      "notas": []
+     },
+     {
+      "id": "p3.I",
+      "texto": "I - os critérios para seleção ou para qualificação do regulado;",
+      "notas": []
+     },
+     {
+      "id": "p3.II",
+      "texto": "II - a duração e o alcance da suspensão da incidência das normas; e",
+      "notas": []
+     },
+     {
+      "id": "p3.III",
+      "texto": "III - as normas abrangidas.",
+      "notas": []
+     }
+    ],
+    "12": [
+     {
+      "id": "caput",
+      "texto": "Art. 12. As licitações e os contratos a que se refere este Capítulo têm por finalidade:",
+      "notas": []
+     },
+     {
+      "id": "I",
+      "texto": "I - resolver demandas públicas que exijam solução inovadora com emprego de tecnologia; e",
+      "notas": []
+     },
+     {
+      "id": "II",
+      "texto": "II - promover a inovação no setor produtivo por meio do uso do poder de compra do Estado.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Os órgãos e as entidades da administração pública direta, autárquica e fundacional de quaisquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios subordinam-se ao regime disposto neste Capítulo.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º As empresas públicas, as sociedades de economia mista e suas subsidiárias poderão adotar, no que couber, as disposições deste Capítulo, nos termos do regulamento interno de licitações e contratações de que trata o art. 40 da Lei nº 13.303, de 30 de junho de 2016, e seus conselhos de administração poderão estabelecer valores diferenciados para os limites de que tratam o § 2º do art. 14 e o § 3º do art. 15 desta Lei Complementar.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Os valores estabelecidos neste Capítulo poderão ser anualmente atualizados pelo Poder Executivo federal, de acordo com o Índice Nacional de Preços ao Consumidor Amplo (IPCA) ou outro que venha a substituí-lo.",
+      "notas": []
+     }
+    ],
+    "13": [
+     {
+      "id": "caput",
+      "texto": "Art. 13. A administração pública poderá contratar pessoas físicas ou jurídicas, isoladamente ou em consórcio, para o teste de soluções inovadoras por elas desenvolvidas ou a ser desenvolvidas, com ou sem risco tecnológico, por meio de licitação na modalidade especial regida por esta Lei Complementar.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º A delimitação do escopo da licitação poderá restringir-se à indicação do problema a ser resolvido e dos resultados esperados pela administração pública, incluídos os desafios tecnológicos a serem superados, dispensada a descrição de eventual solução técnica previamente mapeada e suas especificações técnicas, e caberá aos licitantes propor diferentes meios para a resolução do problema.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O edital da licitação será divulgado, com antecedência de, no mínimo, 30 (trinta) dias corridos até a data de recebimento das propostas:",
+      "notas": []
+     },
+     {
+      "id": "p2.I",
+      "texto": "I - em sítio eletrônico oficial centralizado de divulgação de licitações ou mantido pelo ente público licitante; e",
+      "notas": []
+     },
+     {
+      "id": "p2.II",
+      "texto": "II - no diário oficial do ente federativo.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º As propostas serão avaliadas e julgadas por comissão especial integrada por, no mínimo, 3 (três) pessoas de reputação ilibada e reconhecido conhecimento no assunto, das quais:",
+      "notas": []
+     },
+     {
+      "id": "p3.I",
+      "texto": "I - 1 (uma) deverá ser servidor público integrante do órgão para o qual o serviço está sendo contratado; e",
+      "notas": []
+     },
+     {
+      "id": "p3.II",
+      "texto": "II – 1 (uma) deverá ser professor de instituição pública de educação superior na área relacionada ao tema da contratação.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Os critérios para julgamento das propostas deverão considerar, sem prejuízo de outros definidos no edital:",
+      "notas": []
+     },
+     {
+      "id": "p4.I",
+      "texto": "I - o potencial de resolução do problema pela solução proposta e, se for o caso, da provável economia para a administração pública;",
+      "notas": []
+     },
+     {
+      "id": "p4.II",
+      "texto": "II - o grau de desenvolvimento da solução proposta;",
+      "notas": []
+     },
+     {
+      "id": "p4.III",
+      "texto": "III - a viabilidade e a maturidade do modelo de negócio da solução;",
+      "notas": []
+     },
+     {
+      "id": "p4.IV",
+      "texto": "IV - a viabilidade econômica da proposta, considerados os recursos financeiros disponíveis para a celebração dos contratos; e",
+      "notas": []
+     },
+     {
+      "id": "p4.V",
+      "texto": "V - a demonstração comparativa de custo e benefício da proposta em relação às opções funcionalmente equivalentes.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º O preço indicado pelos proponentes para execução do objeto será critério de julgamento somente na forma disposta nos incisos IV e V do § 4º deste artigo.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º A licitação poderá selecionar mais de uma proposta para a celebração do contrato de que trata o art. 14 desta Lei Complementar, hipótese em que caberá ao edital limitar a quantidade de propostas selecionáveis.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º A análise da documentação relativa aos requisitos de habilitação será posterior à fase de julgamento das propostas e contemplará somente os proponentes selecionados.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º Ressalvado o disposto no § 3º do art. 195 da Constituição Federal, a administração pública poderá, mediante justificativa expressa, dispensar, no todo ou em parte:",
+      "notas": []
+     },
+     {
+      "id": "p8.I",
+      "texto": "I - a documentação de habilitação de que tratam os incisos I, II e III, bem como a regularidade fiscal prevista no inciso IV do caput do art. 27 da Lei nº 8.666, de 21 de junho de 1993; e",
+      "notas": []
+     },
+     {
+      "id": "p8.II",
+      "texto": "II - a prestação de garantia para a contratação.",
+      "notas": []
+     },
+     {
+      "id": "p9",
+      "texto": "§ 9º Após a fase de julgamento das propostas, a administração pública poderá negociar com os selecionados as condições econômicas mais vantajosas para a administração e os critérios de remuneração que serão adotados, observado o disposto no § 3º do art. 14 desta Lei Complementar.",
+      "notas": []
+     },
+     {
+      "id": "p10",
+      "texto": "§ 10. Encerrada a fase de julgamento e de negociação de que trata o § 9º deste artigo, na hipótese de o preço ser superior à estimativa, a administração pública poderá, mediante justificativa expressa, com base na demonstração comparativa entre o custo e o benefício da proposta, aceitar o preço ofertado, desde que seja superior em termos de inovações, de redução do prazo de execução ou de facilidade de manutenção ou operação, limitado ao valor máximo que se propõe a pagar.",
+      "notas": []
+     }
+    ],
+    "14": [
+     {
+      "id": "caput",
+      "texto": "Art. 14. Após homologação do resultado da licitação, a administração pública celebrará Contrato Público para Solução Inovadora (CPSI) com as proponentes selecionadas, com vigência limitada a 12 (doze) meses, prorrogável por mais um período de até 12 (doze) meses.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º O CPSI deverá conter, entre outras cláusulas:",
+      "notas": []
+     },
+     {
+      "id": "p1.I",
+      "texto": "I - as metas a serem atingidas para que seja possível a validação do êxito da solução inovadora e a metodologia para a sua aferição;",
+      "notas": []
+     },
+     {
+      "id": "p1.II",
+      "texto": "II - a forma e a periodicidade da entrega à administração pública de relatórios de andamento da execução contratual, que servirão de instrumento de monitoramento, e do relatório final a ser entregue pela contratada após a conclusão da última etapa ou meta do projeto;",
+      "notas": []
+     },
+     {
+      "id": "p1.III",
+      "texto": "III - a matriz de riscos entre as partes, incluídos os riscos referentes a caso fortuito, força maior, risco tecnológico, fato do príncipe e álea econômica extraordinária;",
+      "notas": []
+     },
+     {
+      "id": "p1.IV",
+      "texto": "IV - a definição da titularidade dos direitos de propriedade intelectual das criações resultantes do CPSI; e",
+      "notas": []
+     },
+     {
+      "id": "p1.V",
+      "texto": "V - a participação nos resultados de sua exploração, assegurados às partes os direitos de exploração comercial, de licenciamento e de transferência da tecnologia de que são titulares.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º O valor máximo a ser pago à contratada será de R$ 1.600.000,00 (um milhão e seiscentos mil reais) por CPSI, sem prejuízo da possibilidade de o edital de que trata o art. 13 desta Lei Complementar estabelecer limites inferiores.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º A remuneração da contratada deverá ser feita de acordo com um dos seguintes critérios:",
+      "notas": []
+     },
+     {
+      "id": "p3.I",
+      "texto": "I - preço fixo;",
+      "notas": []
+     },
+     {
+      "id": "p3.II",
+      "texto": "II - preço fixo mais remuneração variável de incentivo;",
+      "notas": []
+     },
+     {
+      "id": "p3.III",
+      "texto": "III - reembolso de custos sem remuneração adicional;",
+      "notas": []
+     },
+     {
+      "id": "p3.IV",
+      "texto": "IV - reembolso de custos mais remuneração variável de incentivo; ou",
+      "notas": []
+     },
+     {
+      "id": "p3.V",
+      "texto": "V - reembolso de custos mais remuneração fixa de incentivo.",
+      "notas": []
+     },
+     {
+      "id": "p4",
+      "texto": "§ 4º Nas hipóteses em que houver risco tecnológico, os pagamentos serão efetuados proporcionalmente aos trabalhos executados, de acordo com o cronograma físico-financeiro aprovado, observado o critério de remuneração previsto contratualmente.",
+      "notas": []
+     },
+     {
+      "id": "p5",
+      "texto": "§ 5º Com exceção das remunerações variáveis de incentivo vinculadas ao cumprimento das metas contratuais, a administração pública deverá efetuar o pagamento conforme o critério adotado, ainda que os resultados almejados não sejam atingidos em decorrência do risco tecnológico, sem prejuízo da rescisão antecipada do contrato caso seja comprovada a inviabilidade técnica ou econômica da solução.",
+      "notas": []
+     },
+     {
+      "id": "p6",
+      "texto": "§ 6º Na hipótese de a execução do objeto ser dividida em etapas, o pagamento relativo a cada etapa poderá adotar critérios distintos de remuneração.",
+      "notas": []
+     },
+     {
+      "id": "p7",
+      "texto": "§ 7º Os pagamentos serão feitos após a execução dos trabalhos, e, a fim de garantir os meios financeiros para que a contratada implemente a etapa inicial do projeto, a administração pública deverá prever em edital o pagamento antecipado de uma parcela do preço anteriormente ao início da execução do objeto, mediante justificativa expressa.",
+      "notas": []
+     },
+     {
+      "id": "p8",
+      "texto": "§ 8º Na hipótese prevista no § 7º deste artigo, a administração pública certificar-se-á da execução da etapa inicial e, se houver inexecução injustificada, exigirá a devolução do valor antecipado ou efetuará as glosas necessárias nos pagamentos subsequentes, se houver.",
+      "notas": []
+     }
+    ],
+    "15": [
+     {
+      "id": "caput",
+      "texto": "Art. 15. Encerrado o contrato de que trata o art. 14 desta Lei Complementar, a administração pública poderá celebrar com a mesma contratada, sem nova licitação, contrato para o fornecimento do produto, do processo ou da solução resultante do CPSI ou, se for o caso, para integração da solução à infraestrutura tecnológica ou ao processo de trabalho da administração pública.",
+      "notas": []
+     },
+     {
+      "id": "p1",
+      "texto": "§ 1º Na hipótese prevista no § 6º do art. 13 desta Lei Complementar, quando mais de uma contratada cumprir satisfatoriamente as metas estabelecidas no CPSI, o contrato de fornecimento será firmado, mediante justificativa, com aquela cujo produto, processo ou solução atenda melhor às demandas públicas em termos de relação de custo e benefício com dimensões de qualidade e preço.",
+      "notas": []
+     },
+     {
+      "id": "p2",
+      "texto": "§ 2º A vigência do contrato de fornecimento será limitada a 24 (vinte e quatro) meses, prorrogável por mais um período de até 24 (vinte e quatro) meses.",
+      "notas": []
+     },
+     {
+      "id": "p3",
+      "texto": "§ 3º Os contratos de fornecimento serão limitados a 5 (cinco) vezes o valor máximo definido no § 2º do art. 14 desta Lei Complementar para o CPSI, incluídas as eventuais prorrogações, hipótese em que o limite poderá ser ultrapassado nos casos de reajuste de preços e dos acréscimos de que trata o § 1º do art. 65 da Lei nº 8.666, de 21 de junho de 1993.",
+      "notas": []
+     }
+    ]
+   }
+  }
+ }
+}
