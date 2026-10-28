@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, ArrowRight, AlertCircle, Loader2, UserRound } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import GingaSymbol from "@/components/GingaSymbol";
+import { GUEST_ACCESS_ENABLED, GUEST_SESSION } from "@/lib/acesso";
 
 const ALLOWED_EMAILS = [
   "luana.s.faria@gestao.gov.br",
@@ -49,6 +50,14 @@ export default function LoginPage() {
         setShake(true);
       }
     }, 800);
+  };
+
+  const handleGuest = () => {
+    setError(null);
+    setIsLoading(true);
+    // Sessão de visitante: vale só enquanto GUEST_ACCESS_ENABLED estiver ligado
+    document.cookie = `ginga_session=${GUEST_SESSION}; path=/; max-age=2592000; SameSite=Lax`;
+    window.location.href = "/marco-conceitual";
   };
 
   return (
@@ -157,6 +166,27 @@ export default function LoginPage() {
               )}
             </motion.button>
           </form>
+
+          {GUEST_ACCESS_ENABLED && (
+            <>
+              <div className="flex items-center gap-3 my-5" aria-hidden="true">
+                <span className="h-px flex-1 bg-white/[0.08]" />
+                <span className="text-[10px] font-bold tracking-wider uppercase text-slate-500">ou</span>
+                <span className="h-px flex-1 bg-white/[0.08]" />
+              </div>
+              <motion.button
+                type="button"
+                onClick={handleGuest}
+                disabled={isLoading}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full h-11 rounded-lg bg-white/[0.04] border border-white/[0.12] hover:border-gold-500 hover:bg-white/[0.06] text-white font-display font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <UserRound size={16} />
+                <span>Entrar como visitante</span>
+              </motion.button>
+            </>
+          )}
         </motion.div>
 
         {/* Rodapé institucional */}
